@@ -1,0 +1,41 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class InputHandler : MonoBehaviour
+{
+    public Vector2 mouseDirection {  get; private set; }
+    private Camera _mainCamera;
+    private Vector2 screen;
+
+    private void Awake()
+    {
+        screen = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+        _mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+
+        float x = (Input.mousePosition.x - (Screen.width / 2.0f)) / (Screen.width / 2.0f);
+        float y = (Input.mousePosition.y - (Screen.height / 2.0f)) / (Screen.height / 2.0f);
+
+        // Clamping ensures the value never goes beyond -1 or 1, even if the mouse
+        // leaves the game window (in some setups).
+        x = Mathf.Clamp(x, -1.0f, 1.0f);
+        y = Mathf.Clamp(y, -1.0f, 1.0f);
+
+        mouseDirection = new Vector2(x, y);
+        Debug.Log(mouseDirection);
+
+        if (!context.started) return;
+
+        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
+        if(!rayHit.collider) return;
+
+    }
+}
