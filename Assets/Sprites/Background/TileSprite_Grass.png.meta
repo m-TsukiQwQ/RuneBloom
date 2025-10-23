@@ -1,55 +1,10 @@
 fileFormatVersion: 2
-guid: a59ee3259afed1443bab2ec218c0821f
+guid: d3ba699127f248247aafc211122621ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6271674672454095231
-    second: Player_Walk_0
-  - first:
-      213: -5472852325172983002
-    second: Player_Walk_1
-  - first:
-      213: 6740012380587470751
-    second: Player_Walk_2
-  - first:
-      213: 2027882306579495052
-    second: Player_Walk_3
-  - first:
-      213: -4198330706962942397
-    second: Player_Walk_4
-  - first:
-      213: -7328556770771104369
-    second: Player_Walk_5
-  - first:
-      213: 1120088206422936072
-    second: Player_Walk_6
-  - first:
-      213: -8072317575308007845
-    second: Player_Walk_7
-  - first:
-      213: 140850891838506841
-    second: Player_Walk_8
-  - first:
-      213: 6097569838585248246
-    second: Player_Walk_9
-  - first:
-      213: -6281047564881630632
-    second: Player_Walk_10
-  - first:
-      213: 5663456534842181878
-    second: Player_Walk_11
-  - first:
-      213: 339160818911863998
-    second: Player_Walk_12
-  - first:
-      213: 13877269092729448
-    second: Player_Walk_13
-  - first:
-      213: 1057013406384133778
-    second: Player_Walk_14
-  - first:
-      213: 5895895200878051338
-    second: Player_Walk_15
+      213: -2047845640311301317
+    second: TileSprite_Grass_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -145,353 +100,331 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Walk_0
+      name: TileSprite_Grass_TR
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f71d076c2e6790750800000000000000
-      internalID: 6271674672454095231
+      spriteID: b3b99667d379493e0800000000000000
+      internalID: -2047845640311301317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_1
+      name: TileSprite_Grass_L
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 62bc4e18ec58c04b0800000000000000
-      internalID: -5472852325172983002
+      spriteID: b35ee11f48f06594ea5fcc1d8caa1524
+      internalID: 2066997013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_2
+      name: TileSprite_Grass_BRC
       rect:
         serializedVersion: 2
         x: 64
         y: 96
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f9fa6aecc85598d50800000000000000
-      internalID: 6740012380587470751
+      spriteID: 2b958ecbce653bb4cb51c4b85829ae83
+      internalID: -1807157393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_3
+      name: TileSprite_Grass_T
       rect:
         serializedVersion: 2
         x: 96
         y: 96
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c8878f1b63c742c10800000000000000
-      internalID: 2027882306579495052
+      spriteID: 3b5d4eb1f9b4322478e8e5f594f49f66
+      internalID: -555163926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_4
+      name: TileSprite_Grass_LB
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 346fbd937788cb5c0800000000000000
-      internalID: -4198330706962942397
+      spriteID: b7288ada1eba74945afd75ade66404e8
+      internalID: -2112544023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_5
+      name: TileSprite_Grass_BLC
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f8d87e1027cbb4a90800000000000000
-      internalID: -7328556770771104369
+      spriteID: 55ceb27a839e08a4a9e3c245787b60f7
+      internalID: 148509060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_6
+      name: TileSprite_Grass_C
       rect:
         serializedVersion: 2
         x: 64
         y: 64
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 80a81fc0a4a5b8f00800000000000000
-      internalID: 1120088206422936072
+      spriteID: 3f9983e45c5624a4fa31555983110938
+      internalID: 315521593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_7
+      name: TileSprite_Grass_TLC
       rect:
         serializedVersion: 2
         x: 96
         y: 64
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b56af992fed59ff80800000000000000
-      internalID: -8072317575308007845
+      spriteID: 3b2b0c56917da4c4495107ffd9a6d14f
+      internalID: -1651494233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_8
+      name: TileSprite_Grass_BL
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 957c45ec32764f100800000000000000
-      internalID: 140850891838506841
+      spriteID: 078a6f038e1ab14449ea684a216c2bad
+      internalID: -1836686866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_9
+      name: TileSprite_Grass_B
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f9720e367bee9450800000000000000
-      internalID: 6097569838585248246
+      spriteID: 918737e04c5d9db489c9c2c0270a6f21
+      internalID: 1697692899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_10
+      name: TileSprite_Grass_TRC
       rect:
         serializedVersion: 2
         x: 64
         y: 32
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85ae5e5a48c35d8a0800000000000000
-      internalID: -6281047564881630632
+      spriteID: f5e371d9e0f7640448aad2857f7153a8
+      internalID: 1845223150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_11
+      name: TileSprite_Grass_R
       rect:
         serializedVersion: 2
         x: 96
         y: 32
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f8022056b3a89e40800000000000000
-      internalID: 5663456534842181878
+      spriteID: 90fb1c457b6a48648a5bb77d636d5c05
+      internalID: 1439036028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eb4e8f4c7f0f4b400800000000000000
-      internalID: 339160818911863998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Walk_13
+      name: TileSprite_Grass_TL
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 86289be7d4d413000800000000000000
-      internalID: 13877269092729448
+      spriteID: 63cb40e72448376439a335cf70cf82b7
+      internalID: 1356651092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_14
+      name: TileSprite_Grass_RB
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2961a52c7144bae00800000000000000
-      internalID: 1057013406384133778
+      spriteID: 444b82373652b6c4d8e5210bf417e0c7
+      internalID: -14656863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Walk_15
+      name: TileSprite_Grass_BR
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a004449827d62d150800000000000000
-      internalID: 5895895200878051338
+      spriteID: fb0c6cd8427cb554192f0782c7d8a305
+      internalID: -828362610
       vertices: []
       indices: 
       edges: []
@@ -500,7 +433,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 843f87b99d682984598d6f4319df8ac7
+    spriteID: 92f0bf51a8ea66a49a6da1d5dd85bb80
     internalID: 0
     vertices: []
     indices: 
@@ -510,22 +443,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Player_Walk_0: 6271674672454095231
-      Player_Walk_1: -5472852325172983002
-      Player_Walk_10: -6281047564881630632
-      Player_Walk_11: 5663456534842181878
-      Player_Walk_12: 339160818911863998
-      Player_Walk_13: 13877269092729448
-      Player_Walk_14: 1057013406384133778
-      Player_Walk_15: 5895895200878051338
-      Player_Walk_2: 6740012380587470751
-      Player_Walk_3: 2027882306579495052
-      Player_Walk_4: -4198330706962942397
-      Player_Walk_5: -7328556770771104369
-      Player_Walk_6: 1120088206422936072
-      Player_Walk_7: -8072317575308007845
-      Player_Walk_8: 140850891838506841
-      Player_Walk_9: 6097569838585248246
+      TileSprite_Grass_B: 1697692899
+      TileSprite_Grass_BL: -1836686866
+      TileSprite_Grass_BLC: 148509060
+      TileSprite_Grass_BR: -828362610
+      TileSprite_Grass_BRC: -1807157393
+      TileSprite_Grass_C: 315521593
+      TileSprite_Grass_L: 2066997013
+      TileSprite_Grass_LB: -2112544023
+      TileSprite_Grass_R: 1439036028
+      TileSprite_Grass_RB: -14656863
+      TileSprite_Grass_T: -555163926
+      TileSprite_Grass_TL: 1356651092
+      TileSprite_Grass_TLC: -1651494233
+      TileSprite_Grass_TR: -2047845640311301317
+      TileSprite_Grass_TRC: 1845223150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
