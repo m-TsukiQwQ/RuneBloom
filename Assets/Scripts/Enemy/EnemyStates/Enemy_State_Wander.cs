@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_State_Wander : EnemyState
+public class Enemy_State_Wander : Enemy_State_NonBattle
 {
     public Enemy_State_Wander(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
@@ -9,7 +9,7 @@ public class Enemy_State_Wander : EnemyState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Entered " + _animBoolName);
+        
         GetNewDestination();
         enemy.animator.SetFloat("AnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
     }
@@ -54,6 +54,6 @@ public class Enemy_State_Wander : EnemyState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Exited " + _animBoolName);
+        
     }
 }

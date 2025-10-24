@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_State_Idle : EnemyState
+public class Enemy_State_Idle : Enemy_State_NonBattle
 {
     public Enemy_State_Idle(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
@@ -8,7 +8,7 @@ public class Enemy_State_Idle : EnemyState
 
     public override void Enter()
     {
-        Debug.Log("Entered " + _animBoolName);
+        
         base.Enter();
         _stateTimer = enemy.idleTime;
         enemy.SetVelocity(0,0);
@@ -27,7 +27,7 @@ public class Enemy_State_Idle : EnemyState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Exited " + _animBoolName);
+        
     }
 
 
