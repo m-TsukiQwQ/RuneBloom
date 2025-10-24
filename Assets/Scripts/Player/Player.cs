@@ -27,10 +27,13 @@ public class Player : Entity
         inputHandler = GetComponentInChildren<InputHandler>();
 
 
+
         idleState = new Player_State_Idle(this, _stateMachine, "Idle");
         runState = new Player_State_Run(this, _stateMachine, "Run");
         walkState = new Player_State_Walk(this, _stateMachine, "Walk");
         attackState = new Player_State_Attack(this, _stateMachine, "Attack");
+
+
 
     }
 

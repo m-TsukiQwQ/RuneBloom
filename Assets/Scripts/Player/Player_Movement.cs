@@ -12,29 +12,16 @@ public class Player_Movement : MonoBehaviour
 
 
     public PlayerInputSystem input { get; private set; }
-    public Rigidbody2D RigidBody2D { get; private set; }
-
     public Vector2 moveInput {  get; private set; }
     public Vector2 idleInput {  get; private set; }
 
     private Player _player;
 
     private void Awake()
-    {
-        RigidBody2D = GetComponent<Rigidbody2D>();
+    { 
         input = new PlayerInputSystem();
         _player = GetComponent<Player>();
     }
-    public Vector2 IdleDirection()
-    {
-        return idleInput = input.Player.Movement.ReadValue<Vector2>().normalized;
-    }
-
-    public void SetVelocity(float xVelocity, float yVelocity)
-    {
-        RigidBody2D.linearVelocity = new Vector2(xVelocity, yVelocity);
-    }
-  
     
     private void OnEnable()
     {

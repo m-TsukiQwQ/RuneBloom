@@ -28,7 +28,7 @@ public class Player_State_Walk : PlayerState
             _stateMachine.ChangeState(_player.idleState);
         }
 
-        _player._playerMovement.SetVelocity(_player._playerMovement.moveInput.x * _player._playerMovement.walkSpeed * runSpeedMultiplier,
+        _player.SetVelocity(_player._playerMovement.moveInput.x * _player._playerMovement.walkSpeed * runSpeedMultiplier,
                                                     _player._playerMovement.moveInput.y * _player._playerMovement.walkSpeed * runSpeedMultiplier);
         _player._playerAnimations.SetMoveAnimation(_player._playerMovement.moveInput);
 

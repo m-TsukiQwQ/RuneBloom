@@ -10,7 +10,7 @@ public class Player_State_Idle : PlayerState
     public override void Enter()
     {
         base.Enter();
-        _player._playerMovement.SetVelocity(0, 0);
+        _player.SetVelocity(0, 0);
     }
     public override void Update()
     {

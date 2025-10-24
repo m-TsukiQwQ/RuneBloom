@@ -28,7 +28,6 @@ public class Player_Animations : MonoBehaviour
     }
     public void SetIdleAnimation(Vector2 direction)
     {
-        Debug.Log(direction + " from anim");
         _animator.SetFloat(_idleX, direction.x);
         _animator.SetFloat(_idleY, direction.y);
 

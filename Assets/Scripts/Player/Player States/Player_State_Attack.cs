@@ -13,13 +13,13 @@ public class Player_State_Attack : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log(_player.inputHandler.mouseDirection + " from attack");
+        
         _player._playerAnimations.SetIdleAnimation(_player.inputHandler.mouseDirection);
     }
     public override void Update()
     {
         base.Update();
-        _player._playerMovement.SetVelocity(0, 0);
+        _player.SetVelocity(0, 0);
         if (_triggerCalled)
         {
             ManualStateExit();
