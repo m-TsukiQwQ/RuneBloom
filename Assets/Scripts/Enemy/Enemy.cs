@@ -8,6 +8,7 @@ public class Enemy : Entity
     public Enemy_State_NonBattle nonBattleState;
     public Enemy_State_Chase chaseState;
     public Enemy_State_Attack attackState;
+    public Enemy_State_WaitForAttack waitForAttackState;
 
     public Enemy_Animation _enemyAnimations { get; private set; }
 
@@ -33,29 +34,45 @@ public class Enemy : Entity
     public float chaseSpeedMultiplier;
     public bool playerDetected;
     public Transform playerPosition;
+    public float chaseTime;
 
     [Header("Attack details")]
     public float attackRange;
     public bool playerInAttackRange;
+    public float attackCoolDown;
+    public float lastTimeAttacked;
 
     protected override void Awake()
     {
         base.Awake();
         _enemyAnimations = GetComponentInChildren<Enemy_Animation>();
     }
-    public bool PlayerDetection()
+
+    public Collider2D PlayerDetection()
     {
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, chaseRange, whatIsPlayer);
         if (playerCollider != null)
         {
             playerPosition = playerCollider.transform;
-            return true;
         }
 
-        playerPosition = null;
-        return false;
-
+        return playerCollider;
     }
+
+    public Transform GetPlayerReference()
+    {
+        if (playerPosition == null)
+        {
+            Collider2D player = PlayerDetection();
+
+            if (player != null)
+                playerPosition =player.transform;
+        }
+
+        return playerPosition;
+    }
+
+    public bool IsAttackCoolDownIsOver() => Time.time > lastTimeAttacked + attackCoolDown;
 
     protected override void Update()
     {
@@ -77,6 +94,8 @@ public class Enemy : Entity
 
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
         if (playerCollider != null) return true;
+
+
 
         return false;
     }

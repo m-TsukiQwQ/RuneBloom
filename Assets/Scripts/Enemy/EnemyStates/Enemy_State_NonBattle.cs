@@ -13,6 +13,7 @@ public class Enemy_State_NonBattle : EnemyState
         if (enemy.PlayerDetection())
         {
             _stateMachine.ChangeState(enemy.chaseState);
+
         }
         
     }
