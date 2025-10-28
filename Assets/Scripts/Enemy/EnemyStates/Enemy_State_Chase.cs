@@ -4,6 +4,7 @@ public class Enemy_State_Chase : EnemyState
 {
     private Transform _player;
     private float multiplier;
+    
 
     private float lastTimePlayerDetected;
     
@@ -16,11 +17,11 @@ public class Enemy_State_Chase : EnemyState
         base.Enter();
 
         if (_player == null) 
-            _player = enemy.GetPlayerReference();
+            _player = _enemy.GetPlayerReference();
 
 
-        multiplier = enemy.chaseSpeedMultiplier;
-        enemy.animator.SetFloat("AnimSpeedMultiplier", (enemy.moveSpeed * multiplier / enemy.moveSpeed));
+        multiplier = _enemy.chaseSpeedMultiplier;
+        _enemy.animator.SetFloat("AnimSpeedMultiplier", (_enemy.moveSpeed * multiplier / _enemy.moveSpeed));
         
 
 
@@ -29,14 +30,14 @@ public class Enemy_State_Chase : EnemyState
     {
         base.Update();
 
-       if(enemy.PlayerDetection() == true)
+       if(_enemy.PlayerDetection() == true)
         {
             UpdateChaseTimer();
         }
 
-        if (/*!enemy.PlayerDetection() ||*/ enemy.playerPosition == null)
+        if (/*!enemy.PlayerDetection() ||*/ _enemy.playerPosition == null)
         {
-            _stateMachine.ChangeState(enemy.idleState);
+            _stateMachine.ChangeState(_enemy.idleState);
         }
         else
             ChasePlayer();
@@ -44,29 +45,30 @@ public class Enemy_State_Chase : EnemyState
 
         if (ChaseTimeIsOver())
         {
-            _stateMachine.ChangeState(enemy.idleState);
+            _stateMachine.ChangeState(_enemy.idleState);
         }    
        
 
-        if(enemy.PlayerInAttackRange() && enemy.IsAttackCoolDownIsOver()) 
-            _stateMachine.ChangeState(enemy.attackState);
+        if(_enemy.PlayerInAttackRange() && _enemy.IsAttackCoolDownIsOver()) 
+            _stateMachine.ChangeState(_enemy.attackState);
 
     }
 
     private void ChasePlayer()
     {
-        Vector3 directionToPlayer = enemy.playerPosition.position - enemy.transform.position;
+        Vector3 directionToPlayer = _enemy.playerPosition.position - _enemy.transform.position;
         Vector3 normalizedDirection = directionToPlayer.normalized;
-        if (directionToPlayer.magnitude > enemy.attackRange)
+        _enemy.directionToPlayer = normalizedDirection;
+        if (directionToPlayer.magnitude > _enemy.attackRange)
         {
-            enemy.SetVelocity((normalizedDirection.x * (enemy.moveSpeed * multiplier)), normalizedDirection.y * (enemy.moveSpeed * multiplier));
+            _enemy.SetVelocity((normalizedDirection.x * (_enemy.moveSpeed * multiplier)), normalizedDirection.y * (_enemy.moveSpeed * multiplier));
         }
         
     }
 
     private void UpdateChaseTimer() => lastTimePlayerDetected = Time.time;
 
-    private bool ChaseTimeIsOver() => Time.time > lastTimePlayerDetected + enemy.chaseTime;
+    private bool ChaseTimeIsOver() => Time.time > lastTimePlayerDetected + _enemy.chaseTime;
 
     
 }

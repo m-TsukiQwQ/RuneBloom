@@ -15,8 +15,10 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsEdge;
     [SerializeField] private Transform xCheck;
     [SerializeField] private Transform yCheck;
-    public bool edgeDetected {  get; private set; }
 
+   
+
+    public bool edgeDetected {  get; private set; }
 
     protected virtual void Awake()
     {
@@ -64,7 +66,6 @@ public class Entity : MonoBehaviour
             Gizmos.DrawLine(xCheck.position, xCheck.position + new Vector3(edgeXCheckDistance, 0));
             Gizmos.DrawLine(yCheck.position, yCheck.position + new Vector3(0, edgeYCheckDistance));
         }
-
 
     }
 

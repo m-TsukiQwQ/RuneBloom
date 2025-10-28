@@ -10,8 +10,8 @@ public class Enemy_State_WaitForAttack : EnemyState
     public override void Enter()
     {
         base.Enter();
-        _stateTimer = enemy.attackCoolDown;
-        enemy.SetVelocity(0,0);
+        _stateTimer = _enemy.attackCoolDown;
+        _enemy.SetVelocity(0,0);
     }
 
     public override void Update()
@@ -20,7 +20,7 @@ public class Enemy_State_WaitForAttack : EnemyState
 
         if(_stateTimer < 0)
         {
-            _stateMachine.ChangeState(enemy.chaseState);
+            _stateMachine.ChangeState(_enemy.chaseState);
         }
     }
 }

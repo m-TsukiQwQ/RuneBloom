@@ -27,12 +27,14 @@ AnimationClip:
     - time: 0.2
       value: {fileID: -2121795714052628773, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - time: 0.3
-      value: {fileID: 1754169609437975361, guid: 9170d87a631c6284790feb5df345106b, type: 3}
+      value: {fileID: -2121795714052628773, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - time: 0.4
-      value: {fileID: 4851981077748309204, guid: 9170d87a631c6284790feb5df345106b, type: 3}
+      value: {fileID: 1754169609437975361, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - time: 0.5
-      value: {fileID: 2146981631322193459, guid: 9170d87a631c6284790feb5df345106b, type: 3}
+      value: {fileID: 4851981077748309204, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - time: 0.6
+      value: {fileID: 2146981631322193459, guid: 9170d87a631c6284790feb5df345106b, type: 3}
+    - time: 0.7
       value: {fileID: 2068573637114005361, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     attribute: m_Sprite
     path: 
@@ -59,6 +61,7 @@ AnimationClip:
     - {fileID: -3745569759656547045, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - {fileID: -2121795714052628773, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - {fileID: -2121795714052628773, guid: 9170d87a631c6284790feb5df345106b, type: 3}
+    - {fileID: -2121795714052628773, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - {fileID: 1754169609437975361, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - {fileID: 4851981077748309204, guid: 9170d87a631c6284790feb5df345106b, type: 3}
     - {fileID: 2146981631322193459, guid: 9170d87a631c6284790feb5df345106b, type: 3}
@@ -68,7 +71,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.70000005
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -88,7 +91,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.6
+  - time: 0.5
+    functionName: AttackTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7
     functionName: CurrentStateTrigger
     data: 
     objectReferenceParameter: {fileID: 0}

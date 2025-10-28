@@ -10,9 +10,9 @@ public class Enemy_State_NonBattle : EnemyState
     public override void Update()
     {
         base.Update();
-        if (enemy.PlayerDetection())
+        if (_enemy.PlayerDetection())
         {
-            _stateMachine.ChangeState(enemy.chaseState);
+            _stateMachine.ChangeState(_enemy.chaseState);
 
         }
         

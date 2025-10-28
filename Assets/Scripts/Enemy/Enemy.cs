@@ -35,6 +35,7 @@ public class Enemy : Entity
     public bool playerDetected;
     public Transform playerPosition;
     public float chaseTime;
+    public Vector3 directionToPlayer;
 
     [Header("Attack details")]
     public float attackRange;

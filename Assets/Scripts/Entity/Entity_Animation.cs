@@ -4,6 +4,7 @@ public class Entity_Animation : MonoBehaviour
 {
     private Entity _entity;
     private Animator _animator;
+    private EntityCombat _entityCombat;
 
 
     private readonly int _moveX = Animator.StringToHash("MoveX");
@@ -19,6 +20,7 @@ public class Entity_Animation : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _entity = GetComponentInParent<Entity>();
+        _entityCombat = GetComponentInParent<EntityCombat>();
     }
     public void SetMoveAnimation(Vector2 direction)
     {
@@ -35,7 +37,7 @@ public class Entity_Animation : MonoBehaviour
 
     public void SetAttackAnimation(Vector2 direction)
     {
-        Debug.Log(direction + " from attack");
+        
         _animator.SetFloat(_attackX, direction.x);
         _animator.SetFloat(_attackY, direction.y);
 
@@ -44,5 +46,11 @@ public class Entity_Animation : MonoBehaviour
     public void CurrentStateTrigger()
     {
         _entity.CallAnimationTrigger();
+    }
+
+    private void AttackTrigger()
+    {
+        
+        _entityCombat.PerformAttack();
     }
 }

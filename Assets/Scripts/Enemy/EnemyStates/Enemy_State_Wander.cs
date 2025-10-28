@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy_State_Wander : Enemy_State_NonBattle
 {
+
     public Enemy_State_Wander(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
@@ -11,7 +12,7 @@ public class Enemy_State_Wander : Enemy_State_NonBattle
         base.Enter();
         
         GetNewDestination();
-        enemy.animator.SetFloat("AnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
+        _enemy.animator.SetFloat("AnimSpeedMultiplier", _enemy.moveAnimSpeedMultiplier);
     }
 
 
@@ -26,29 +27,30 @@ public class Enemy_State_Wander : Enemy_State_NonBattle
 
     private void Wander()
     {
-        Vector3 moveDirection = (enemy.wanderPosition - enemy.transform.position).normalized;
+        Vector3 moveDirection = (_enemy.wanderPosition - _enemy.transform.position).normalized;
+        
 
-        if (Vector3.Distance(enemy.transform.position, enemy.wanderPosition) >= 0.5f)
+        if (Vector3.Distance(_enemy.transform.position, _enemy.wanderPosition) >= 0.5f)
         {
-            enemy.SetVelocity(moveDirection.x * enemy.moveSpeed, moveDirection.y * enemy.moveSpeed);
-            if (enemy.edgeDetected)
+            _enemy.SetVelocity(moveDirection.x * _enemy.moveSpeed, moveDirection.y * _enemy.moveSpeed);
+            if (_enemy.edgeDetected)
             {
-                Vector3 directionToWall = (enemy.wanderPosition - enemy.transform.position).normalized;
+                Vector3 directionToWall = (_enemy.wanderPosition - _enemy.transform.position).normalized;
                 Vector3 oppositeDirection = -directionToWall;
-                float randomDistance = Random.Range(enemy.wanderRange.x * 0.5f, enemy.wanderRange.x);
-                enemy.wanderPosition = enemy.transform.position + (oppositeDirection * randomDistance);
+                float randomDistance = Random.Range(_enemy.wanderRange.x * 0.5f, _enemy.wanderRange.x);
+                _enemy.wanderPosition = _enemy.transform.position + (oppositeDirection * randomDistance);
             }
 
         }
         else
-            _stateMachine.ChangeState(enemy.idleState);
+            _stateMachine.ChangeState(_enemy.idleState);
     }
 
     private void GetNewDestination()
     {
-        float randomX = Random.Range(-enemy.wanderRange.x, enemy.wanderRange.x);
-        float randomY = Random.Range(-enemy.wanderRange.y, enemy.wanderRange.y);
-        enemy.wanderPosition = enemy.transform.position + new Vector3(randomX, randomY);
+        float randomX = Random.Range(-_enemy.wanderRange.x, _enemy.wanderRange.x);
+        float randomY = Random.Range(-_enemy.wanderRange.y, _enemy.wanderRange.y);
+        _enemy.wanderPosition = _enemy.transform.position + new Vector3(randomX, randomY);
     }
 
     public override void Exit()

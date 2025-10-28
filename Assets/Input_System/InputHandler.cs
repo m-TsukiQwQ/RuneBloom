@@ -21,6 +21,18 @@ public class InputHandler : MonoBehaviour
     public void OnClick(InputAction.CallbackContext context)
     {
 
+        CalculateMousePosition();
+        
+
+        if (!context.started) return;
+
+        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
+        if(!rayHit.collider) return;
+
+    }
+
+    private Vector2 CalculateMousePosition()
+    {
         float x = (Input.mousePosition.x - (Screen.width / 2.0f)) / (Screen.width / 2.0f);
         float y = (Input.mousePosition.y - (Screen.height / 2.0f)) / (Screen.height / 2.0f);
 
@@ -30,12 +42,6 @@ public class InputHandler : MonoBehaviour
         y = Mathf.Clamp(y, -1.0f, 1.0f);
 
         mouseDirection = new Vector2(x, y);
-        Debug.Log(mouseDirection);
-
-        if (!context.started) return;
-
-        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
-        if(!rayHit.collider) return;
-
+        return mouseDirection;
     }
 }

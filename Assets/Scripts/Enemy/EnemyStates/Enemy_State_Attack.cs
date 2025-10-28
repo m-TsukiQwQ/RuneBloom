@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Enemy_State_Attack : EnemyState
 {
@@ -10,35 +11,25 @@ public class Enemy_State_Attack : EnemyState
     public override void Enter()
     {
         base.Enter();
-        enemy.SetVelocity(0,0);
-        enemy.lastTimeAttacked = Time.time;
+        _enemy.SetVelocity(0,0);
+        _enemy.lastTimeAttacked = Time.time;
     }
     public override void Update()
     {
         base.Update();
-        if (enemy.playerPosition == null ) 
+        if (_enemy.playerPosition == null ) 
         {
-            _stateMachine.ChangeState(enemy.idleState);
+            _stateMachine.ChangeState(_enemy.idleState);
         }
-
-        //if (!enemy.PlayerInAttackRange() && enemy.playerPosition != null)
-        //{
-        //    _stateMachine.ChangeState(enemy.chaseState);
-        //}
+        
+        _enemy._enemyAnimations.SetAttackAnimation( _enemy.playerPosition.position - _enemy.transform.position);
+        
 
         if (_triggerCalled)
         {
-            _stateMachine.ChangeState(enemy.waitForAttackState);
+            
+            _stateMachine.ChangeState(_enemy.waitForAttackState);
         }
     }
-
-    
-
-    public override void Exit()
-    {
-        base.Exit();
-        
-    }
-
 
 }

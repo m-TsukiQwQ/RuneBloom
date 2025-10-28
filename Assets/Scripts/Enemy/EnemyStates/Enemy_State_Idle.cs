@@ -10,8 +10,8 @@ public class Enemy_State_Idle : Enemy_State_NonBattle
     {
         
         base.Enter();
-        _stateTimer = enemy.idleTime;
-        enemy.SetVelocity(0,0);
+        _stateTimer = _enemy.idleTime;
+        _enemy.SetVelocity(0,0);
     }
 
     public override void Update()
@@ -20,7 +20,7 @@ public class Enemy_State_Idle : Enemy_State_NonBattle
 
         if (_stateTimer < 0)
         {
-            _stateMachine.ChangeState(enemy.wanderState);
+            _stateMachine.ChangeState(_enemy.wanderState);
         }
     }
 
