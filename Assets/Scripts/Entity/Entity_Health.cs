@@ -3,6 +3,7 @@ using UnityEngine;
 public class Entity_Health : MonoBehaviour, IDamageable
 {
     private Entity _entity;
+    private EntityVFX entityVfx;
 
     [Header("Health deatails")]
     [SerializeField] protected float _maxHealth;
@@ -13,10 +14,12 @@ public class Entity_Health : MonoBehaviour, IDamageable
     {
         _entity = GetComponent<Entity>();
         _currentHealth = _maxHealth;
+        entityVfx = GetComponent<EntityVFX>();
     }
     public virtual void TakeDamage(float damage, Transform damageDealer)
     {
         if (IsDead) return;
+        entityVfx?.PlayOnDamageVfx();
         ReduceHealth(damage);
         
     }
