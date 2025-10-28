@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : Entity
@@ -7,6 +8,7 @@ public class Player : Entity
     public Player_State_Run runState { get; private set; }
     public Player_State_Walk walkState { get; private set; }
     public Player_State_Attack attackState { get; private set; }
+    public Player_State_Dead deadState {  get; private set; }
 
 
 
@@ -17,6 +19,7 @@ public class Player : Entity
     public InputHandler inputHandler { get; private set; }
 
 
+    public static event Action OnPlayerDeath;
     protected override void Awake()
     {
 
@@ -25,6 +28,8 @@ public class Player : Entity
         _playerAnimations = GetComponentInChildren<Player_Animations>();
         _playerMovement = GetComponent<Player_Movement>();
         inputHandler = GetComponentInChildren<InputHandler>();
+        rb = GetComponent<Rigidbody2D>();
+
 
 
 
@@ -32,6 +37,7 @@ public class Player : Entity
         runState = new Player_State_Run(this, _stateMachine, "Run");
         walkState = new Player_State_Walk(this, _stateMachine, "Walk");
         attackState = new Player_State_Attack(this, _stateMachine, "Attack");
+        deadState = new Player_State_Dead(this, _stateMachine, "Dead");
 
 
 
@@ -42,4 +48,14 @@ public class Player : Entity
         base.Start();
         _stateMachine.Initialize(idleState);
     }
+
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        OnPlayerDeath?.Invoke();
+        _stateMachine.ChangeState(deadState);
+
+    }
+
+    
 }

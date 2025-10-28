@@ -39,6 +39,10 @@ public class Entity : MonoBehaviour
         HandleCollision();
 
     }
+    public virtual void EntityDeath()
+    {
+
+    }
 
     public void CallAnimationTrigger()
     {

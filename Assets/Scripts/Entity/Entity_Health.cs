@@ -35,6 +35,8 @@ public class Entity_Health : MonoBehaviour, IDamageable
     private void Die()
     {
         IsDead = true;
+
+        _entity.EntityDeath();
     }
 
 

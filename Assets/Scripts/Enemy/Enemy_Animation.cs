@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class Enemy_Animation : Entity_Animation
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void TriggerDeathDestroy()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

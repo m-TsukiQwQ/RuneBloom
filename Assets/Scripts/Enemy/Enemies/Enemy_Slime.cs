@@ -12,6 +12,7 @@ public class Enemy_Slime : Enemy
         chaseState = new Enemy_State_Chase(this, _stateMachine, "Move");
         attackState = new Enemy_State_Attack(this, _stateMachine, "Attack");
         waitForAttackState = new Enemy_State_WaitForAttack(this, _stateMachine, "Idle");
+        deadState = new Enemy_State_Dead(this, _stateMachine, "Dead");
         
 
     }

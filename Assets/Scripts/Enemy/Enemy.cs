@@ -9,6 +9,7 @@ public class Enemy : Entity
     public Enemy_State_Chase chaseState;
     public Enemy_State_Attack attackState;
     public Enemy_State_WaitForAttack waitForAttackState;
+    public Enemy_State_Dead deadState;
 
     public Enemy_Animation _enemyAnimations { get; private set; }
 
@@ -43,10 +44,18 @@ public class Enemy : Entity
     public float attackCoolDown;
     public float lastTimeAttacked;
 
+    [Header("Death details")]
+    [SerializeField] private float deathTimer = 3f;
+
     protected override void Awake()
     {
         base.Awake();
         _enemyAnimations = GetComponentInChildren<Enemy_Animation>();
+    }
+
+    private void HandlePlayerDeath()
+    {
+        _stateMachine.ChangeState(idleState);
     }
 
     public Collider2D PlayerDetection()
@@ -59,6 +68,8 @@ public class Enemy : Entity
 
         return playerCollider;
     }
+
+
 
     public Transform GetPlayerReference()
     {
@@ -75,6 +86,15 @@ public class Enemy : Entity
 
     public bool IsAttackCoolDownIsOver() => Time.time > lastTimeAttacked + attackCoolDown;
 
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        _stateMachine.ChangeState(deadState);
+    }
+    public void Death()
+    {
+        Destroy(this.gameObject, deathTimer);
+    }
     protected override void Update()
     {
         base.Update();
@@ -112,5 +132,15 @@ public class Enemy : Entity
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
 
+    }
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    { 
+        Player.OnPlayerDeath -= HandlePlayerDeath;
     }
 }

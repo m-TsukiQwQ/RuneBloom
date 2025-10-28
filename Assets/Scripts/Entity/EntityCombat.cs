@@ -18,11 +18,13 @@ public class EntityCombat : MonoBehaviour
             
         foreach(var target in GetDetectedColliders())
         {
-            IDamageable damageable = target.GetComponentInParent<IDamageable>();
+            
+            IDamageable damageable = target.GetComponent<IDamageable>();
 
             if (damageable == null) continue;
 
-            damageable.TakeDamage(damage,transform);
+            if(damageable != null) 
+                damageable.TakeDamage(damage,transform);
         }
         
         
