@@ -104,7 +104,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 9
@@ -126,6 +126,50 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57429919bd475634ea3e7a6e2d77d48e
+      internalID: -1615573426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_White_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a9ad886d01dcf41850233c1b6606bb
+      internalID: 1693870410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_White_3
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -137,8 +181,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5159da3e24185f44a490811dde502ae
-      internalID: -1122574946
+      spriteID: c608d0b7dd5fe4c4bb0ed9d37642ddc9
+      internalID: -1770508935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_White_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281cda9466fa46d4d8422cdd7f29eb37
+      internalID: 1007908154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_White_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b561da42206aa46844d12f19ba572f
+      internalID: -893826062
       vertices: []
       indices: 
       edges: []
@@ -158,7 +246,11 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Chicken_White_0: -2234829003090784179
-      Chicken_White_1: -1122574946
+      Chicken_White_1: -1615573426
+      Chicken_White_2: 1693870410
+      Chicken_White_3: -1770508935
+      Chicken_White_4: 1007908154
+      Chicken_White_5: -893826062
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

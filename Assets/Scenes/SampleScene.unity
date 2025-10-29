@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279265}
   - component: {fileID: 6279266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18782323}
   - component: {fileID: 18782324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81302383}
   - component: {fileID: 81302384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 112281907}
   - component: {fileID: 112281909}
   - component: {fileID: 112281908}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 115221688}
   - component: {fileID: 115221689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118486893}
   - component: {fileID: 118486894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119523501}
   - component: {fileID: 119523502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_15 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197218346}
   - component: {fileID: 197218347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209021743}
   - component: {fileID: 209021744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_4 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -981,7 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248525727}
   - component: {fileID: 248525728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_8 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284006265}
   - component: {fileID: 284006266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284963691}
   - component: {fileID: 284963692}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296948211}
   - component: {fileID: 296948212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309839164}
   - component: {fileID: 309839165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327806668}
   - component: {fileID: 327806669}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1485,7 +1485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 352759542}
   - component: {fileID: 352759543}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3033,7 +3033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 415298657}
   - component: {fileID: 415298658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3220,7 +3220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 498358737}
   - component: {fileID: 498358738}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3379,8 +3379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7d34108a22f8d48a598cb79c434284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 4
-  _runSpeedMultiplier: 1.3
+  _walkSpeed: 3
+  _runSpeedMultiplier: 1.45
 --- !u!4 &516631468
 Transform:
   m_ObjectHideFlags: 0
@@ -3702,7 +3702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 585120756}
   - component: {fileID: 585120757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3789,7 +3789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 611871926}
   - component: {fileID: 611871927}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3960,7 +3960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643129406}
   - component: {fileID: 643129407}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4047,7 +4047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659467191}
   - component: {fileID: 659467192}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_15 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4134,7 +4134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721188996}
   - component: {fileID: 721188997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4246,6 +4246,68 @@ Transform:
   - {fileID: 541411333}
   m_Father: {fileID: 1528155969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &748966109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748966110}
+  m_Layer: 0
+  m_Name: xCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748966110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748966109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.287, y: 0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1526226535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &778903313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778903314}
+  m_Layer: 0
+  m_Name: 'yCheck '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778903314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778903313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.039, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1526226535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &797123598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797123599}
   - component: {fileID: 797123600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4343,7 +4405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815973529}
   - component: {fileID: 815973530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4430,7 +4492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 850099838}
   - component: {fileID: 850099839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_5 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4517,7 +4579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886218559}
   - component: {fileID: 886218560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_5 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4604,7 +4666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898054845}
   - component: {fileID: 898054846}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4673,7 +4735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963841512}
   - component: {fileID: 963841513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4761,7 +4823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972356334}
   - component: {fileID: 972356335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003725027}
   - component: {fileID: 1003725028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4934,7 +4996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010748544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grass decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5027,7 +5089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1041999424}
   - component: {fileID: 1041999425}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5114,7 +5176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118133639}
   - component: {fileID: 1118133640}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5191,6 +5253,96 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1129799320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1129799322}
+  - component: {fileID: 1129799321}
+  - component: {fileID: 1129799323}
+  m_Layer: 0
+  m_Name: Chicken
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1129799321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129799320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429fab13f44897408864cea1976adb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  edgeXCheckDistance: 0.58
+  edgeYCheckDistance: 0.54
+  whatIsEdge:
+    serializedVersion: 2
+    m_Bits: 1024
+  xCheck: {fileID: 748966110}
+  yCheck: {fileID: 778903314}
+  idleTime: 2
+  moveSpeed: 0.5
+  moveAnimSpeedMultiplier: 1
+  moveInput: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
+  wanderTime: 1
+  wanderRange: {x: 2, y: 2}
+  wanderPosition: {x: 0, y: 0, z: 0}
+--- !u!4 &1129799322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129799320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.257, y: -0.266, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1482436359}
+  - {fileID: 1526226535}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1129799323
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129799320}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1136488963
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,7 +5353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136488964}
   - component: {fileID: 1136488965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_5 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5481,7 +5633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188531487}
   - component: {fileID: 1188531488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5568,7 +5720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236179081}
   - component: {fileID: 1236179082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5686,7 +5838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1261925361}
   - component: {fileID: 1261925362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5773,7 +5925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289309394}
   - component: {fileID: 1289309395}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5983,7 +6135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361128783}
   - component: {fileID: 1361128784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6117,7 +6269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410531783}
   - component: {fileID: 1410531784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6334,8 +6486,10 @@ GameObject:
   - component: {fileID: 1482436359}
   - component: {fileID: 1482436358}
   - component: {fileID: 1482436360}
+  - component: {fileID: 1482436361}
+  - component: {fileID: 1482436362}
   m_Layer: 0
-  m_Name: Chicken_White_0
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6405,12 +6559,12 @@ Transform:
   m_GameObject: {fileID: 1482436357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.257, y: -0.266, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1844020175}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1129799322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1482436360
 CircleCollider2D:
@@ -6448,6 +6602,40 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.046145678}
   m_Radius: 0.06614566
+--- !u!95 &1482436361
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482436357}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5226703603e3754481172a6bdeebb49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1482436362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482436357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ac29ac47b8fe0418114906e38e29f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1486159912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6458,7 +6646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486159913}
   - component: {fileID: 1486159914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6545,7 +6733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512831538}
   - component: {fileID: 1512831539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6622,6 +6810,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1526226534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526226535}
+  m_Layer: 0
+  m_Name: 'EdgeDetection '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526226535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526226534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 748966110}
+  - {fileID: 778903314}
+  m_Father: {fileID: 1129799322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1528155968
 GameObject:
   m_ObjectHideFlags: 0
@@ -6683,7 +6904,7 @@ MonoBehaviour:
   xCheck: {fileID: 1662203606}
   yCheck: {fileID: 1657556418}
   idleTime: 2
-  moveSpeed: 1
+  moveSpeed: 0.7
   moveAnimSpeedMultiplier: 1
   moveInput: {x: 0, y: 0}
   moveDirection: {x: 0, y: 0}
@@ -6894,7 +7115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546456451}
   - component: {fileID: 1546456452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6981,7 +7202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562818104}
   - component: {fileID: 1562818105}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7068,7 +7289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594387955}
   - component: {fileID: 1594387956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7155,7 +7376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1595730589}
   - component: {fileID: 1595730590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7277,7 +7498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652898388}
   - component: {fileID: 1652898389}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7426,7 +7647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1703039829}
   - component: {fileID: 1703039830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7620,7 +7841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742863536}
   - component: {fileID: 1742863537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_8 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7707,7 +7928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1770590456}
   - component: {fileID: 1770590457}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7881,7 +8102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1786370007}
   - component: {fileID: 1786370008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7968,7 +8189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1819710779}
   - component: {fileID: 1819710780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8179,9 +8400,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1010748544}
     m_Modifications:
+    - target: {fileID: 158114227689814617, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_Name
       value: Tree (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345716486261230891, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6649843762847876513, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8238,7 +8471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1889624578}
   - component: {fileID: 1889624579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8325,7 +8558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1894821738}
   - component: {fileID: 1894821739}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24369,7 +24602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940186414}
   - component: {fileID: 1940186415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_9 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24454,9 +24687,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1010748544}
     m_Modifications:
+    - target: {fileID: 158114227689814617, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_Name
       value: Tree (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345716486261230891, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6649843762847876513, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24544,7 +24789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984551606}
   - component: {fileID: 1984551607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_14 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27972,7 +28217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017293682}
   - component: {fileID: 2017293683}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28059,7 +28304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048608095}
   - component: {fileID: 2048608096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28146,7 +28391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064225050}
   - component: {fileID: 2064225051}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28233,7 +28478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116538445}
   - component: {fileID: 2116538446}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plants_6 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31881,9 +32126,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1010748544}
     m_Modifications:
+    - target: {fileID: 158114227689814617, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432590976393855856, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345716486261230891, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6649843762847876513, guid: 6faad0da5a9bcf74180d097f44179ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31937,7 +32194,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 519420032}
   - {fileID: 516631468}
-  - {fileID: 1482436359}
+  - {fileID: 1129799322}
   - {fileID: 1736651665}
   - {fileID: 1381870718}
   - {fileID: 1528155969}

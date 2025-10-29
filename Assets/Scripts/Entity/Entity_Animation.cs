@@ -35,6 +35,13 @@ public class Entity_Animation : MonoBehaviour
 
     }
 
+    public void SetMoveAnimation1D(Vector2 direction)
+    {
+        _animator.SetFloat("InputX", direction.x);
+
+
+    }
+
     public void SetAttackAnimation(Vector2 direction)
     {
         

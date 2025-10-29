@@ -24,13 +24,5 @@ public class Enemy_State_Idle : Enemy_State_NonBattle
         }
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-        
-    }
-
-
-
 
     }
