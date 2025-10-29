@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: GrassDecorationRuleTile
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 7780210253888417125, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 0
+  m_TilingRules:
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: 7780210253888417125, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 1697049031439232830, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 323547605492256971, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 4692285059164538003, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 752570215110690207, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 2002578714815887597, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 1283194372335683633, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 5528431824113501657, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: -1078874596892691788, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 283875517417497877, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 706377287426399138, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: -4350424519919602074, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: -8994993292030857580, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 4641075591521465499, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: 6107816131149069235, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    - {fileID: -4881750320134972149, guid: 89760918a1da7ff4881da5329599e2f4, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.6
+    m_Output: 1
+    m_ColliderType: 0
+    m_RandomTransform: 2
+    m_Neighbors: 
+    m_NeighborPositions:
+    - {x: -1, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    m_RuleTransform: 0
