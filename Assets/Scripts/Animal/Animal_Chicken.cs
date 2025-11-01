@@ -7,6 +7,7 @@ public class Animal_Chicken : Animal
         base.Awake();
         idleState = new Animal_State_Idle(this, _stateMachine, "Idle");
         wanderState = new Animal_State_Wander(this, _stateMachine, "Move");
+        deadState = new Animal_State_Dead(this, _stateMachine, "Idle");
         
     }
 }

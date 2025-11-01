@@ -4,6 +4,8 @@ public class Animal : Entity
 {
     public Animal_State_Idle idleState;
     public Animal_State_Wander wanderState;
+    public Animal_State_Dead deadState;
+
     private Entity_Animation _anim;
 
     [Header("General Movement Details")]
@@ -20,6 +22,9 @@ public class Animal : Entity
     public Vector2 wanderRange;
     [HideInInspector]
     public Vector3 wanderPosition;
+
+    [Header("Death details")]
+    [SerializeField] private float deathTimer = 3f;
 
 
     override protected void Awake()
@@ -46,6 +51,16 @@ public class Animal : Entity
 
         }
         _anim.SetMoveAnimation1D(moveDirection);
+    }
+
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        _stateMachine.ChangeState(deadState);
+    }
+    public void Death()
+    {
+        Destroy(this.gameObject, deathTimer);
     }
 
 
