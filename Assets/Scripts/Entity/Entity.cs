@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,7 +17,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private Transform xCheck;
     [SerializeField] private Transform yCheck;
 
-   
+    private bool _isKnocked;
+    private Coroutine _knockbackCo;
 
     public bool edgeDetected {  get; private set; }
 
@@ -44,6 +46,28 @@ public class Entity : MonoBehaviour
 
     }
 
+    public void RecieveKnockback(Vector2 knockback, float duration)
+    {
+        if(_knockbackCo != null )
+        {
+            StopCoroutine( _knockbackCo );
+
+        }
+
+        _knockbackCo = StartCoroutine (KnockbackCo(knockback, duration));
+
+    }
+
+    private IEnumerator KnockbackCo(Vector2 knockback, float duration)
+    {
+        _isKnocked = true;
+        rb.linearVelocity = knockback;
+        yield return new WaitForSeconds(duration);
+
+        rb.linearVelocity = Vector2.zero;
+        _isKnocked = false;
+    }
+
     public void CallAnimationTrigger()
     {
         _stateMachine.currentState.CallAnimationTrigger();
@@ -51,6 +75,7 @@ public class Entity : MonoBehaviour
 
     public void SetVelocity(float xVelocity, float yVelocity)
     {
+        if (_isKnocked) return;
         rb.linearVelocity = new Vector2(xVelocity, yVelocity);
     }
     

@@ -11,6 +11,9 @@ public class EntityVFX : MonoBehaviour
     [SerializeField] private float _onDamageVFXDuration;
     [SerializeField] private Color _colorOnDamage1;
     [SerializeField] private Color _colorOnDamage2;
+
+    [SerializeField] private DamageText _damageTextPrefab;
+
     private Material _originalMaterial;
     private Coroutine _onDamageVfxCoroutine;
 
@@ -33,10 +36,17 @@ public class EntityVFX : MonoBehaviour
         _onDamageMaterial.color = _colorOnDamage1;
         _sr.material = _onDamageMaterial;
         yield return new WaitForSeconds(_onDamageVFXDuration);
-        _onDamageMaterial.color = _colorOnDamage2;
-        yield return new WaitForSeconds(_onDamageVFXDuration/2);
+        //_onDamageMaterial.color = _colorOnDamage2;
+        //yield return new WaitForSeconds(_onDamageVFXDuration/2);
         _sr.material = _originalMaterial;
 
+    }
+
+    public void ShowDamageText(float damage, Vector2 position)
+    {
+        DamageText text = Instantiate(_damageTextPrefab, position, Quaternion.identity);
+        text.SetDamageText(damage);
+        
     }
 }
 

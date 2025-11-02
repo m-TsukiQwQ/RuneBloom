@@ -44,7 +44,7 @@ public class PlayerHunger : MonoBehaviour
             }
             else
             {
-                _playerHealth.TakeDamage(1, null);
+                _playerHealth.TakeDamageFromHunger(1);
             }
 
 
