@@ -3,15 +3,15 @@ using UnityEngine;
 public class Enemy : Entity
 {
     //states
-    public Enemy_State_Idle idleState;
-    public Enemy_State_Wander wanderState;
-    public Enemy_State_NonBattle nonBattleState;
-    public Enemy_State_Chase chaseState;
-    public Enemy_State_Attack attackState;
-    public Enemy_State_WaitForAttack waitForAttackState;
-    public Enemy_State_Dead deadState;
+    public EnemyStateIdle idleState;
+    public EnemyStateWander wanderState;
+    public EnemyStateNonBattle nonBattleState;
+    public EnemyStateChase chaseState;
+    public EnemyStateAttack attackState;
+    public EnemyStateWaitForAttack waitForAttackState;
+    public EnemyStateDead deadState;
 
-    public Enemy_Animation _enemyAnimations { get; private set; }
+    public EnemyAnimation _enemyAnimations { get; private set; }
 
 
     [Header("General Movement Details")]
@@ -50,7 +50,7 @@ public class Enemy : Entity
     protected override void Awake()
     {
         base.Awake();
-        _enemyAnimations = GetComponentInChildren<Enemy_Animation>();
+        _enemyAnimations = GetComponentInChildren<EnemyAnimation>();
     }
 
     private void HandlePlayerDeath()

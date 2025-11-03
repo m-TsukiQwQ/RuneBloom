@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : Entity_Health
+public class PlayerHealth : EntityHealth
 {
     [Header("Health Bar")]
     [SerializeField] private Image _healthBar;

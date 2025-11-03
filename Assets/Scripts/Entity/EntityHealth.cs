@@ -3,7 +3,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Entity_Health : MonoBehaviour, IDamageable
+public class EntityHealth : MonoBehaviour, IDamageable
 {
     
     protected Entity _entity;

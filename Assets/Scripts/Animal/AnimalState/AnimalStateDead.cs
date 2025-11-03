@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Animal_State_Dead : AnimalState
+public class AnimalStateDead : AnimalState
 {
-    public Animal_State_Dead(Animal animal, StateMachine stateMachine, string animBoolName) : base(animal, stateMachine, animBoolName)
+    public AnimalStateDead(Animal animal, StateMachine stateMachine, string animBoolName) : base(animal, stateMachine, animBoolName)
     {
     }
 

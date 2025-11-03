@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Player_State_Idle : PlayerState
+public class PlayerStateIdle : PlayerState
 {
 
-    public Player_State_Idle(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public PlayerStateIdle(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

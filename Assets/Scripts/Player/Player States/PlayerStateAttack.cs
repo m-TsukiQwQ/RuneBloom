@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Player_State_Attack : PlayerState
+public class PlayerStateAttack : PlayerState
 {
     private int AttackDirection;
-    public Player_State_Attack(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public PlayerStateAttack(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

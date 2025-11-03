@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Enemy_State_Wander : Enemy_State_NonBattle
+public class EnemyStateWander : EnemyStateNonBattle
 {
 
-    public Enemy_State_Wander(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
+    public EnemyStateWander(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
 

@@ -5,8 +5,9 @@ public class DamageText : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _damageText;
 
-    public void SetDamageText(float damage)
+    public void SetDamageText(float damage, Color color)
     {
+        _damageText.color = color;
         _damageText.text = damage.ToString();
     }
 

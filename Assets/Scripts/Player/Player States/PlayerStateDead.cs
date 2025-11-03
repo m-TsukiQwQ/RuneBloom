@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Player_State_Dead : PlayerState
+public class PlayerStateDead : PlayerState
 {
-    public Player_State_Dead(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public PlayerStateDead(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

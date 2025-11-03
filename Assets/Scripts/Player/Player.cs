@@ -4,18 +4,18 @@ using UnityEngine;
 public class Player : Entity
 {
     //states
-    public Player_State_Idle idleState {  get; private set; }
-    public Player_State_Run runState { get; private set; }
-    public Player_State_Walk walkState { get; private set; }
-    public Player_State_Attack attackState { get; private set; }
-    public Player_State_Dead deadState {  get; private set; }
+    public PlayerStateIdle idleState {  get; private set; }
+    public PlayerStateRun runState { get; private set; }
+    public PlayerStateWalk walkState { get; private set; }
+    public PlayerStateAttack attackState { get; private set; }
+    public PlayerStateDead deadState {  get; private set; }
 
 
 
     //components
     
-    public Player_Animations _playerAnimations { get; private set; }
-    public Player_Movement _playerMovement {  get; private set; }
+    public PlayerAnimations _playerAnimations { get; private set; }
+    public PlayerMovement _playerMovement {  get; private set; }
     public InputHandler inputHandler { get; private set; }
 
 
@@ -25,19 +25,19 @@ public class Player : Entity
 
         base.Awake();
         
-        _playerAnimations = GetComponentInChildren<Player_Animations>();
-        _playerMovement = GetComponent<Player_Movement>();
+        _playerAnimations = GetComponentInChildren<PlayerAnimations>();
+        _playerMovement = GetComponent<PlayerMovement>();
         inputHandler = GetComponentInChildren<InputHandler>();
         rb = GetComponent<Rigidbody2D>();
 
 
 
 
-        idleState = new Player_State_Idle(this, _stateMachine, "Idle");
-        runState = new Player_State_Run(this, _stateMachine, "Run");
-        walkState = new Player_State_Walk(this, _stateMachine, "Walk");
-        attackState = new Player_State_Attack(this, _stateMachine, "Attack");
-        deadState = new Player_State_Dead(this, _stateMachine, "Dead");
+        idleState = new PlayerStateIdle(this, _stateMachine, "Idle");
+        runState = new PlayerStateRun(this, _stateMachine, "Run");
+        walkState = new PlayerStateWalk(this, _stateMachine, "Walk");
+        attackState = new PlayerStateAttack(this, _stateMachine, "Attack");
+        deadState = new PlayerStateDead(this, _stateMachine, "Dead");
 
 
 

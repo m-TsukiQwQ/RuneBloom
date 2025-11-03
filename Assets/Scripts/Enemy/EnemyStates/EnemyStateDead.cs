@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy_State_Dead : EnemyState
+public class EnemyStateDead : EnemyState
 {
-    public Enemy_State_Dead(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
+    public EnemyStateDead(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
 

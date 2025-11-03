@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Animal : Entity
 {
-    public Animal_State_Idle idleState;
-    public Animal_State_Wander wanderState;
-    public Animal_State_Dead deadState;
+    public AnimalStateIdle idleState;
+    public AnimalStateWander wanderState;
+    public AnimalStateDead deadState;
 
-    private Entity_Animation _anim;
+    private EntityAnimation _anim;
 
     [Header("General Movement Details")]
     public float idleTime = 2f;
@@ -30,7 +30,7 @@ public class Animal : Entity
     override protected void Awake()
     {
         base.Awake();
-        _anim = GetComponentInChildren<Entity_Animation>();
+        _anim = GetComponentInChildren<EntityAnimation>();
     }
 
     protected override void Start()

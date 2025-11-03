@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_State_Chase : EnemyState
+public class EnemyStateChase : EnemyState
 {
     private Transform _player;
     private float multiplier;
@@ -8,7 +8,7 @@ public class Enemy_State_Chase : EnemyState
 
     private float lastTimePlayerDetected;
     
-    public Enemy_State_Chase(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
+    public EnemyStateChase(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
 

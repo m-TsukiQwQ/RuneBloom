@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Player_State_Run : Player_State_Walk
+public class PlayerStateRun : PlayerStateWalk
 {
     float speedMultiplier;
 
 
-    public Player_State_Run(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
+    public PlayerStateRun(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
 
     }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Animal_State_Wander : AnimalState
+public class AnimalStateWander : AnimalState
 {
-    public Animal_State_Wander(Animal animal, StateMachine stateMachine, string animBoolName) : base(animal, stateMachine, animBoolName)
+    public AnimalStateWander(Animal animal, StateMachine stateMachine, string animBoolName) : base(animal, stateMachine, animBoolName)
     {
     }
 

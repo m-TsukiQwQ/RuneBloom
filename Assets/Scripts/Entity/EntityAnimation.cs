@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Entity_Animation : MonoBehaviour
+public class EntityAnimation : MonoBehaviour
 {
     private Entity _entity;
     private Animator _animator;

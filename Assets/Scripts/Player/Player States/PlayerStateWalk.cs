@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Player_State_Walk : PlayerState
+public class PlayerStateWalk : PlayerState
 {
     private float speedMultiplier = 1;
-    public Player_State_Walk(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public PlayerStateWalk(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 

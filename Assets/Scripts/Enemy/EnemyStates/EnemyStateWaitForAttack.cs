@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Enemy_State_WaitForAttack : EnemyState
+public class EnemyStateWaitForAttack : EnemyState
 {
     private int waitDuration;
-    public Enemy_State_WaitForAttack(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
+    public EnemyStateWaitForAttack(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
 

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy_State_Idle : Enemy_State_NonBattle
+public class EnemyStateIdle : EnemyStateNonBattle
 {
-    public Enemy_State_Idle(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
+    public EnemyStateIdle(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
     }
 
