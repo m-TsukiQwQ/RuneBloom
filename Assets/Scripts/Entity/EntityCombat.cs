@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class EntityCombat : MonoBehaviour
 {
-    public float damage = 5;
+
+    private EntityStats _stats;
+    private EntityVFX _vFX;
 
     [Header("Target detection")]
     [SerializeField] protected Transform[] _targetChecks;
@@ -11,7 +13,8 @@ public class EntityCombat : MonoBehaviour
     protected Vector2 _attackDirection;
     protected virtual void Awake()
     {
-
+        _vFX = GetComponent<EntityVFX>();
+        _stats = GetComponent<EntityStats>();
     }
     public virtual void PerformAttack()
     {
@@ -23,8 +26,9 @@ public class EntityCombat : MonoBehaviour
 
             if (damageable == null) continue;
 
-            if(damageable != null) 
-                damageable.TakeDamage(damage,transform);
+            float damage = _stats.GetPhysicalDamage(out bool isCrit);
+            bool targetGotHit = damageable.TakeDamage(damage,transform);
+            if (targetGotHit) _vFX.CreateOnHitVFX(target.transform, isCrit, GetCritVFXRotation(GetDominantDirection()));
         }
         
         
@@ -36,7 +40,7 @@ public class EntityCombat : MonoBehaviour
         return Physics2D.OverlapBoxAll(_targetChecks[index].position, _targetCheckRange, 0, _whatIsTarget);
     }
 
-    protected virtual int GetDominantDirection() //up = 0, left = 1, up = 2, right = 3
+    protected virtual int GetDominantDirection() //up = 0, left = 1, down = 2, right = 3
     {
 
 
@@ -55,6 +59,15 @@ public class EntityCombat : MonoBehaviour
 
 
     }
+
+    private int GetCritVFXRotation(int direction) => direction switch
+    {
+        0 => 270,
+        1 => 180,
+        2 => 90,
+        3 => 0,
+        _ => 0  // This is the default case for any other number
+    };
 
     private void OnDrawGizmosSelected()
     {

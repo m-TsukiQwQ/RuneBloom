@@ -30,15 +30,15 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
         _currentHealth = _stats.GetMaxHealth();
     }
-    public virtual void TakeDamage(float damage, Transform damageDealer)
+    public virtual bool TakeDamage(float damage, Transform damageDealer)
     {
-        if (IsDead) return;
+        if (IsDead) return false;
 
         Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
         if (AttackEvaded())
         {
             _entityVfx?.ShowDodgeText( position);
-            return;
+            return false;
         }
 
         Vector2 knockback = CalculateKnockback(damage, damageDealer);
@@ -47,7 +47,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
         _entityVfx?.ShowDamageText(damage, position);
         ReduceHealth(damage);
-
+        return true;
         
     }
 

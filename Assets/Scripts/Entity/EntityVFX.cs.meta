@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - _onDamageMaterial: {fileID: 2100000, guid: eb055a023f6c3134fbf436b35f78534a, type: 2}
   - _damageTextPrefab: {fileID: 4050620101754587484, guid: fe94efea7c0067442b0798d159a5015b, type: 3}
+  - _hitVfxPrefab: {fileID: 3269393389587514422, guid: 1db863b22fe0b234ea05c73607fb0d02, type: 3}
+  - _critHitVFXPrefab: {fileID: 3116528023132079660, guid: 3505a89ae01156d4eb326d3e85972ddd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

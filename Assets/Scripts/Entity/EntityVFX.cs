@@ -1,26 +1,46 @@
 using System.Collections;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityVFX : MonoBehaviour
 {
     private SpriteRenderer _sr;
+    private Entity _entity;
 
     [Header("On taking damage VFX")]
     [SerializeField] private Material _onDamageMaterial;
     [SerializeField] private float _onDamageVFXDuration;
     [SerializeField] private Color _colorOnDamage1;
     [SerializeField] private Color _colorDamageText = Color.white;
-
     [SerializeField] private DamageText _damageTextPrefab;
+
+
+    [Header("On doing damage VFX")]
+    [SerializeField] private GameObject _hitVfxPrefab;
+
+    [Header("On doing critdamage VFX")]
+    [SerializeField] private GameObject _critHitVFXPrefab;
+
 
     private Material _originalMaterial;
     private Coroutine _onDamageVfxCoroutine;
 
     private void Awake()
     {
+        _entity = GetComponent<Entity>();
         _sr = GetComponentInChildren<SpriteRenderer>();
         _originalMaterial = _sr.material;
+    }
+
+    public void CreateOnHitVFX(Transform target, bool isCrit, int rotation)
+    {
+        GameObject vfx = Instantiate(_hitVfxPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.identity);
+        if(isCrit)
+        {
+            GameObject critvfx = Instantiate(_critHitVFXPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.Euler(0, 0, rotation));
+        }    
+
     }
 
     public void PlayOnDamageVfx()
