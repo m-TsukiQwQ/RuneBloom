@@ -34,12 +34,17 @@ public class EntityHealth : MonoBehaviour, IDamageable
     {
         if (IsDead) return;
 
+        Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
+        if (AttackEvaded())
+        {
+            _entityVfx?.ShowDodgeText( position);
+            return;
+        }
 
         Vector2 knockback = CalculateKnockback(damage, damageDealer);
         _entity?.RecieveKnockback(knockback, CalculateKnockbackDuration(damage));
         _entityVfx?.PlayOnDamageVfx();
 
-        Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
         _entityVfx?.ShowDamageText(damage, position);
         ReduceHealth(damage);
 
@@ -52,8 +57,6 @@ public class EntityHealth : MonoBehaviour, IDamageable
         _entityVfx?.ShowDamageText(damage, position);
         ReduceHealth(damage);
     }
-
-
 
     protected virtual void ReduceHealth(float damage)
     {
@@ -73,10 +76,12 @@ public class EntityHealth : MonoBehaviour, IDamageable
         _entity.EntityDeath();
     }
 
+    [SerializeField]
+    private bool AttackEvaded() => Random.Range(1, 100) <= _stats.GetEvasion();
+
+    //knockback logic
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)
     {
-        //Vector3 directionToWall = (_enemy.wanderPosition - _enemy.transform.position).normalized;
-        //Vector3 oppositeDirection = -directionToWall;
         Vector2 direction = -((damageDealer.transform.position - _entity.transform.position).normalized);
         Vector2 knockback = IsHeavyDamage(damage)? _heavyKnockbackPower : _knockbackPower;
         knockback.x *= direction.x;
@@ -85,7 +90,6 @@ public class EntityHealth : MonoBehaviour, IDamageable
         return knockback;
 
     }
-
 
 
     private float CalculateKnockbackDuration(float damage) => IsHeavyDamage(damage) ? _heavyKnockbackDuration : _knockbackDuration;

@@ -7,8 +7,16 @@ public class DamageText : MonoBehaviour
 
     public void SetDamageText(float damage, Color color)
     {
+
         _damageText.color = color;
         _damageText.text = damage.ToString();
+    }
+
+    public void SetDodgeText(Color color)
+    {
+
+        _damageText.color = color;
+        _damageText.text = "dodge";
     }
 
     public void DestroyText()

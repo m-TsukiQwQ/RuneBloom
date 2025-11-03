@@ -22,6 +22,7 @@ public class PlayerHunger : MonoBehaviour
         _stats = GetComponent<EntityStats>();
 
         _currentHunger = _stats.GetMaxHunger();
+        UpdateHungerBar();
     }
 
     private void FixedUpdate()

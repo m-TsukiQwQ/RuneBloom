@@ -45,7 +45,12 @@ public class EntityVFX : MonoBehaviour
         DamageText text = Instantiate(_damageTextPrefab, position, Quaternion.identity);
         text.SetDamageText(damage, _colorDamageText);
 
-        
+    }
+    public void ShowDodgeText(Vector2 position)
+    {
+        DamageText text = Instantiate(_damageTextPrefab, position, Quaternion.identity);
+        text.SetDodgeText(Color.white);
+
     }
 }
 
