@@ -16,7 +16,7 @@ TagManager:
   - Enemy/Move
   - Enemy/Hitbox
   - Walls
-  - 
+  - PlayerPickUps
   - 
   - 
   - 
