@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
@@ -13,18 +15,17 @@ public class InputHandler : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
-    private void Update()
-    {
-        
-    }
 
     public void OnClick(InputAction.CallbackContext context)
     {
 
-        CalculateMousePosition();
-        
 
         if (!context.started) return;
+
+        if (IsPointerOverUI())
+            return;
+
+        CalculateMousePosition();
 
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if(!rayHit.collider) return;
@@ -43,5 +44,21 @@ public class InputHandler : MonoBehaviour
 
         mouseDirection = new Vector2(x, y);
         return mouseDirection;
+    }
+
+    public static bool IsPointerOverUI()
+    {
+        // Create a PointerEventData object for the current mouse position
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Mouse.current.position.ReadValue();
+
+        // Create a list to store the raycast results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        // Raycast against all UI elements
+        EventSystem.current.RaycastAll(eventData, results);
+
+        // If the list has one or more results, the mouse is over UI
+        return results.Count > 0;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class PlayerState : EntityState
 {
@@ -18,6 +19,9 @@ public abstract class PlayerState : EntityState
     public override void Update()
     {
         base.Update();
+        if (InputHandler.IsPointerOverUI())
+            return;
+
         if (_stateMachine.currentState == _player.idleState || _stateMachine.currentState == _player.runState || _stateMachine.currentState == _player.walkState)
         {
             if (_player._playerMovement.input.Player.Attack.WasPressedThisFrame())

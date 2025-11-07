@@ -613,7 +613,7 @@ MonoBehaviour:
       baseValue: 0
   offence:
     damage:
-      baseValue: 10
+      baseValue: 25
     critPower:
       baseValue: 110
     critChance:

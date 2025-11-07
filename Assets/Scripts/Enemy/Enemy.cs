@@ -13,36 +13,37 @@ public class Enemy : Entity
 
     public EnemyAnimation _enemyAnimations { get; private set; }
 
+    [Header("State")]
+    [SerializeField] private EntityState _currentState;
 
     [Header("General Movement Details")]
     public float idleTime = 2f;
     public float moveSpeed;
     [Range(0, 2)]
     public float moveAnimSpeedMultiplier = 1;
-    public Vector2 moveInput;
-    public Vector2 moveDirection;
+    [HideInInspector] public Vector2 moveInput;
+    [HideInInspector] public Vector2 moveDirection;
 
 
     [Header("Wander State")]
     public float wanderTime;
     public Vector2 wanderRange;
-    [HideInInspector]
-    public Vector3 wanderPosition;
+    [HideInInspector] public Vector3 wanderPosition;
 
     [Header("Chase State")]
     public float chaseRange;
     public LayerMask whatIsPlayer;
     public float chaseSpeedMultiplier;
-    public bool playerDetected;
-    public Transform playerPosition;
+    [HideInInspector] public bool playerDetected;
+    [HideInInspector] public Transform playerPosition;
     public float chaseTime;
-    public Vector3 directionToPlayer;
+    [HideInInspector] public Vector3 directionToPlayer;
 
     [Header("Attack details")]
     public float attackRange;
-    public bool playerInAttackRange;
+    [HideInInspector] public bool playerInAttackRange;
     public float attackCoolDown;
-    public float lastTimeAttacked;
+    [HideInInspector] public float lastTimeAttacked;
 
     [Header("Death details")]
     [SerializeField] private float deathTimer = 3f;
@@ -51,6 +52,7 @@ public class Enemy : Entity
     {
         base.Awake();
         _enemyAnimations = GetComponentInChildren<EnemyAnimation>();
+        _currentState = _stateMachine.currentState;
     }
 
     private void HandlePlayerDeath()
@@ -107,6 +109,8 @@ public class Enemy : Entity
 
         }
         _enemyAnimations.SetMoveAnimation(moveDirection);
+
+        _currentState = _stateMachine.currentState;
     }
 
     public bool PlayerInAttackRange()

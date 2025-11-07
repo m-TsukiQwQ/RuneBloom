@@ -13,6 +13,7 @@ public class PlayerStateAttack : PlayerState
     public override void Enter()
     {
         base.Enter();
+
         
         _player._playerAnimations.SetIdleAnimation(_player.inputHandler.mouseDirection);
     }
