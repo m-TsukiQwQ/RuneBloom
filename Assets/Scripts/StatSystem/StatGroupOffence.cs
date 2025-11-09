@@ -4,13 +4,15 @@ using UnityEngine;
 [Serializable]
 public class StatGroupOffence
 {
-    //physical
-    public Stat damage;
+    [Header("Physical")]
+    public Stat physicalDamage;
     public Stat critPower;
     public Stat critChance;
 
-    //elemental
+    [Space]
+
+    [Header("Elemental")]
     public Stat fireDamage;
     public Stat iceDamage;
-    public Stat lightningDamage;
+    public Stat poisonDamage;
 }

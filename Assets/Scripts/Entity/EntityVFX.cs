@@ -22,6 +22,12 @@ public class EntityVFX : MonoBehaviour
     [Header("On doing critdamage VFX")]
     [SerializeField] private GameObject _critHitVFXPrefab;
 
+    [Header("Elements colors")]
+    [SerializeField] private Color _chillVfx = Color.cyan;
+    [SerializeField] private Color _burnVfx = Color.red;
+    [SerializeField] private Color _poisonVfx = Color.green;
+    
+
 
     private Material _originalMaterial;
     private Coroutine _onDamageVfxCoroutine;
@@ -38,7 +44,7 @@ public class EntityVFX : MonoBehaviour
         GameObject vfx = Instantiate(_hitVfxPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.identity);
         if(isCrit)
         {
-            GameObject critvfx = Instantiate(_critHitVFXPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.Euler(0, 0, rotation));
+            GameObject critVfx = Instantiate(_critHitVFXPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.Euler(0, 0, rotation));
         }    
 
     }

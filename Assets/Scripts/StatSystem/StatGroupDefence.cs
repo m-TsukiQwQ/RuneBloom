@@ -4,12 +4,14 @@ using UnityEngine;
 [Serializable]
 public class StatGroupDefence
 {
-    ///physical defense
+    [Header("Physical defense")]
     public Stat armor;
     public Stat evasion;
 
-    //elemental resistance
+    [Space]
+
+    [Header("Elemental resistance")]
     public Stat fireResistance;
     public Stat iceResistance;
-    public Stat lightningResistance;
+    public Stat poisonResistance;
 }

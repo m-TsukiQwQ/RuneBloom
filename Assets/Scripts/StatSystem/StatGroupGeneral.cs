@@ -8,6 +8,6 @@ public class StatGroupGeneral
     public Stat running;
     public Stat mining;
     public Stat crafting;
-    public Stat Cooking;
+    public Stat cooking;
 
 }

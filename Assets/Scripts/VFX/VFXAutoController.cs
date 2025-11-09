@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VFX_AutoController : MonoBehaviour
+public class VFXAutoController : MonoBehaviour
 {
     [SerializeField] private bool _autoDestroy = true;
     [SerializeField] private float _destroyDelay = 1;
