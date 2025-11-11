@@ -21,7 +21,8 @@ public class EnemyStateChase : EnemyState
 
 
         multiplier = _enemy.chaseSpeedMultiplier;
-        _enemy.animator.SetFloat("AnimSpeedMultiplier", (_enemy.moveSpeed * multiplier / _enemy.moveSpeed));
+
+        _enemy.animator.SetFloat("AnimChaseSpeedMultiplier", (_enemy.moveSpeed * multiplier / _enemy.moveSpeed));
         
 
 

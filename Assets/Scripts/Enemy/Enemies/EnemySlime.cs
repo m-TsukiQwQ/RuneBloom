@@ -13,6 +13,7 @@ public class EnemySlime : Enemy
         attackState = new EnemyStateAttack(this, _stateMachine, "Attack");
         waitForAttackState = new EnemyStateWaitForAttack(this, _stateMachine, "Idle");
         deadState = new EnemyStateDead(this, _stateMachine, "Dead");
+        freezedState = new EnemyStateFreezed(this, _stateMachine, "Idle");
         
 
     }

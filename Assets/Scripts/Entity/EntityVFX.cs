@@ -39,6 +39,34 @@ public class EntityVFX : MonoBehaviour
         _originalMaterial = _sr.material;
     }
 
+    public void PlayOnStatusVfx(float duration, ElementType element)
+    {
+        if (element == ElementType.Ice)
+            StartCoroutine(PlayOnStatusVfxCo(duration, _chillVfx));
+    }
+
+    private IEnumerator PlayOnStatusVfxCo(float duration, Color color)
+    {
+        float tickInterval = .25f;
+        float timeHasPassed = 0f;
+
+        Color lightColor = color * 1.2f;
+        Color darkColor = color * 1f;
+
+        bool toggle = true;
+
+        while(timeHasPassed < duration)
+        {
+            _sr.color = toggle ? lightColor : darkColor;
+            toggle = !toggle;
+
+            yield return new WaitForSeconds(tickInterval);
+            timeHasPassed += tickInterval;
+        }
+
+        _sr.color = Color.white;
+    }
+
     public void CreateOnHitVFX(Transform target, bool isCrit, int rotation)
     {
         GameObject vfx = Instantiate(_hitVfxPrefab, (target.position + new Vector3(0, 0.15f)), Quaternion.identity);

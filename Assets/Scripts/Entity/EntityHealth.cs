@@ -1,7 +1,9 @@
+using System;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class EntityHealth : MonoBehaviour, IDamageable
 {
@@ -20,7 +22,6 @@ public class EntityHealth : MonoBehaviour, IDamageable
     [SerializeField] private float _knockbackDuration;
     [SerializeField] private float _heavyKnockbackDuration;
     [SerializeField] private float _heavyDamageTreshhold = .3f; //percentage of health you should lose to consider damage heavy
-
 
     protected virtual void Awake()
     {

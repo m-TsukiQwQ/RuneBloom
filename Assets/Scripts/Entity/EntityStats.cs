@@ -22,7 +22,7 @@ public class EntityStats : MonoBehaviour
     public float GetElementalDamage(out ElementType element)
     {
         float fireDamage = offence.fireDamage.GetValue();
-        float iceDamage = offence.iceDamage.GetValue();
+        float iceDamage = offence.ice.iceDamage.GetValue();
         float poisonDamage = offence.poisonDamage.GetValue();
 
         float highestDamage = fireDamage;

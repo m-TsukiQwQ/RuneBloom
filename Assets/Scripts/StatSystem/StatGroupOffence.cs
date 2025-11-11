@@ -12,7 +12,10 @@ public class StatGroupOffence
     [Space]
 
     [Header("Elemental")]
+    public StatGroupOffenceIce ice;
     public Stat fireDamage;
     public Stat iceDamage;
     public Stat poisonDamage;
+
+
 }

@@ -12,9 +12,7 @@ public class EntityCombat : MonoBehaviour
     [SerializeField] protected LayerMask _whatIsTarget;
     protected Vector2 _attackDirection;
 
-    [Header("Status effect details")]
-    [SerializeField] protected float _defaultDuration = 3f;
-    [SerializeField] private float _slowMultiplier = .4f;
+
     protected virtual void Awake()
     {
         _vFX = GetComponent<EntityVFX>();
@@ -22,37 +20,43 @@ public class EntityCombat : MonoBehaviour
     }
     public virtual void PerformAttack()
     {
-            
-        foreach(var target in GetDetectedColliders())
+
+        foreach (var target in GetDetectedColliders())
         {
-            
+
             IDamageable damageable = target.GetComponent<IDamageable>();
 
             if (damageable == null) continue;
 
             float elementalDamage = _stats.GetElementalDamage(out ElementType element);
             float physicalDamage = _stats.GetPhysicalDamage(out bool isCrit);
-            bool targetGotHit = damageable.TakeDamage(physicalDamage,elementalDamage, element, transform);
+            bool targetGotHit = damageable.TakeDamage(physicalDamage, elementalDamage, element, transform);
 
             if (element != ElementType.None)
                 ApplyStatusEffect(target.transform, element);
 
-            if (targetGotHit) 
+            if (targetGotHit)
                 _vFX?.CreateOnHitVFX(target.transform, isCrit, GetCritVFXRotation(GetDominantDirection()));
         }
-        
-        
+
+
     }
 
     public void ApplyStatusEffect(Transform target, ElementType element)
     {
         EntityStatusHandler statusHandler = target.GetComponent<EntityStatusHandler>();
-        if (statusHandler == null) 
+        if (statusHandler == null)
             return;
 
-        if(element == ElementType.Ice && statusHandler.CanBeApplied(ElementType.Ice))
+        if (element == ElementType.Ice)
         {
-            statusHandler.ApplyChillEffect(_defaultDuration, _slowMultiplier);
+            float maximumChargees = _stats.offence.ice.maxSlowDownStacks.GetValue();
+            if (element == ElementType.Ice && statusHandler.CanBeApplied(ElementType.Ice, maximumChargees))
+            {
+                statusHandler.ApplyChillEffect(_stats.offence.ice.slowDownDuration.GetValue(), //duration
+                                              _stats.offence.ice.slowDownMultiplier.GetValue(),//slowMultiplier
+                                              maximumChargees); //maximumcharges
+            }
         }
     }
 
@@ -94,11 +98,12 @@ public class EntityCombat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        if (_targetChecks  != null)
-            {for (int targetCheck = 0; targetCheck < _targetChecks.Length; targetCheck++)
-                {
-                    Gizmos.DrawWireCube(_targetChecks[targetCheck].position, _targetCheckRange);
-                }
+        if (_targetChecks != null)
+        {
+            for (int targetCheck = 0; targetCheck < _targetChecks.Length; targetCheck++)
+            {
+                Gizmos.DrawWireCube(_targetChecks[targetCheck].position, _targetCheckRange);
+            }
         }
     }
 

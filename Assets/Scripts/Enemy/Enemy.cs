@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -10,6 +11,7 @@ public class Enemy : Entity
     public EnemyStateAttack attackState;
     public EnemyStateWaitForAttack waitForAttackState;
     public EnemyStateDead deadState;
+    public EnemyStateFreezed freezedState;
 
     public EnemyAnimation _enemyAnimations { get; private set; }
 
@@ -48,16 +50,87 @@ public class Enemy : Entity
     [Header("Death details")]
     [SerializeField] private float deathTimer = 3f;
 
+    [Header("Freeze details")]
+    public float freezeTimer = 2f;
+
+    private float _originalChaseSpeedMultiplier;
     protected override void Awake()
     {
         base.Awake();
         _enemyAnimations = GetComponentInChildren<EnemyAnimation>();
         _currentState = _stateMachine.currentState;
+        animator.SetFloat("AnimSpeedMultiplier", moveAnimSpeedMultiplier);
+    }
+    protected override void Update()
+    {
+        base.Update();
+        moveInput = rb.linearVelocity;
+        if (moveInput != Vector2.zero)
+        {
+
+
+            moveDirection = moveInput;
+
+        }
+        _enemyAnimations.SetMoveAnimation(moveDirection);
+
+        _currentState = _stateMachine.currentState;
     }
 
-    private void HandlePlayerDeath()
+    public override void Freezed()
     {
-        _stateMachine.ChangeState(idleState);
+        base.Freezed();
+        _stateMachine.ChangeState(freezedState);
+    }
+
+    public override void SlowDownEntity(float duration, float slowMultiplier)
+    {
+        if (_slowDownCo != null)
+            StopCoroutine(_slowDownCo);
+        else
+        {
+            _originalMoveSpeed = moveSpeed;
+            _originalMoveAnimSpeedMultiplier = moveAnimSpeedMultiplier;
+            _originalChaseSpeedMultiplier = chaseSpeedMultiplier;
+            animator.SetFloat("AnimChaseSpeedMultiplier", chaseSpeedMultiplier);
+            animator.SetFloat("AnimSpeedMultiplier", moveAnimSpeedMultiplier);
+        }
+
+        _slowDownCo = StartCoroutine(SlowDownEntityCo(duration, slowMultiplier));
+    }
+
+    protected override IEnumerator SlowDownEntityCo(float duration, float slowMultiplier)
+    {
+        float speedMultiplier = 1 - slowMultiplier;
+        chaseSpeedMultiplier *= speedMultiplier;
+        moveSpeed *= speedMultiplier;
+        moveAnimSpeedMultiplier *= speedMultiplier;
+        
+        animator.SetFloat("AnimChaseSpeedMultiplier", chaseSpeedMultiplier);
+        animator.SetFloat("AnimSpeedMultiplier", moveAnimSpeedMultiplier);
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = _originalMoveSpeed;
+        moveAnimSpeedMultiplier = _originalMoveAnimSpeedMultiplier;
+        chaseSpeedMultiplier = _originalChaseSpeedMultiplier;
+        animator.SetFloat("AnimChaseSpeedMultiplier", chaseSpeedMultiplier);
+        animator.SetFloat("AnimSpeedMultiplier", moveAnimSpeedMultiplier);
+    }
+
+    public bool IsAttackCoolDownIsOver() => Time.time > lastTimeAttacked + attackCoolDown;
+
+
+    public bool PlayerInAttackRange()
+    {
+        if (playerPosition == null) return false;
+
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
+        if (playerCollider != null) return true;
+
+
+
+        return false;
     }
 
     public Collider2D PlayerDetection()
@@ -80,50 +153,12 @@ public class Enemy : Entity
             Collider2D player = PlayerDetection();
 
             if (player != null)
-                playerPosition =player.transform;
+                playerPosition = player.transform;
         }
 
         return playerPosition;
     }
 
-    public bool IsAttackCoolDownIsOver() => Time.time > lastTimeAttacked + attackCoolDown;
-
-    public override void EntityDeath()
-    {
-        base.EntityDeath();
-        _stateMachine.ChangeState(deadState);
-    }
-    public void Death()
-    {
-        Destroy(this.gameObject, deathTimer);
-    }
-    protected override void Update()
-    {
-        base.Update();
-        moveInput = rb.linearVelocity;
-        if (moveInput != Vector2.zero)
-        {
-
-
-            moveDirection = moveInput;
-
-        }
-        _enemyAnimations.SetMoveAnimation(moveDirection);
-
-        _currentState = _stateMachine.currentState;
-    }
-
-    public bool PlayerInAttackRange()
-    {
-        if(playerPosition == null) return false;
-
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
-        if (playerCollider != null) return true;
-
-
-
-        return false;
-    }
     protected override void OnDrawGizmosSelected()
     {
         base.OnDrawGizmosSelected();
@@ -138,13 +173,28 @@ public class Enemy : Entity
 
     }
 
+
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        _stateMachine.ChangeState(deadState);
+    }
+    public void Death()
+    {
+        Destroy(this.gameObject, deathTimer);
+    }
+
+    private void HandlePlayerDeath()
+    {
+        _stateMachine.ChangeState(idleState);
+    }
     private void OnEnable()
     {
         Player.OnPlayerDeath += HandlePlayerDeath;
     }
 
     private void OnDisable()
-    { 
+    {
         Player.OnPlayerDeath -= HandlePlayerDeath;
     }
 }
