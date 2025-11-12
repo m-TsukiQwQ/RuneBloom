@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EntityStatusHandler : MonoBehaviour
 {
-    private UIManager _uiManager;
     private Entity _entity;
     private EntityVFX _entityVfx;
     private EntityStats _stats;
@@ -16,10 +16,11 @@ public class EntityStatusHandler : MonoBehaviour
     private Coroutine _chillCo;
     private Coroutine _chillDecayCo;
 
+    public event Action<ElementType, int> OnEffectApplied;
+    public event Action<ElementType> OnEffectRemoved;
 
     private void Awake()
     {
-        _uiManager = GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
         _entity = GetComponent<Entity>();
         _entityVfx = GetComponent<EntityVFX>();
         _stats = GetComponent<EntityStats>();
@@ -39,6 +40,7 @@ public class EntityStatusHandler : MonoBehaviour
         float chillResistance = _stats.GetElementalResistance(ElementType.Ice);
 
         _currentChillCharge++;
+        OnEffectApplied?.Invoke(ElementType.Ice, (int)_currentChillCharge);
         bool didFreeze = false; 
 
         if (_currentChillCharge >= _freezeCharge)
@@ -84,7 +86,8 @@ public class EntityStatusHandler : MonoBehaviour
     {
         _currentEffect = ElementType.None;
         _currentChillCharge = 0;
-        
+        OnEffectRemoved?.Invoke(ElementType.Ice);
+
         // If we're stopping the effect, we must also stop the decay timer.
         if (_chillDecayCo != null)
         {

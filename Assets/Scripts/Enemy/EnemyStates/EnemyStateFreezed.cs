@@ -10,7 +10,6 @@ public class EnemyStateFreezed : EnemyState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Freezed");
         _enemy.SetVelocity(0, 0);
         _enemy.animator.SetFloat("AnimSpeedMultiplier", 0);
         _stateTimer = _enemy.freezeTimer;
@@ -29,7 +28,7 @@ public class EnemyStateFreezed : EnemyState
 
     public override void Exit()
     {
-        Debug.Log("Unreezed");
+        
     }
 
 }
