@@ -50,13 +50,20 @@ public class EntityCombat : MonoBehaviour
 
         if (element == ElementType.Ice)
         {
-            float maximumChargees = _stats.offence.ice.maxSlowDownStacks.GetValue();
-            if (element == ElementType.Ice && statusHandler.CanBeApplied(ElementType.Ice, maximumChargees))
+            float maximumCharges = _stats.offence.ice.maxSlowDownStacks.GetValue();
+            if (element == ElementType.Ice && statusHandler.CanBeApplied(ElementType.Ice, maximumCharges))
             {
                 statusHandler.ApplyChillEffect(_stats.offence.ice.slowDownDuration.GetValue(), //duration
                                               _stats.offence.ice.slowDownMultiplier.GetValue(),//slowMultiplier
-                                              maximumChargees); //maximumcharges
+                                              maximumCharges); //maximumcharges
             }
+        }
+
+        if (element == ElementType.Fire)
+        {
+            float maximumCharges = _stats.offence.fire.maxBurnCharges.GetValue();
+            if (element == ElementType.Fire && statusHandler.CanBeApplied(ElementType.Fire, maximumCharges))
+                statusHandler.ApplyBurnEffect(_stats.offence.fire.burnDuration.GetValue(), _stats.offence.fire.burnDamage.GetValue(), maximumCharges);
         }
     }
 

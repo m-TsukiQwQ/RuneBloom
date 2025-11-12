@@ -43,6 +43,9 @@ public class EntityVFX : MonoBehaviour
     {
         if (element == ElementType.Ice)
             StartCoroutine(PlayOnStatusVfxCo(duration, _chillVfx));
+
+        if (element == ElementType.Fire)
+            StartCoroutine(PlayOnStatusVfxCo(duration, _burnVfx));
     }
 
     private IEnumerator PlayOnStatusVfxCo(float duration, Color color)
@@ -97,7 +100,7 @@ public class EntityVFX : MonoBehaviour
     public void ShowDamageText(float damage, Vector2 position)
     {
         DamageText text = Instantiate(_damageTextPrefab, position, Quaternion.identity);
-        text.SetDamageText(damage, _colorDamageText);
+        text.SetDamageText((Mathf.Round (damage)), _colorDamageText);
 
     }
     public void ShowDodgeText(Vector2 position)

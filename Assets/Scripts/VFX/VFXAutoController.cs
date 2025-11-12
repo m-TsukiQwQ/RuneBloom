@@ -13,7 +13,7 @@ public class VFXAutoController : MonoBehaviour
     {
         ApplyRandomRotation();
         if (_autoDestroy)
-            Destroy(gameObject, _destroyDelay);
+            Destroy(gameObject, 3);
     }
 
     private void ApplyRandomRotation()

@@ -13,7 +13,7 @@ public class StatGroupOffence
 
     [Header("Elemental")]
     public StatGroupOffenceIce ice;
-    public Stat fireDamage;
+    public StatGroupOffenceFire fire;
     public Stat iceDamage;
     public Stat poisonDamage;
 

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Overlay logic")]
     [SerializeField] private GameObject _freezeOverlay;
+    [SerializeField] private GameObject _burnOverlay;
     public void ShowCloseInventory()
     {
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
@@ -17,6 +18,11 @@ public class UIManager : MonoBehaviour
     public void ShowCloseFreezeOverlay()
     {
         _freezeOverlay.SetActive(!_freezeOverlay.activeSelf);
+    }
+
+    public void ShowCloseBurnOverlay()
+    {
+        _freezeOverlay.SetActive(!_burnOverlay.activeSelf);
     }
 
 

@@ -1,16 +1,12 @@
+using System;
 using UnityEngine;
 
-public class StatGroupOffenceFire : MonoBehaviour
+[Serializable]
+public class StatGroupOffenceFire
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Stat fireDamage;
+    public Stat burnDuration;
+    public Stat maxBurnStacks;
+    public Stat burnDamage;
+    public Stat maxBurnCharges;
 }

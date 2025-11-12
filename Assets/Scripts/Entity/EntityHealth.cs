@@ -61,7 +61,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
         ReduceHealth(damage);
     }
 
-    protected virtual void ReduceHealth(float damage)
+    public virtual void ReduceHealth(float damage)
     {
         Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
         _currentHealth -= damage;

@@ -19,7 +19,7 @@ public class PlayerHealth : EntityHealth
         UpdateHealthBar();
 
     }
-    protected override void ReduceHealth(float damage)
+    public override void ReduceHealth(float damage)
     {
         base.ReduceHealth(damage);
         UpdateHealthBar();
