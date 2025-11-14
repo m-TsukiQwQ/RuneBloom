@@ -125,7 +125,7 @@ public class Enemy : Entity
     {
         if (playerPosition == null) return false;
 
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + new Vector3(0, 0.2f), attackRange, whatIsPlayer);
         if (playerCollider != null) return true;
 
 
@@ -135,7 +135,7 @@ public class Enemy : Entity
 
     public Collider2D PlayerDetection()
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, chaseRange, whatIsPlayer);
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + new Vector3(0, 0.2f), chaseRange, whatIsPlayer);
         if (playerCollider != null)
         {
             playerPosition = playerCollider.transform;
@@ -164,12 +164,12 @@ public class Enemy : Entity
         base.OnDrawGizmosSelected();
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, wanderRange);
-        Gizmos.DrawLine(transform.position, wanderPosition);
+        Gizmos.DrawWireCube(transform.position + new Vector3(0,0.2f), wanderRange);
+        Gizmos.DrawLine(transform.position + new Vector3(0, 0.2f),  wanderPosition);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0.2f), chaseRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0.2f), attackRange);
 
     }
 

@@ -27,7 +27,7 @@ public class EnemyStateWander : EnemyStateNonBattle
 
     private void Wander()
     {
-        Vector3 moveDirection = (_enemy.wanderPosition - _enemy.transform.position).normalized;
+        Vector3 moveDirection = (_enemy.wanderPosition - _enemy.transform.position).normalized ;
         
 
         if (Vector3.Distance(_enemy.transform.position, _enemy.wanderPosition) >= 0.5f)
@@ -38,7 +38,7 @@ public class EnemyStateWander : EnemyStateNonBattle
                 Vector3 directionToWall = (_enemy.wanderPosition - _enemy.transform.position).normalized;
                 Vector3 oppositeDirection = -directionToWall;
                 float randomDistance = Random.Range(_enemy.wanderRange.x * 0.5f, _enemy.wanderRange.x);
-                _enemy.wanderPosition = _enemy.transform.position + (oppositeDirection * randomDistance);
+                _enemy.wanderPosition = _enemy.transform.position + (oppositeDirection * randomDistance) + new Vector3(0, 0.2f);
             }
 
         }
@@ -50,7 +50,7 @@ public class EnemyStateWander : EnemyStateNonBattle
     {
         float randomX = Random.Range(-_enemy.wanderRange.x, _enemy.wanderRange.x);
         float randomY = Random.Range(-_enemy.wanderRange.y, _enemy.wanderRange.y);
-        _enemy.wanderPosition = _enemy.transform.position + new Vector3(randomX, randomY);
+        _enemy.wanderPosition = _enemy.transform.position + new Vector3(randomX, randomY) + new Vector3(0, 0.2f);
     }
 
     public override void Exit()
