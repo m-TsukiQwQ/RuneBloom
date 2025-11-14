@@ -43,13 +43,19 @@ public class EntityHealth : MonoBehaviour, IDamageable
             return false;
         }
 
+        EntityStats attackerStats = damageDealer.GetComponent<EntityStats>();
+        float armorReduction = attackerStats != null ? attackerStats.GetArmorReduction() : 0;
+
+        float armor = _stats.GetArmor(armorReduction);
+        float physicalDamageTaken = damage * (1 - armor);
+
         float resistance = _stats.GetElementalResistance(element);
         float elementalDamageTaken = elementalDamage * (1 - resistance);
 
-        TakeKnockback(damage, damageDealer);
+        TakeKnockback(physicalDamageTaken, damageDealer);
 
 
-        ReduceHealth(damage + elementalDamage);
+        ReduceHealth(physicalDamageTaken + elementalDamage);
         return true;
 
     }

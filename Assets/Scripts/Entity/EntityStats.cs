@@ -19,6 +19,23 @@ public class EntityStats : MonoBehaviour
         return isCrit? damage * critPower : damage;
     }
 
+    public float GetArmor(float armorReduction)
+    {
+        float baseArmor = defence.armor.GetValue();
+        
+        float reductionMultiplier = Mathf.Clamp(1 - armorReduction, 0, 1);
+        float finalArmor = (baseArmor * reductionMultiplier) / (baseArmor + 100);
+        float armorCap = 0.95f;
+
+        return Mathf.Clamp(finalArmor, 0 , armorCap);
+    }
+
+    public float GetArmorReduction()
+    {
+        float finalReduction = offence.armorReduction.GetValue() / 100;
+        return finalReduction;
+    }
+
     public float GetElementalDamage(out ElementType element)
     {
         float fireDamage = offence.fire.fireDamage.GetValue();

@@ -8,6 +8,7 @@ public class StatGroupOffence
     public Stat physicalDamage;
     public Stat critPower;
     public Stat critChance;
+    public Stat armorReduction;
 
     [Space]
 
