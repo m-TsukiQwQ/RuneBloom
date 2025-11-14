@@ -11,7 +11,6 @@ public class EnemyStateFreezed : EnemyState
     {
         base.Enter();
         _enemy.SetVelocity(0, 0);
-        _enemy.animator.SetFloat("AnimSpeedMultiplier", 0);
         _stateTimer = _enemy.freezeTimer;
         
     }
@@ -22,13 +21,12 @@ public class EnemyStateFreezed : EnemyState
         if(_stateTimer < 0)
             _stateMachine.ChangeState(_enemy.idleState);
 
-        
-        _enemy.animator.SetFloat("AnimSpeedMultiplier", _enemy.moveAnimSpeedMultiplier);
+       
     }
 
     public override void Exit()
     {
-        
+        base.Exit();
     }
 
 }
