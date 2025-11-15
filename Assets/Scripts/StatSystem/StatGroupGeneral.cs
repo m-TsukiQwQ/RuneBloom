@@ -4,10 +4,40 @@ using UnityEngine;
 [Serializable]
 public class StatGroupGeneral
 {
-    public Stat harvesting;
-    public Stat running;
-    public Stat mining;
-    public Stat crafting;
-    public Stat cooking;
+    public StatGroupGeneralHarvesting harvesting;
+    public StatGroupGeneralRunning running;
+    public StatGroupGeneralMining mining;
+    public StatGroupGeneralCrafting crafting;
+    public StatGroupGeneralCooking cooking;
+
+}
+
+[Serializable]
+public class StatGroupGeneralHarvesting
+{
+
+}
+
+[Serializable]
+public class StatGroupGeneralRunning
+{
+
+}
+
+[Serializable]
+public class StatGroupGeneralCrafting
+{
+
+}
+
+[Serializable]
+public class StatGroupGeneralCooking
+{
+
+}
+
+[Serializable]
+public class StatGroupGeneralMining
+{
 
 }

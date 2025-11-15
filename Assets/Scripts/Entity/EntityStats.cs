@@ -12,22 +12,22 @@ public class EntityStats : MonoBehaviour
     {
         float damage = offence.physicalDamage.GetValue();
         float critChance = offence.critChance.GetValue();
-        float critPower  = offence.critPower.GetValue() / 100; //total crit powerr as multiplier
+        float critPower = offence.critPower.GetValue() / 100; //total crit powerr as multiplier
 
         isCrit = Random.Range(1, 100) <= critChance;
 
-        return isCrit? damage * critPower : damage;
+        return isCrit ? damage * critPower : damage;
     }
 
     public float GetArmor(float armorReduction)
     {
         float baseArmor = defence.armor.GetValue();
-        
+
         float reductionMultiplier = Mathf.Clamp(1 - armorReduction, 0, 1);
         float finalArmor = (baseArmor * reductionMultiplier) / (baseArmor + 100);
         float armorCap = 0.95f;
 
-        return Mathf.Clamp(finalArmor, 0 , armorCap);
+        return Mathf.Clamp(finalArmor, 0, armorCap);
     }
 
     public float GetArmorReduction()
@@ -40,7 +40,7 @@ public class EntityStats : MonoBehaviour
     {
         float fireDamage = offence.fire.fireDamage.GetValue();
         float iceDamage = offence.ice.iceDamage.GetValue();
-        float poisonDamage = offence.poisonDamage.GetValue();
+        float poisonDamage = offence.poison.poisonDamage.GetValue();
 
         float highestDamage = fireDamage;
         element = ElementType.Fire;
@@ -94,9 +94,56 @@ public class EntityStats : MonoBehaviour
         float evasion = defence.evasion.GetValue();
         float evasionCap = 85;
         return Mathf.Clamp(evasion, 0, evasionCap);
-    }    
+    }
 
 
     public float GetMaxHealth() => resources.maxHealth.GetValue();
     public float GetMaxHunger() => resources.maxHunger.GetValue();
+
+    public Stat GetStatByType(StatType type)
+    {
+        switch (type)
+        {
+            case StatType.MaxHealth: return resources.maxHealth;
+            case StatType.HealthRegeneration: return resources.healthRegeneration;
+
+            case StatType.MaxHunger: return resources.maxHunger;
+
+            case StatType.MaxMagicPower: return resources.maxMagicPower;
+            case StatType.MagicPowerRegeneration: return resources.magicPowerRegeneration;
+
+            case StatType.PhysicalDamage: return offence.physicalDamage;
+            case StatType.CritPower: return offence.critPower;
+            case StatType.CritChance: return offence.critChance;
+            case StatType.ArmorReduction: return offence.armorReduction;
+            case StatType.AttackSpeed: return offence.attackSpeed;
+
+            case StatType.IceDamage: return offence.ice.iceDamage;
+            case StatType.SlowDownMultiplier: return offence.ice.slowDownMultiplier;
+            case StatType.SlowDownDuration: return offence.ice.slowDownDuration;
+            case StatType.MaxSlowDownStacks: return offence.ice.maxSlowDownStacks;
+
+            case StatType.FireDamage: return offence.fire.fireDamage;
+            case StatType.BurnDuration: return offence.fire.burnDuration;
+            case StatType.MaxBurnStacks: return offence.fire.maxBurnStacks;
+            case StatType.BurnDamage: return offence.fire.burnDamage;
+
+            case StatType.PoisonDamage: return offence.poison.poisonDamage;
+            case StatType.HealthRegenerationReduction: return offence.poison.healthRegenerationReduction;
+            case StatType.ArmorCorrosion: return offence.poison.armorCorrosion;
+            case StatType.MaxPoisonStacks: return offence.poison.maxPoisonStack;
+
+            case StatType.Armor: return defence.armor;
+            case StatType.Evasion: return defence.evasion;
+
+            case StatType.FireResistance: return defence.fireResistance;
+            case StatType.IceResistance: return defence.iceResistance;
+            case StatType.PoisonResistance: return defence.poisonResistance;
+
+            default:
+                Debug.Log($"StatType {type} not implemented yet.");
+                return null;
+        }
+
+    }
 }

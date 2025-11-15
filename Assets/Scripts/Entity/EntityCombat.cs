@@ -61,7 +61,7 @@ public class EntityCombat : MonoBehaviour
 
         if (element == ElementType.Fire)
         {
-            float maximumCharges = _stats.offence.fire.maxBurnCharges.GetValue();
+            float maximumCharges = _stats.offence.fire.maxBurnStacks.GetValue();
             if (element == ElementType.Fire && statusHandler.CanBeApplied(ElementType.Fire, maximumCharges))
                 statusHandler.ApplyBurnEffect(_stats.offence.fire.burnDuration.GetValue(), _stats.offence.fire.burnDamage.GetValue(), maximumCharges);
         }
