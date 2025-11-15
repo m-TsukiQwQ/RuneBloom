@@ -62,13 +62,12 @@ public class UIStatusPanel : MonoBehaviour
     {
         if (type == ElementType.Ice)
             return _chillIcon;
-        if (type == ElementType.Fire) // Example for the future
+        if (type == ElementType.Fire) 
             return _burnIcon;
-        if (type == ElementType.Poison) // Example for the future
+        if (type == ElementType.Poison) 
             return _poisonIcon;
 
-        // Add other types here
 
-        return null; // Default/error case
+        return null; 
     }
 }

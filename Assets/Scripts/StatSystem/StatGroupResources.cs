@@ -7,6 +7,8 @@ public class StatGroupResources
     [Header("Health")]
     public Stat maxHealth;
     public Stat healthRegeneration;
+    public Stat healthRegenerationMultiplier;
+    public Stat healthRegenerationInterval;
 
     [Space]
 

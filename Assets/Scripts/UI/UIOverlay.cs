@@ -7,15 +7,6 @@ public class UIOverlay : MonoBehaviour
 
     private void Update()
     {
-        switch(_status._currentEffect)
-        {
-            case ElementType.Fire:
-                _burnOverlay.SetActive(true); 
-                break;
-
-            default:
-                _burnOverlay.SetActive(false);
-                break;
-        }
+        _burnOverlay.SetActive(_status._currentEffects.Contains(ElementType.Fire));
     }
 }

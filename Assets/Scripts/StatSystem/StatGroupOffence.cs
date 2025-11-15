@@ -47,5 +47,6 @@ public class StatGroupOffencePoison
     public Stat healthRegenerationReduction;
     public Stat armorCorrosion;
     public Stat maxPoisonStack;
+    public Stat poisonStackDuration;
 
 }

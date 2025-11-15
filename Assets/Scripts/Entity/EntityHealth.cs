@@ -1,20 +1,19 @@
-using System;
-using System.Net.NetworkInformation;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class EntityHealth : MonoBehaviour, IDamageable
 {
-    
+
     protected Entity _entity;
     private EntityVFX _entityVfx;
     protected EntityStats _stats;
 
     [Header("Health deatails")]
     [SerializeField] protected float _currentHealth;
-    [SerializeField] protected bool IsDead;
+    [SerializeField] protected bool isDead;
+    [SerializeField] private bool _canRegenerateHealth = true;
+    private Coroutine _regenerationHealthCo;
 
     [Header("On Damage Knockback")]
     [SerializeField] private Vector2 _knockbackPower = new Vector2(1, 1);
@@ -30,10 +29,19 @@ public class EntityHealth : MonoBehaviour, IDamageable
         _entityVfx = GetComponent<EntityVFX>();
 
         _currentHealth = _stats.GetMaxHealth();
+
+    }
+
+    private void Update()
+    {
+        _canRegenerateHealth = (_currentHealth < _stats.GetMaxHealth());
+        if (_canRegenerateHealth)
+            ApplyRegenerationEffect();
+
     }
     public virtual bool TakeDamage(float damage, float elementalDamage, ElementType element, Transform damageDealer)
     {
-        if (IsDead) return false;
+        if (isDead) return false;
 
 
         Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
@@ -60,7 +68,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     }
 
-   
+
 
     public void TakeDamageFromHunger(float damage)
     {
@@ -81,9 +89,44 @@ public class EntityHealth : MonoBehaviour, IDamageable
         }
     }
 
+    protected virtual void IncreaseHealth(float healAmount)
+    {
+        if (isDead)
+            return;
+
+        float healthRegenerationMultiplier = Mathf.Max( (_stats.resources.healthRegenerationMultiplier.GetValue() / 100), 0);
+
+
+        float newHealth = _currentHealth + (healAmount * healthRegenerationMultiplier);
+        float maxHealth = _stats.GetMaxHealth();
+
+        _currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
+
+    }
+
+    private void ApplyRegenerationEffect()
+    {
+        float regenerationAmount = _stats.resources.healthRegeneration.GetValue();
+        
+        float regenerationInterval = _stats.resources.healthRegenerationInterval.GetValue();
+
+        if (_canRegenerateHealth && _regenerationHealthCo == null)
+            _regenerationHealthCo = StartCoroutine(RegenerateHealthCo(regenerationInterval, regenerationAmount));
+
+    }
+    private IEnumerator RegenerateHealthCo(float regenerationInterval, float regenerationAmount)
+    {
+
+        IncreaseHealth(regenerationAmount);
+        
+        yield return new WaitForSeconds(regenerationInterval);
+        _regenerationHealthCo = null;
+
+    }
+
     private void Die()
     {
-        IsDead = true;
+        isDead = true;
 
         _entity.EntityDeath();
     }
@@ -97,7 +140,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)
     {
         Vector2 direction = -((damageDealer.transform.position - _entity.transform.position).normalized);
-        Vector2 knockback = IsHeavyDamage(damage)? _heavyKnockbackPower : _knockbackPower;
+        Vector2 knockback = IsHeavyDamage(damage) ? _heavyKnockbackPower : _knockbackPower;
         knockback.x *= direction.x;
         knockback.y *= direction.y;
 
@@ -106,14 +149,14 @@ public class EntityHealth : MonoBehaviour, IDamageable
     }
 
     private float CalculateKnockbackDuration(float damage) => IsHeavyDamage(damage) ? _heavyKnockbackDuration : _knockbackDuration;
-   
-     private void TakeKnockback(float damage, Transform damageDealer)
-        {
-            Vector2 knockback = CalculateKnockback(damage, damageDealer);
-            _entity?.RecieveKnockback(knockback, CalculateKnockbackDuration(damage));
-        }
 
-   
+    private void TakeKnockback(float damage, Transform damageDealer)
+    {
+        Vector2 knockback = CalculateKnockback(damage, damageDealer);
+        _entity?.RecieveKnockback(knockback, CalculateKnockbackDuration(damage));
+    }
+
+
 
 
 }

@@ -46,6 +46,9 @@ public class EntityVFX : MonoBehaviour
 
         if (element == ElementType.Fire)
             StartCoroutine(PlayOnStatusVfxCo(duration, _burnVfx));
+
+        if (element == ElementType.Poison)
+            StartCoroutine(PlayOnStatusVfxCo(duration, _poisonVfx));
     }
 
     private IEnumerator PlayOnStatusVfxCo(float duration, Color color)

@@ -13,11 +13,11 @@ public class Stat
 
     public float GetValue()
     {
-        if (_needToBeRecalculated)
-        {
+        //if (_needToBeRecalculated)
+        //{
             _finalValue = GetFinalValue();
-            _needToBeRecalculated = false;
-        }
+         //   _needToBeRecalculated = false;
+        //}
 
         return _finalValue;
     }

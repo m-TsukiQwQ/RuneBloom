@@ -7,7 +7,14 @@ public class EntityStats : MonoBehaviour
     public StatGroupOffence offence;
     public StatGroupDefence defence;
 
-
+    public float GetHealthRegeneration()
+    {
+        float healthRegeneration = resources.healthRegeneration.GetValue();
+        float healthRegenerationMultiplier = resources.healthRegenerationMultiplier.GetValue() / 100; //
+        float finalRegeneration = healthRegeneration * healthRegenerationMultiplier;
+        
+        return finalRegeneration;
+    }    
     public float GetPhysicalDamage(out bool isCrit)
     {
         float damage = offence.physicalDamage.GetValue();

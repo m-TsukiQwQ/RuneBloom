@@ -26,4 +26,10 @@ public class PlayerHealth : EntityHealth
 
 
     }
+
+    protected override void IncreaseHealth(float healAmount)
+    {
+        base.IncreaseHealth(healAmount);
+        UpdateHealthBar();
+    }
 }

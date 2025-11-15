@@ -65,6 +65,15 @@ public class EntityCombat : MonoBehaviour
             if (element == ElementType.Fire && statusHandler.CanBeApplied(ElementType.Fire, maximumCharges))
                 statusHandler.ApplyBurnEffect(_stats.offence.fire.burnDuration.GetValue(), _stats.offence.fire.burnDamage.GetValue(), maximumCharges);
         }
+        if (element == ElementType.Poison)
+        {
+            float maximumCharges = _stats.offence.poison.maxPoisonStack.GetValue();
+            if (element == ElementType.Poison && statusHandler.CanBeApplied(ElementType.Poison, maximumCharges))
+            {
+                statusHandler.ApplyPoisonEffect(_stats.offence.poison.poisonStackDuration.GetValue(),
+                    _stats.offence.poison.healthRegenerationReduction.GetValue(), maximumCharges, _stats.offence.poison.armorCorrosion.GetValue());
+            }
+        }
     }
 
     protected Collider2D[] GetDetectedColliders()
