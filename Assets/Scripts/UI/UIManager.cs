@@ -9,7 +9,18 @@ public class UIManager : MonoBehaviour
 
     [Header("Overlay logic")]
     [SerializeField] private GameObject _freezeOverlay;
-    [SerializeField] private GameObject _burnOverlay;
+
+    public UISkillToolTip skillToolTip;
+
+    private void Awake()
+    {
+        skillToolTip = GetComponentInChildren<UISkillToolTip>();
+    }
+    private void Start()
+    {
+        ShowToolTip(false);
+    }
+
     public void ShowCloseInventory()
     {
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
@@ -20,9 +31,12 @@ public class UIManager : MonoBehaviour
         _freezeOverlay.SetActive(!_freezeOverlay.activeSelf);
     }
 
-    public void ShowCloseBurnOverlay()
+
+    public virtual void ShowToolTip(bool show)
     {
-        _freezeOverlay.SetActive(!_burnOverlay.activeSelf);
+        skillToolTip.gameObject.SetActive(show);
+        
+
     }
 
 
