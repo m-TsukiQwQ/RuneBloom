@@ -24,7 +24,6 @@ public class EntityStatusHandler : MonoBehaviour
     [SerializeField] private float _burnStacksDeacayTime;
     public float _currentBurnCharge { get; private set; }
     private Coroutine _burnCo;
-    private Coroutine _burnDecayCo;
     [SerializeField] private float _ticksPerSecond = 2f;
     [SerializeField] private GameObject _firePrefab;
     private GameObject _fire;
@@ -34,6 +33,8 @@ public class EntityStatusHandler : MonoBehaviour
     [SerializeField] private float _corrosionCharge;
     private Coroutine _poisonCo;
     private Coroutine _corrosionCo;
+    [SerializeField] private GameObject _poisonPrefab;
+    private GameObject _poison;
 
     //private Dictionary<string, StatusEffect> m_ActiveEffects = new Dictionary<string, StatusEffect>();
 
@@ -57,6 +58,9 @@ public class EntityStatusHandler : MonoBehaviour
         if (!isStackApplied)
             return;
         _currentPoisonCharge++;
+
+        if (_poison == null)
+            _poison = Instantiate(_poisonPrefab, transform.position, Quaternion.identity, transform);
 
         if (_currentPoisonCharge == _corrosionCharge && _corrosionCo == null)
             _corrosionCo = StartCoroutine(CorrosionCo(duration, corrosionPower));
@@ -107,6 +111,11 @@ public class EntityStatusHandler : MonoBehaviour
         _currentPoisonCharge = 0;
         _stats.resources.healthRegenerationMultiplier.RemoveModifier("Poison Stacks");
         OnEffectRemoved?.Invoke(ElementType.Poison);
+        if (_poison != null)
+        {
+            Destroy(_poison);
+            _poison = null;
+        }
         //OnEffectRemoved?.Invoke(ElementType.Fire);
 
     }
@@ -151,14 +160,6 @@ public class EntityStatusHandler : MonoBehaviour
             yield return new WaitForSeconds(tickInterval);
         }
 
-
-        if (_fire != null)
-        {
-            Destroy(_fire);
-            _fire = null;
-        }
-
-
         StopBurnEffect();
         _burnCo = null; 
     }
@@ -167,6 +168,11 @@ public class EntityStatusHandler : MonoBehaviour
         _currentEffects.Remove(ElementType.Fire);
         _currentBurnCharge = 0;
         OnEffectRemoved?.Invoke(ElementType.Fire);
+        if (_fire != null)
+        {
+            Destroy(_fire);
+            _fire = null;
+        }
 
     }
 
