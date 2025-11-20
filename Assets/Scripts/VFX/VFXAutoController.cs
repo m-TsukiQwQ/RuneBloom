@@ -3,7 +3,7 @@ using UnityEngine;
 public class VFXAutoController : MonoBehaviour
 {
     [SerializeField] private bool _autoDestroy = true;
-    [SerializeField] private float _destroyDelay = 1;
+    [SerializeField] private float _destroyDelay = 3;
 
     [Header("Random rotation")]
     [SerializeField] private float _minRotation;
@@ -13,7 +13,7 @@ public class VFXAutoController : MonoBehaviour
     {
         ApplyRandomRotation();
         if (_autoDestroy)
-            Destroy(gameObject, 3);
+            Destroy(gameObject, _destroyDelay);
     }
 
     private void ApplyRandomRotation()

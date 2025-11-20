@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
   m_Name: Skill data - LingeringChill
   m_EditorClassIdentifier: 
-  cost: 1
   skillName: Lingering Chill
-  description: +1 to maxSlowDownStacks per rank.
+  description: ' to maxSlowDownStacks per rank.'
+  descriptionNumber: 1
   icon: {fileID: -1960698311899796391, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
+  maximumLevel: 5
+  statToUpgrade: 0
+  value: 0

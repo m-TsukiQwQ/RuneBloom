@@ -1,77 +1,146 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     private UIManager _ui;
-    private RectTransform _rect;
 
-    [SerializeField] private SkillDataSo _skillData;
+    [Header("Information details")]
+    public SkillDataSo _skillData;
     [SerializeField] private string _skillName;
+    [SerializeField] private TextMeshProUGUI _levelUpgradeTmp;
+    public int currentNodeLevel;
 
+    [Header("Appereance configuration")]
+    [SerializeField] private Sprite _selectedSprite;
+    [SerializeField] private Sprite _unselectedSprite;
+    [SerializeField] private Image _bacground;
     [SerializeField] private Image _skillIcon;
     private string _lockedColorHex = "#8E8E8E";
-    private Color _lastColor;
-    public bool _isUnlocked;
+
+    [Header("Unlock details")]
+    public UITreeNode[] neededNodes;
+    public UITreeNode[] conflictNodes;
+    public bool isUnlocked;
+    public bool isFullyUnlocked;
+    public bool isLocked;
+
 
     private void Awake()
     {
         _ui = GetComponentInParent<UIManager>();
-        _rect = GetComponent<RectTransform>();
 
         UpdateIconColor(GetColorByHex(_lockedColorHex));
-
+        SetUpgradeLevelText(currentNodeLevel);
     }
 
     private void OnValidate()
     {
         if (_skillData == null)
             return;
+
         _skillName = _skillData.skillName;
         _skillIcon.sprite = _skillData.icon;
         gameObject.name = "UI_TreeNode - " + _skillData.skillName;
     }
+
+    private bool CanBeUpgraded()
+    {
+        if (_skillData.maximumLevel <= currentNodeLevel)
+            return false;
+
+        foreach (var node in neededNodes)
+        {
+            if (!node.isFullyUnlocked)
+                return false;
+        }
+
+        foreach (var node in conflictNodes)
+        {
+            if (node.isUnlocked)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
     private bool CanBeUnlocked()
     {
-        if (_isUnlocked)
+        if (isUnlocked || isLocked)
             return false;
+
+        foreach (var node in neededNodes)
+        {
+            if (!node.isFullyUnlocked)
+                return false;
+        }
+
+        foreach (var node in conflictNodes)
+        {
+            if (node.isUnlocked)
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 
     private void Unlock()
     {
-        _isUnlocked = true;
+        isUnlocked = true;
+        currentNodeLevel++;
         UpdateIconColor(Color.white);
+
+        foreach (var node in conflictNodes)
+            node.isLocked = true;
+
+        _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+
+    }
+    private void Upgrade()
+    {
+        currentNodeLevel++;
+        SetUpgradeLevelText(currentNodeLevel);
+        if (currentNodeLevel >= _skillData.maximumLevel)
+            isFullyUnlocked = true;
+
+        _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _ui.ShowToolTip(true);
-        _ui.skillToolTip.ShowSkillToolTip(_skillData);
-        if (_isUnlocked == false)
-            UpdateIconColor(Color.white * .9f);
-        Debug.Log("Show tooltip");
+        _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+
+        _bacground.sprite = _selectedSprite;
+
     }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (CanBeUnlocked())
             Unlock();
+        else if (CanBeUpgraded())
+        {
+            Upgrade();
+        }
         else
             Debug.Log("Cannot be unlocked");
-        Debug.Log("Unlock skill");
     }
 
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _ui.ShowToolTip(false);
-        if (_isUnlocked == false)
-            UpdateIconColor(_lastColor);
 
-        Debug.Log("Hide tooltip");
+        _bacground.sprite = _unselectedSprite;
+
     }
 
 
@@ -80,7 +149,6 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (_skillIcon == null)
             return;
 
-        _lastColor = _skillIcon.color;
         _skillIcon.color = color;
     }
 
@@ -88,5 +156,25 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         ColorUtility.TryParseHtmlString(hex, out Color color);
         return color;
+    }
+
+    private void SetUpgradeLevelText(int level)
+    {
+        if (_levelUpgradeTmp != null)
+        {
+
+            if (level > 1)
+            {
+                _levelUpgradeTmp.text = level.ToString();
+                _levelUpgradeTmp.gameObject.SetActive(true);
+            }
+            else
+            {
+
+                _levelUpgradeTmp.gameObject.SetActive(false);
+            }
+        }
+
+
     }
 }

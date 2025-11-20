@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class UIToolTip : MonoBehaviour
 {
-    //references
+    [Header("References")]
+    protected LayoutElement _layoutElement;
     private RectTransform _rect;
     private Canvas _canvas;
-    [SerializeField] protected LayoutElement _layoutElement;
 
     [Header("Positioning details")]
     [SerializeField] private Vector2 _offset = new Vector2(20, 20);
@@ -20,6 +20,7 @@ public class UIToolTip : MonoBehaviour
     {
         _rect = GetComponent<RectTransform>();
         _canvas = GetComponentInParent<Canvas>();
+        _layoutElement = GetComponent<LayoutElement>();
     }
 
     protected virtual void Update()
@@ -37,14 +38,14 @@ public class UIToolTip : MonoBehaviour
         float realWidth = _rect.sizeDelta.x * scaleFactor;
         float realHeight = _rect.sizeDelta.y * scaleFactor;
 
-        //bottom
+        //bottom check
         float screenBottom = 0f;
         float bottomY = pointerPosition.y - realHeight;
 
         if (bottomY < screenBottom + (_offset.y * scaleFactor))
             pointerPosition.y = screenBottom + realHeight + (_offset.y * scaleFactor);
 
-        //right
+        //right check
         float screenRight = Screen.width;
         float rightX = pointerPosition.x + realWidth;
 
@@ -55,7 +56,10 @@ public class UIToolTip : MonoBehaviour
         _rect.position = pointerPosition;
     }
 
-
+    protected string GetColoredText(string text, string color)
+    {
+        return ($"<color={color}> {text} </color>");
+    }
 
 
 
