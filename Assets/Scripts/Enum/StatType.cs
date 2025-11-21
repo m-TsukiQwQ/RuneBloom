@@ -2,6 +2,8 @@ using UnityEngine;
 
 public enum StatType 
 {
+    None,
+
     MaxHealth,
     HealthRegeneration,
 

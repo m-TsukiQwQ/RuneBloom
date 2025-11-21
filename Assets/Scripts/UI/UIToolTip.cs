@@ -24,13 +24,13 @@ public class UIToolTip : MonoBehaviour
     }
 
     protected virtual void Update()
-    { 
-        
+    {
 
         SetToolTipPosition();
+
     }
 
-    private void SetToolTipPosition()
+    protected void SetToolTipPosition()
     {
         Vector2 pointerPosition = Input.mousePosition;
         float scaleFactor = _canvas.scaleFactor;

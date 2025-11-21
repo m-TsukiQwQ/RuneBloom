@@ -29,6 +29,7 @@ public class UISkillToolTip : UIToolTip
     }
     public void ShowSkillToolTip(SkillDataSo skillData, UITreeNode node)
     {
+        SetToolTipPosition();
         _skillNameTMP.text = $"{skillData.skillName} {node.currentNodeLevel}/{skillData.maximumLevel}";
 
         _skillDescriptionTMP.text = GetDescription(skillData, node.currentNodeLevel);

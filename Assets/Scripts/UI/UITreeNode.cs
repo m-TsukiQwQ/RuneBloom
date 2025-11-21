@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,6 +28,9 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool isFullyUnlocked;
     public bool isLocked;
 
+
+    public static event Action<SkillDataSo> OnSkillUpgrade;
+    public static event Action<SkillDataSo> OnSkillRemove;
 
     private void Awake()
     {
@@ -99,6 +103,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             node.isLocked = true;
 
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+        OnSkillUpgrade?.Invoke(_skillData);
 
     }
     private void Upgrade()
@@ -109,13 +114,14 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             isFullyUnlocked = true;
 
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+        OnSkillUpgrade?.Invoke(_skillData);
 
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _ui.ShowToolTip(true);
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
+        _ui.ShowToolTip(true);
 
         _bacground.sprite = _selectedSprite;
 

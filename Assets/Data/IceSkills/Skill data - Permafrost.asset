@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
+  m_Name: Skill data - Permafrost
+  m_EditorClassIdentifier: 
+  skillName: Permafrost
+  description: s slowDownDuration per rank.
+  descriptionNumber: 0.2
+  icon: {fileID: -4852368729129064569, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
+  maximumLevel: 5
+  statToUpgrade: 13
+  value: 0.2

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
-  m_Name: Skill data - Deep Freeze
+  m_Name: Skill data - Lingering Chill
   m_EditorClassIdentifier: 
-  skillName: Deep Freeze
-  description: '% iceDamage per rank.'
-  descriptionNumber: 3
-  icon: {fileID: -846477392124218374, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
+  skillName: Lingering Chill
+  description: ' to maxSlowDownStacks per rank.'
+  descriptionNumber: 1
+  icon: {fileID: -1960698311899796391, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
   maximumLevel: 5
-  statToUpgrade: 0
-  value: 0
+  statToUpgrade: 14
+  value: 1

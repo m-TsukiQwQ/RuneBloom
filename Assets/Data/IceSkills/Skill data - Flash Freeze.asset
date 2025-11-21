@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
-  m_Name: Skill data - LingeringChill
+  m_Name: Skill data - Flash Freeze
   m_EditorClassIdentifier: 
-  skillName: Lingering Chill
-  description: ' to maxSlowDownStacks per rank.'
-  descriptionNumber: 1
-  icon: {fileID: -1960698311899796391, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
-  maximumLevel: 5
+  skillName: 
+  description: 
+  descriptionNumber: 0
+  icon: {fileID: 0}
+  maximumLevel: 0
   statToUpgrade: 0
   value: 0

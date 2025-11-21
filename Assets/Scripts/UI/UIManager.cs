@@ -5,25 +5,33 @@ public class UIManager : MonoBehaviour
 {
     [Header("UI logic")]
     [SerializeField] private GameObject _inventoryPanel;
-
+    [SerializeField] private GameObject _spellBook;
 
     [Header("Overlay logic")]
     [SerializeField] private GameObject _freezeOverlay;
 
-    public UISkillToolTip skillToolTip;
+    [HideInInspector] public UISkillToolTip skillToolTip;
 
     private void Awake()
     {
-        skillToolTip = GetComponentInChildren<UISkillToolTip>();
+        skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
     }
     private void Start()
     {
         ShowToolTip(false);
     }
 
-    public void ShowCloseInventory()
+    public void ToggleInventory()
     {
+        if (_spellBook.activeSelf)
+            ToggleSpellBook();
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
+    }
+    public void ToggleSpellBook()
+    {
+        if(_inventoryPanel.activeSelf)
+            ToggleInventory();
+        _spellBook.SetActive(!_spellBook.activeSelf);
     }
 
     public void ShowCloseFreezeOverlay()

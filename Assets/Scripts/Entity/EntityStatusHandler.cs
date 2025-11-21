@@ -107,7 +107,7 @@ public class EntityStatusHandler : MonoBehaviour
 
     private void StopPoisonEffect()
     {
-        _currentEffects.Remove(ElementType.Poison);
+        _currentEffects.RemoveAll(x => x == ElementType.Poison);
         _currentPoisonCharge = 0;
         _stats.resources.healthRegenerationMultiplier.RemoveModifier("Poison Stacks");
         OnEffectRemoved?.Invoke(ElementType.Poison);
@@ -165,7 +165,7 @@ public class EntityStatusHandler : MonoBehaviour
     }
     private void StopBurnEffect()
     {
-        _currentEffects.Remove(ElementType.Fire);
+        _currentEffects.RemoveAll(x => x == ElementType.Fire);
         _currentBurnCharge = 0;
         OnEffectRemoved?.Invoke(ElementType.Fire);
         if (_fire != null)
@@ -236,7 +236,7 @@ public class EntityStatusHandler : MonoBehaviour
 
     private void StopChillEffect()
     {
-        _currentEffects.Remove(ElementType.Ice);
+        _currentEffects.RemoveAll(x => x == ElementType.Ice);
         _currentChillCharge = 0;
         OnEffectRemoved?.Invoke(ElementType.Ice);
 
