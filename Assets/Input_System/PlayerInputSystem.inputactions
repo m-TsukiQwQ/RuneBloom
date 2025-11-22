@@ -119,7 +119,7 @@
             "id": "72fb8803-3a46-4aba-907f-4cbe1d0b21a7",
             "actions": [
                 {
-                    "name": "ToggleSpellBook",
+                    "name": "ToggleSkillBook",
                     "type": "Button",
                     "id": "6ef980ea-c87d-4b3a-8652-b40d44c38009",
                     "expectedControlType": "",
@@ -145,7 +145,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ToggleSpellBook",
+                    "action": "ToggleSkillBook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

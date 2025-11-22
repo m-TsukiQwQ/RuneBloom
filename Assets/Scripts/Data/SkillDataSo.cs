@@ -13,4 +13,5 @@ public class SkillDataSo : ScriptableObject
 
     public StatType statToUpgrade;
     public float value;
+    public bool isMultiplier;
 }

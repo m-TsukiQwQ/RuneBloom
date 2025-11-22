@@ -110,9 +110,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 24
-        height: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +131,10 @@ TextureImporter:
       name: UI_SpellBook_Sections_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 0
+        x: 24
+        y: 32
         width: 24
-        height: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: UI_SpellBook_Sections_2
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
+        x: 48
+        y: 32
         width: 24
-        height: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,6 +167,72 @@ TextureImporter:
       bones: []
       spriteID: dd3c81299a7d9024abec77cf30d3d34f
       internalID: 8496216840330199232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_SpellBook_Sections_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21336a658e4ec44da78a7c6439157b4
+      internalID: 136381596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_SpellBook_Sections_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca832f5c88ab4d47984f1d0b18fa25e
+      internalID: 339250347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_SpellBook_Sections_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e68bf75efc2474ab3d59866badfbbe
+      internalID: 1260614529
       vertices: []
       indices: 
       edges: []
@@ -188,6 +254,9 @@ TextureImporter:
       UI_SpellBook_Sections_0: 3125157783786415553
       UI_SpellBook_Sections_1: 4583989977443200080
       UI_SpellBook_Sections_2: 8496216840330199232
+      UI_SpellBook_Sections_3: 136381596
+      UI_SpellBook_Sections_4: 339250347
+      UI_SpellBook_Sections_5: 1260614529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

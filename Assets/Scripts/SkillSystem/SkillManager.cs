@@ -11,8 +11,13 @@ public class SkillManager : MonoBehaviour
 
     private void AddSkillModifiers(SkillDataSo skill)
     {
-        if(skill == null || skill.statToUpgrade == StatType.None) return;
-        _statsToModify.GetStatByType(skill.statToUpgrade).AddModifier(skill.value,skill.skillName);
+        if (skill == null || skill.statToUpgrade == StatType.None) return;
+
+        if (skill.isMultiplier)
+
+            _statsToModify.GetStatByType(skill.statToUpgrade).AddMultiplier(skill.value, skill.skillName);
+        else
+            _statsToModify.GetStatByType(skill.statToUpgrade).AddModifier(skill.value, skill.skillName);
     }
 
     private void RemoveSkillModifiers(SkillDataSo skill)

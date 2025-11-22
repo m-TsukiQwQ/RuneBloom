@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour
         _input.Enable();
 
         _input.UI.ToggleInventory.performed += ctx => _ui.ToggleInventory();
-        _input.UI.ToggleSpellBook.performed += ctx => _ui.ToggleSpellBook();
+        _input.UI.ToggleSkillBook.performed += ctx => _ui.ToggleSkillBook();
     }
 
     private void OnDisable()

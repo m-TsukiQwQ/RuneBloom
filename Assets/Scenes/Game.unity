@@ -7004,195 +7004,255 @@ MonoBehaviour:
     maxHealth:
       _baseValue: 10000
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 100
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 100
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 1
       _modifiers: []
+      _multipliers: []
     maxHunger:
-      _baseValue: 100
+      _baseValue: 1000
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
-        _baseValue: 0
+        _baseValue: 100
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 3
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 3
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 1
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!114 &516631477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12258,197 +12318,257 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources:
     maxHealth:
-      _baseValue: 0
+      _baseValue: 20000
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxHunger:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!114 &1129799325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12774,195 +12894,255 @@ MonoBehaviour:
     maxHealth:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxHunger:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!114 &1135508054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13342,7 +13522,7 @@ MonoBehaviour:
     rid: -2
   m_ShadowCastingSource: 1
   m_ShadowMesh:
-    m_Mesh: {fileID: 1903129779}
+    m_Mesh: {fileID: 1676511224}
     m_LocalBounds:
       m_Center: {x: 0.0034122765, y: -0.00554201, z: 0}
       m_Extent: {x: 0.13829623, y: 0.058107227, z: 0}
@@ -16894,6 +17074,171 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2067603980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!43 &1676511224
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 20
+    localAABB:
+      m_Center: {x: 0.0034122765, y: -0.00554201, z: 0}
+      m_Extent: {x: 0.13829623, y: 0.058107227, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 0
+  m_KeepIndices: 0
+  m_IndexFormat: 1
+  m_IndexBuffer: 030000000400000005000000050000000000000003000000000000000800000009000000090000000100000000000000010000000c0000000d0000000d0000000200000001000000020000001000000011000000110000000300000002000000030000000600000007000000000000000a0000000b000000010000000e0000000f000000020000001200000013000000
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 20
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 560
+    _typelessdata: 051f0abeb0d23ebd00000000000080bf00000000e24cf1bd60602d3de24cf1bd60602d3d00000000000080bf00000000ea46ff3da04e573dea46ff3da04e573d00000000000080bf00000000091c113e885a82bd091c113e885a82bd00000000000080bf00000000051f0abeb0d23ebd091c113e885a82bd000000000000000000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000000000000000091c113e885a82bd091c113e885a82bd000000000000803f00000000051f0abeb0d23ebd091c113e885a82bd000000000000404000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000000000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000000000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000803f00000000e24cf1bd60602d3d051f0abeb0d23ebd000000000000404000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000000000000000ea46ff3da04e573dea46ff3da04e573d000000000000000000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000803f00000000ea46ff3da04e573de24cf1bd60602d3d000000000000404000000000ea46ff3da04e573dea46ff3da04e573d000000000000000000000000091c113e885a82bd091c113e885a82bd000000000000000000000000ea46ff3da04e573dea46ff3da04e573d000000000000803f00000000091c113e885a82bdea46ff3da04e573d000000000000404000000000091c113e885a82bd
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1703039828
 GameObject:
   m_ObjectHideFlags: 0
@@ -17945,195 +18290,255 @@ MonoBehaviour:
     maxHealth:
       _baseValue: 10000
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxHunger:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 10
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 20
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 3
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 3
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 1
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!114 &1794094500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19508,171 +19913,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902178041}
   m_CullTransparentMesh: 1
---- !u!43 &1903129779
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 36
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 20
-    localAABB:
-      m_Center: {x: 0.0034122765, y: -0.00554201, z: 0}
-      m_Extent: {x: 0.13829623, y: 0.058107227, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 0
-  m_KeepIndices: 0
-  m_IndexFormat: 1
-  m_IndexBuffer: 030000000400000005000000050000000000000003000000000000000800000009000000090000000100000000000000010000000c0000000d0000000d0000000200000001000000020000001000000011000000110000000300000002000000030000000600000007000000000000000a0000000b000000010000000e0000000f000000020000001200000013000000
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 20
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 560
-    _typelessdata: 051f0abeb0d23ebd00000000000080bf00000000e24cf1bd60602d3de24cf1bd60602d3d00000000000080bf00000000ea46ff3da04e573dea46ff3da04e573d00000000000080bf00000000091c113e885a82bd091c113e885a82bd00000000000080bf00000000051f0abeb0d23ebd091c113e885a82bd000000000000000000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000000000000000091c113e885a82bd091c113e885a82bd000000000000803f00000000051f0abeb0d23ebd091c113e885a82bd000000000000404000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000000000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000000000000000051f0abeb0d23ebd051f0abeb0d23ebd000000000000803f00000000e24cf1bd60602d3d051f0abeb0d23ebd000000000000404000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000000000000000ea46ff3da04e573dea46ff3da04e573d000000000000000000000000e24cf1bd60602d3de24cf1bd60602d3d000000000000803f00000000ea46ff3da04e573de24cf1bd60602d3d000000000000404000000000ea46ff3da04e573dea46ff3da04e573d000000000000000000000000091c113e885a82bd091c113e885a82bd000000000000000000000000ea46ff3da04e573dea46ff3da04e573d000000000000803f00000000091c113e885a82bdea46ff3da04e573d000000000000404000000000091c113e885a82bd
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  'm_MeshMetrics[0]': 1
-  'm_MeshMetrics[1]': 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &1906963740
 GameObject:
   m_ObjectHideFlags: 0
@@ -40314,195 +40554,255 @@ MonoBehaviour:
     maxHealth:
       _baseValue: 10000
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxHunger:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 10
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
         _baseValue: 20
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0.2
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 2
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 2
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!114 &2092960869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44648,195 +44948,255 @@ MonoBehaviour:
     maxHealth:
       _baseValue: 10000
       _modifiers: []
+      _multipliers: []
     healthRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationMultiplier:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     healthRegenerationInterval:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxHunger:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     maxMagicPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     magicPowerRegeneration:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
   general:
     harvesting:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       choppingDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraWoodChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       rareDropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     running:
       movementSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodDrainReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       dodgeChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowResistance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     mining:
       miningDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraOreChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraGemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       toolDurabilityLossReduction:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       bombDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     crafting:
       craftingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       resourceSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       craftingQualityChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraItemChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     cooking:
       cookingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraMealChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffDurationMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       buffPotencyMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       foodHealingMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     farming:
       harvestingSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraCropChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       extraSeedChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       cropGrowthSpeed:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       waterSaveChance:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
   offence:
     physicalDamage:
       _baseValue: 10
       _modifiers: []
+      _multipliers: []
     critPower:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     critChance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     armorReduction:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     attackSpeed:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     ice:
       iceDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownMultiplier:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       slowDownDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxSlowDownStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     fire:
       fireDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDuration:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       maxBurnStacks:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
       burnDamage:
         _baseValue: 0
         _modifiers: []
+        _multipliers: []
     poison:
       poisonDamage:
         _baseValue: 10
         _modifiers: []
+        _multipliers: []
       healthRegenerationReduction:
         _baseValue: -50
         _modifiers: []
+        _multipliers: []
       armorCorrosion:
         _baseValue: -30
         _modifiers: []
+        _multipliers: []
       maxPoisonStack:
         _baseValue: 4
         _modifiers: []
+        _multipliers: []
       poisonStackDuration:
         _baseValue: 10
         _modifiers: []
+        _multipliers: []
   defence:
     armor:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     evasion:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     fireResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     iceResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
     poisonResistance:
       _baseValue: 0
       _modifiers: []
+      _multipliers: []
 --- !u!4 &506345289107338923
 Transform:
   m_ObjectHideFlags: 0

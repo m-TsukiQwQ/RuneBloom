@@ -19,3 +19,4 @@ MonoBehaviour:
   maximumLevel: 5
   statToUpgrade: 11
   value: 3
+  isMultiplier: 1

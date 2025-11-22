@@ -205,7 +205,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             ""id"": ""72fb8803-3a46-4aba-907f-4cbe1d0b21a7"",
             ""actions"": [
                 {
-                    ""name"": ""ToggleSpellBook"",
+                    ""name"": ""ToggleSkillBook"",
                     ""type"": ""Button"",
                     ""id"": ""6ef980ea-c87d-4b3a-8652-b40d44c38009"",
                     ""expectedControlType"": """",
@@ -231,7 +231,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ToggleSpellBook"",
+                    ""action"": ""ToggleSkillBook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -275,7 +275,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_ToggleSpellBook = m_UI.FindAction("ToggleSpellBook", throwIfNotFound: true);
+        m_UI_ToggleSkillBook = m_UI.FindAction("ToggleSkillBook", throwIfNotFound: true);
         m_UI_ToggleInventory = m_UI.FindAction("ToggleInventory", throwIfNotFound: true);
     }
 
@@ -476,7 +476,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_ToggleSpellBook;
+    private readonly InputAction m_UI_ToggleSkillBook;
     private readonly InputAction m_UI_ToggleInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
@@ -490,9 +490,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         /// </summary>
         public UIActions(@PlayerInputSystem wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UI/ToggleSpellBook".
+        /// Provides access to the underlying input action "UI/ToggleSkillBook".
         /// </summary>
-        public InputAction @ToggleSpellBook => m_Wrapper.m_UI_ToggleSpellBook;
+        public InputAction @ToggleSkillBook => m_Wrapper.m_UI_ToggleSkillBook;
         /// <summary>
         /// Provides access to the underlying input action "UI/ToggleInventory".
         /// </summary>
@@ -523,9 +523,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @ToggleSpellBook.started += instance.OnToggleSpellBook;
-            @ToggleSpellBook.performed += instance.OnToggleSpellBook;
-            @ToggleSpellBook.canceled += instance.OnToggleSpellBook;
+            @ToggleSkillBook.started += instance.OnToggleSkillBook;
+            @ToggleSkillBook.performed += instance.OnToggleSkillBook;
+            @ToggleSkillBook.canceled += instance.OnToggleSkillBook;
             @ToggleInventory.started += instance.OnToggleInventory;
             @ToggleInventory.performed += instance.OnToggleInventory;
             @ToggleInventory.canceled += instance.OnToggleInventory;
@@ -540,9 +540,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UIActions" />
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @ToggleSpellBook.started -= instance.OnToggleSpellBook;
-            @ToggleSpellBook.performed -= instance.OnToggleSpellBook;
-            @ToggleSpellBook.canceled -= instance.OnToggleSpellBook;
+            @ToggleSkillBook.started -= instance.OnToggleSkillBook;
+            @ToggleSkillBook.performed -= instance.OnToggleSkillBook;
+            @ToggleSkillBook.canceled -= instance.OnToggleSkillBook;
             @ToggleInventory.started -= instance.OnToggleInventory;
             @ToggleInventory.performed -= instance.OnToggleInventory;
             @ToggleInventory.canceled -= instance.OnToggleInventory;
@@ -629,12 +629,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         /// <summary>
-        /// Method invoked when associated input action "ToggleSpellBook" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ToggleSkillBook" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnToggleSpellBook(InputAction.CallbackContext context);
+        void OnToggleSkillBook(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ToggleInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
