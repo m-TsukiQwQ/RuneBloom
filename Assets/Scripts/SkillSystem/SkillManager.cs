@@ -1,12 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    [SerializeField] private Dictionary<UISkillBookPageType, int> _skillPoints = new Dictionary<UISkillBookPageType, int>();
+
+
     private EntityStats _statsToModify;
 
     private void Awake()
     {
         _statsToModify = GetComponent<EntityStats>();
+        foreach (UISkillBookPageType type in System.Enum.GetValues(typeof(UISkillBookPageType)))
+        {
+            _skillPoints[type] = 0;
+        }
     }
 
     private void AddSkillModifiers(SkillDataSo skill)
@@ -38,4 +46,27 @@ public class SkillManager : MonoBehaviour
         UITreeNode.OnSkillUpgrade -= AddSkillModifiers;
         UITreeNode.OnSkillRemove -= RemoveSkillModifiers;
     }
+
+    public int GetSkillPointByType(UISkillBookPageType skill)
+    {
+        return _skillPoints.ContainsKey(skill) ? _skillPoints[skill] : 0;
+    }
+
+    public void ModifySkillPoints(UISkillBookPageType skill, int amount)
+    {
+        if (_skillPoints.ContainsKey(skill))
+        {
+            _skillPoints[skill] += amount;
+        }
+        else
+        {
+            Debug.Log($"Skill {skill} not initialized.");
+        }
+    }
+
+    public void AddSkillPointsByType(UISkillBookPageType skill, int amount) => ModifySkillPoints(skill, amount);
+    public void RemoveSkillPointsByType(UISkillBookPageType skill, int amount) => ModifySkillPoints(skill, -amount);
+
+
 }
+

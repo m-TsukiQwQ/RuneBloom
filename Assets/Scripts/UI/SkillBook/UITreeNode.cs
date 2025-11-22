@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     private UIManager _ui;
+    private UISkillPage _skillPage;
 
     [Header("Information details")]
     public SkillDataSo _skillData;
@@ -32,9 +33,12 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public static event Action<SkillDataSo> OnSkillUpgrade;
     public static event Action<SkillDataSo> OnSkillRemove;
 
+    public event Action<int> OnSkillUpgradeRemovePoints;
+
     private void Awake()
     {
         _ui = GetComponentInParent<UIManager>();
+        _skillPage = GetComponentInParent<UISkillPage>(true);
 
         UpdateIconColor(GetColorByHex(_lockedColorHex));
         SetUpgradeLevelText(currentNodeLevel);
@@ -50,24 +54,21 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         gameObject.name = "UI_TreeNode - " + _skillData.skillName;
     }
 
+    public int GetCurrentPoints() => _skillPage.GetPoints();
+
     private bool CanBeUpgraded()
     {
+        if (!isUnlocked)
+            return false;
+
         if (_skillData.maximumLevel <= currentNodeLevel)
             return false;
 
-        foreach (var node in neededNodes)
-        {
-            if (!node.isFullyUnlocked)
-                return false;
-        }
+        if(GetCurrentPoints() < _skillData.cost)
+            return false;
 
-        foreach (var node in conflictNodes)
-        {
-            if (node.isUnlocked)
-            {
-                return false;
-            }
-        }
+
+
 
         return true;
     }
@@ -76,9 +77,12 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (isUnlocked || isLocked)
             return false;
 
+        if (GetCurrentPoints() < _skillData.cost)
+            return false;
+
         foreach (var node in neededNodes)
         {
-            if (!node.isFullyUnlocked)
+            if (!node.isUnlocked)
                 return false;
         }
 
@@ -104,6 +108,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
         OnSkillUpgrade?.Invoke(_skillData);
+        OnSkillUpgradeRemovePoints?.Invoke(_skillData.cost);
 
     }
     private void Upgrade()
@@ -115,6 +120,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
         OnSkillUpgrade?.Invoke(_skillData);
+        OnSkillUpgradeRemovePoints?.Invoke(_skillData.cost);
 
     }
 
@@ -182,5 +188,11 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
 
 
+    }
+
+    private void OnDisable()
+    {
+        _ui.ShowToolTip(false);
+        _bacground.sprite = _unselectedSprite;
     }
 }

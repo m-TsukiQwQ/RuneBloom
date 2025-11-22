@@ -33,9 +33,9 @@ public class UISkillToolTip : UIToolTip
         _skillNameTMP.text = $"{skillData.skillName} {node.currentNodeLevel}/{skillData.maximumLevel}";
 
         _skillDescriptionTMP.text = GetDescription(skillData, node.currentNodeLevel);
-        _skillDescription.gameObject.SetActive (_skillDescriptionTMP.text.Length == 0 ? false : true);
+        _skillDescription.gameObject.SetActive(_skillDescriptionTMP.text.Length == 0 ? false : true);
 
-        _skillRequirementsTMP.text = GetRequirements(node.neededNodes, node.conflictNodes);
+        _skillRequirementsTMP.text = GetRequirements(node.neededNodes, node.conflictNodes, skillData.cost, node.currentNodeLevel, skillData.maximumLevel, node.GetCurrentPoints());
         _skillRequirements.gameObject.SetActive(_skillRequirementsTMP.text.Length == 0 ? false : true);
     }
 
@@ -64,25 +64,52 @@ public class UISkillToolTip : UIToolTip
         return sb.ToString();
     }
 
-    public string GetRequirements(UITreeNode[] neededNodes, UITreeNode[] conflictNodes)
+    public string GetRequirements(UITreeNode[] neededNodes, UITreeNode[] conflictNodes, int cost, int currentNodeLevel, int maximumLevel, int currentPoints)
     {
         StringBuilder sb = new StringBuilder();
-        if (neededNodes.Length != 0)
+        if (currentNodeLevel < maximumLevel)
         {
-            sb.AppendLine("Requiremnets:");
-            foreach (var node in neededNodes)
+            if (currentNodeLevel < 1)
             {
-                string nodeColor = node.isFullyUnlocked ? metConditionHex : notMetConditionHex;
-                sb.AppendLine(GetColoredText($"- {node._skillData.skillName}", nodeColor));
-            }
+                if (neededNodes.Length != 0 || conflictNodes.Length != 0)
+                {
+                    if (neededNodes.Length != 0)
+                    {
+                        sb.AppendLine("Requiremnets:");
+                        foreach (var node in neededNodes)
+                        {
+                            string nodeColor = node.isFullyUnlocked ? metConditionHex : notMetConditionHex;
+                            sb.AppendLine(GetColoredText($"- {node._skillData.skillName}", nodeColor));
+                            nodeColor = currentPoints >= cost ? metConditionHex : notMetConditionHex;
+                            sb.AppendLine(GetColoredText($"- {cost} points", nodeColor));
+                        }
 
-        }
-        if (conflictNodes.Length != 0)
-        {
-            sb.AppendLine(GetColoredText("Locks out:", importantInforamtionHex));
-            foreach (var node in conflictNodes)
+                    }
+
+                    if (conflictNodes.Length != 0)
+                    {
+                        if (neededNodes.Length != 0)
+                            sb.AppendLine();
+                        sb.AppendLine(GetColoredText("Locks out:", importantInforamtionHex));
+                        foreach (var node in conflictNodes)
+                        {
+                            sb.AppendLine(GetColoredText($"- {node._skillData.skillName}", importantInforamtionHex));
+                        }
+
+                    }
+                }
+                else
+                {
+                    sb.AppendLine("Requiremnets:");
+                    string color = currentPoints >= cost ? metConditionHex : notMetConditionHex;
+                    sb.AppendLine(GetColoredText($"- {cost} point(s)", color));
+                }
+            }
+            else
             {
-                sb.AppendLine(GetColoredText($"- {node._skillData.skillName}", importantInforamtionHex));
+                sb.AppendLine("Requiremnets:");
+                string color = currentPoints >= cost ? metConditionHex : notMetConditionHex;
+                sb.AppendLine(GetColoredText($"- {cost} point(s)", color));
             }
 
         }
@@ -90,5 +117,5 @@ public class UISkillToolTip : UIToolTip
         return sb.ToString();
     }
 
-    
+
 }

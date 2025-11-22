@@ -10,8 +10,10 @@ public class SkillDataSo : ScriptableObject
     public float descriptionNumber;
     public Sprite icon;
     public int maximumLevel;
+    public int cost;
 
     public StatType statToUpgrade;
     public float value;
     public bool isMultiplier;
+    public UISkillBookPageType type;
 }

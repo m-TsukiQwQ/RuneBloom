@@ -17,5 +17,8 @@ MonoBehaviour:
   descriptionNumber: 0.2
   icon: {fileID: -4852368729129064569, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
   maximumLevel: 5
+  cost: 1
   statToUpgrade: 13
   value: 0.2
+  isMultiplier: 0
+  type: 0
