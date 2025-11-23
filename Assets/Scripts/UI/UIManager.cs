@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +15,9 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public UISkillToolTip skillToolTip;
 
     [SerializeField] private List<GameObject> _skillPages;
+    [SerializeField] private GameObject _defaultPage;
+
+    private UISectionButton _currentActiveButton;
     private void Awake()
     {
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
@@ -28,6 +32,8 @@ public class UIManager : MonoBehaviour
         if (_skillBook.activeSelf)
             ToggleSkillBook();
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
+        
+
     }
     public void ToggleSkillBook()
     {
@@ -56,6 +62,37 @@ public class UIManager : MonoBehaviour
             page.gameObject.SetActive(false);
         }
     }
+
+    public void OnSectionButtonClicked()
+    {
+        
+        GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
+        if (clickedObj == null) return;
+
+        UISectionButton clickedButton = clickedObj.GetComponent<UISectionButton>();
+        if (clickedButton == null) return;
+
+        
+        if (_currentActiveButton == clickedButton)
+        {
+            _currentActiveButton.SetState(false);
+            _currentActiveButton = null;
+            _defaultPage.SetActive(true);
+            return;
+        }
+
+        if (_currentActiveButton != null)
+        {
+            _currentActiveButton.SetState(false);
+        }
+
+        
+        clickedButton.SetState(true);
+
+        
+        _currentActiveButton = clickedButton;
+    }
+
 
 
 }
