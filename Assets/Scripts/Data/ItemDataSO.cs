@@ -6,5 +6,6 @@ public class ItemDataSO : ScriptableObject
     public string itemName;
     public Sprite itemIcon;
     public ItemType itemType;
+    [TextArea] public string description;
     public int maxStackSize = 1;
 }

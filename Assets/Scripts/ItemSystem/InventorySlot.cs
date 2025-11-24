@@ -2,17 +2,29 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Inventory_Item
+public class InventorySlot
 {
     public ItemDataSO itemData;
     public int stackSize = 1;
 
     //public ItemModifier[] modifiers {get; private set;}
 
-    public Inventory_Item(ItemDataSO itemData)
+    public InventorySlot(ItemDataSO itemData, int amount)
     {
         this.itemData = itemData;
+        stackSize = amount;
         //modifiers = EqupmentData()?.modifiers;
+    }
+
+    public InventorySlot() // Empty Constructor
+    {
+        Clear();
+    }
+
+    public void Clear()
+    {
+        itemData = null;
+        stackSize = 0;
     }
 
     //public void AddModifiers(EntityState playerStats)
@@ -27,7 +39,8 @@ public class Inventory_Item
     //    return null;
     //}
 
+    public bool HasItem => itemData != null;
     public bool CanAddStack() => stackSize < itemData.maxStackSize;
-    public void AddStack() => stackSize++;
+    public void AddStack(int amount) => stackSize += amount ;
     public void RemoveStack() => stackSize--;
 }

@@ -4,30 +4,60 @@ using UnityEngine;
 
 public class Inventory_Base : MonoBehaviour
 {
-    public event Action OnInventoryChange;
+    public InventorySlot[] slots;
     public int maxInventorySize = 24;
-    public List<Inventory_Item> itemList = new List<Inventory_Item>();
 
-    public bool CanAddItem() => itemList.Count < maxInventorySize;
+    public event Action OnInventoryChanged;
 
-    public void AddItem(Inventory_Item itemToAdd)
+    public bool CanAddItem() => slots.Length < maxInventorySize;
+    private void Awake()
     {
-
-        Inventory_Item itemInInventory = FindItem(itemToAdd.itemData);
-
-        if (itemInInventory != null)
+        slots = new InventorySlot[maxInventorySize];
+        for (int i = 0; i < slots.Length; i++)
         {
-            itemInInventory.AddStack();
+            slots[i] = new InventorySlot();
         }
-        else
-        {
-            itemList.Add(itemToAdd);
-        }
-        OnInventoryChange?.Invoke();
     }
 
-    public Inventory_Item FindItem(ItemDataSO itemData)
+    public bool TryAddItem(ItemDataSO itemToAdd, int amountToAdd)
     {
-        return itemList.Find(item => item.itemData == itemData && item.CanAddStack());
+        int difference;
+        if(itemToAdd.maxStackSize > 1)
+        {
+            foreach (InventorySlot slot in slots)
+            {
+                if(slot.HasItem && slot.itemData == itemToAdd && slot.itemData.maxStackSize >= slot.stackSize + amountToAdd)
+                {
+                    slot.AddStack(amountToAdd);
+
+                    OnInventoryChanged?.Invoke();
+                    return true;
+                }
+                else if (slot.HasItem && slot.itemData == itemToAdd && slot.itemData.maxStackSize < slot.stackSize + amountToAdd)
+                {
+                    difference = (slot.stackSize + amountToAdd) - slot.itemData.maxStackSize; ;
+                    slot.stackSize = slot.itemData.maxStackSize;
+                    amountToAdd = difference;
+                    OnInventoryChanged?.Invoke();
+                    return true;
+                }
+            }
+        }
+
+        foreach (InventorySlot slot in slots)
+        {
+            if(!slot.HasItem)
+            {
+                slot.itemData = itemToAdd;
+                slot.stackSize = amountToAdd;
+
+                OnInventoryChanged?.Invoke();
+                return true;
+            }
+        }
+
+        return false;
+
     }
+
 }
