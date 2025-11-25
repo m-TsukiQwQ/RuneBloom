@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,21 @@ public class ObjectItemPickUp : MonoBehaviour
     private InventorySlot _itemToAdd;
     private Inventory_Base _inventory;
 
+    public void SetObject(ItemDataSO itemData, int amount)
+    {
+        if (_itemData == null) return;
+        if (_sr != null)
+            _sr.sprite = itemData.itemIcon;
+       _amount = amount;
+        _itemData = itemData;
+
+    }
+    private void Awake()
+    {
+        
+        _sr = GetComponentInChildren<SpriteRenderer>();
+        SetObject(_itemData, _amount);
+    }
 
     private void OnValidate()
     {

@@ -1,73 +1,253 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    [SerializeField] UIInventorySlot _slotPrefab;
-    private UIInventorySlot[] _uiItemSlots;
+
+    [SerializeField] GameObject _slotPrefab;
+
+    [Header("Prefabs")]
+    [SerializeField] private UIInventorySlot[] _allSlots;
+    [SerializeField] private int _gridSlotCount = 24;
+    [SerializeField] private int _inventoryStartIndex;
+
+    [SerializeField] private int _toolbarSize = 8;
+    [SerializeField] private GameObject _toolbarPanel;
 
     [Header("References")]
-    private Inventory_Base _inventory;
+    public Inventory_Base inventory;
     public Transform itemsParent;
     public Canvas mainCanvas;
 
+    [Header("Equipment Slots")]
+    public UIEquipmentSlot hatSlot;
+    public UIEquipmentSlot shirtSlot;
+    public UIEquipmentSlot pantsSlot;
+    public UIEquipmentSlot necklaceSlot;
+    public UIEquipmentSlot ringSlot;
+    public UIEquipmentSlot bootsSlot;
 
+    public Image bgButton;
+
+    private int selectedSlot = -1;
+
+    public void ChangeSelectedSlot(int newValue)
+    {
+        if (selectedSlot >= 0)
+            _allSlots[selectedSlot].Deselect();
+
+        _allSlots[newValue].Select();
+        selectedSlot = newValue;
+    }
+
+    private void Update()
+    {
+        if (Input.inputString != null)
+        {
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if (isNumber && number > 0 && number < 9)
+            {
+                ChangeSelectedSlot(number - 1);
+            }
+        }
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0) 
+        {
+            int newValue = selectedSlot - (int)(scroll / Mathf.Abs(scroll));
+            if (newValue < 0)
+            {
+                newValue = _toolbarSize - 1;
+            }
+            else if (newValue >= _toolbarSize)
+            {
+                newValue = 0;
+            }
+            ChangeSelectedSlot(newValue);
+        }
+
+    }
     private void Awake()
     {
-
-        _uiItemSlots = itemsParent.GetComponentsInChildren<UIInventorySlot>();
-        if(_inventory == null)
-            _inventory = FindFirstObjectByType<Inventory_Base>();
-        if(mainCanvas == null)
+        
+        if (inventory == null)
+            inventory = FindFirstObjectByType<Inventory_Base>();
+        if (mainCanvas == null)
             mainCanvas = GetComponentInParent<Canvas>();
+
+        inventory.OnInventoryChanged += UpdateUI;
+
+
 
         InitializeInventory();
 
-        _inventory.OnInventoryChanged += UpdateUI;
+        ChangeSelectedSlot(0);
 
-        for (int i = 0; i < _uiItemSlots.Length; i++)
-        {
-            // Pass the Canvas to the slot so it can reparent the icon
-            _uiItemSlots[i].Init(i, mainCanvas);
-        }
+    }
 
+    private void Start()
+    {
         UpdateUI();
     }
 
     private void InitializeInventory()
     {
-        // 1. Create the array with the correct, known size.
-        _uiItemSlots = new UIInventorySlot[_inventory.maxInventorySize];
+        int totalSize = _gridSlotCount + _toolbarSize;
 
-        for (int i = 0; i < _inventory.maxInventorySize; i++)
+        if (hatSlot != null) totalSize++;
+        if (shirtSlot != null) totalSize++;
+        if (pantsSlot != null) totalSize++;
+        if (necklaceSlot != null) totalSize++;
+        if (ringSlot != null) totalSize++;
+        if (bootsSlot != null) totalSize++;
+
+        _allSlots = new UIInventorySlot[totalSize];
+
+        int index = 0;
+        for (index = 0; index < _toolbarSize; index++)
         {
-            // 2. Create the slot from the prefab.
-            UIInventorySlot slot = Instantiate(_slotPrefab);
-
-            // 3. Parent the new slot to this GameObject (the UI Panel).
-            //    Set 'worldPositionStays' to false to prevent layout issues.
-            slot.transform.SetParent(itemsParent, false);
-
-            // 4. Add the newly created slot to our array.
-            _uiItemSlots[i] = slot;
-
-            // 5. (Optional but recommended) Initialize the slot as empty.
-            //    I'm assuming your UpdateSlot(null) method handles this.
-            slot.UpdateSlot(null);
+            GameObject newSlotObj = Instantiate(_slotPrefab);
+            newSlotObj.transform.SetParent(_toolbarPanel.transform, false);
+            _allSlots[index] = newSlotObj.GetComponent<UIInventorySlot>();
         }
+
+        for (index = index; index < _gridSlotCount + _toolbarSize; index++)
+        {
+            GameObject newSlotObj = Instantiate(_slotPrefab);
+            newSlotObj.transform.SetParent(itemsParent, false);
+
+            // Assign directly to the array index
+            _allSlots[index] = newSlotObj.GetComponent<UIInventorySlot>();
+        }
+
+        int currentIndex = index;
+
+
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = hatSlot;
+            currentIndex++;
+        }
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = shirtSlot;
+            currentIndex++;
+        }
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = pantsSlot;
+            currentIndex++;
+        }
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = necklaceSlot;
+            currentIndex++;
+        }
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = ringSlot;
+            currentIndex++;
+        }
+        if (hatSlot != null)
+        {
+            _allSlots[currentIndex] = bootsSlot;
+            currentIndex++;
+        }
+
+        // Initialize IDs for everyone
+        for (int i = 0; i < _allSlots.Length; i++)
+        {
+            _allSlots[i].Init(i, this);
+        }
+    }
+
+    private void InitializeToolbar()
+    {
+
     }
 
     private void UpdateUI()
     {
-        for (int i = 0; i < _inventory.slots.Length; i++)
+        for (int i = 0; i < inventory.slots.Length; i++)
         {
-            if(i < _uiItemSlots.Length)
+            if (i < _allSlots.Length)
             {
-                _uiItemSlots[i].UpdateSlot(_inventory.slots[i]);
+                _allSlots[i].UpdateSlot(inventory.slots[i]);
             }
         }
-        
+
     }
 
-    
+    public void HandleSwap(int indexA, int indexB)
+    {
+        inventory.SwapItems(indexA, indexB);
+    }
+
+    public void OnQuickEquip(int sourceIndex, int caseOfClcik)
+    {
+        bool isBagSlot = sourceIndex < _gridSlotCount + _toolbarSize;
+
+        if (isBagSlot)
+        {
+            ItemDataSO itemToEquip = inventory.slots[sourceIndex].itemData;
+            if (itemToEquip == null)
+                return;
+            int targetIndex = -1;
+
+            if (hatSlot != null && hatSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = hatSlot.SlotIndex;
+            }
+            if (shirtSlot != null && shirtSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = shirtSlot.SlotIndex;
+            }
+            if (pantsSlot != null && pantsSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = pantsSlot.SlotIndex;
+            }
+            if (necklaceSlot != null && necklaceSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = necklaceSlot.SlotIndex;
+            }
+            if (ringSlot != null && ringSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = ringSlot.SlotIndex;
+            }
+            if (bootsSlot != null && bootsSlot.CanAccept(itemToEquip))
+            {
+                targetIndex = bootsSlot.SlotIndex;
+            }
+
+            if (targetIndex != -1)
+            {
+                inventory.SwapItems(sourceIndex, targetIndex);
+            }
+        }
+        else
+        {
+            for (int i = _inventoryStartIndex; i < _gridSlotCount + _toolbarSize; i++)
+            {
+                if (!inventory.slots[i].HasItem)
+                {
+                    inventory.SwapItems(sourceIndex, i);
+                    return;
+                }
+            }
+
+            for (int i = 0; i < _toolbarSize; i++)
+            {
+                if (!inventory.slots[i].HasItem)
+                {
+                    inventory.SwapItems(sourceIndex, i);
+                    return;
+                }
+            }
+
+
+
+        }
+    }
+
+
 }

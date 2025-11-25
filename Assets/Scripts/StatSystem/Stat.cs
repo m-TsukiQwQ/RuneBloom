@@ -13,6 +13,9 @@ public class Stat
     private bool _needToBeRecalculated = true;
     private float _multipliersSum;
 
+    public List<StatModifier> Modifiers() => _modifiers;
+    public List<StatModifier> Multipliers() => _multipliers;
+
     public float GetValue()
     {
         if (_needToBeRecalculated)

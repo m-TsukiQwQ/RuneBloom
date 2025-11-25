@@ -18,9 +18,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _defaultPage;
 
     private UISectionButton _currentActiveButton;
+
     private void Awake()
     {
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
+        
+    }
+    private void Update()
+    {
+        
     }
     private void Start()
     {

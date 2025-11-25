@@ -337,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5987e26df92b44b49b1e7f3790c406d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectedImage: {fileID: 5323201167464792326, guid: fba70fa96a1f1c54aa35e2b84998d5d6, type: 3}
+  _bg: {fileID: 2155861687416196994}
   _itemIcon: {fileID: 3834214415677432547}
   _itemStackSize: {fileID: 7123761044704503995}
   _itemToDrag: {fileID: 1581935015267761382}
