@@ -1,10 +1,11 @@
+using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
+public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("ToolbarSelection")]
     [SerializeField] private Sprite _selectedImage;
@@ -18,11 +19,19 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField] private TextMeshProUGUI _itemStackSize;
     [SerializeField] private GameObject _itemToDrag;
 
+    private GameObject _ghostIconObj; // The temporary icon we create for right-click
+    private bool _isSplitDrag;        // Are we dragging half or whole?
+    private int _dragAmount;          // How many are we dragging?
+
+
     private UIInventory _inventoryUI;
     private Transform _originalParent; // To remember where the icon belongs
 
 
     private int _slotIndex;
+    // Public getter so the Drop Target knows if we are splitting
+    public bool IsSplitDrag => _isSplitDrag;
+    public int DragAmount => _dragAmount;
 
     public void Select()
     {
@@ -50,12 +59,30 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
 
         if (_itemIcon.enabled == false) return;
+        InventorySlot slotData = _inventoryUI.inventory.slots[_slotIndex];
 
-        _originalParent = _itemToDrag.transform.parent;
+        if (eventData.button == PointerEventData.InputButton.Right && slotData.stackSize > 1)
+        {
+            _isSplitDrag = true;
+            _dragAmount = Mathf.CeilToInt(slotData.stackSize / 2f); // Take half (rounded up)
 
-        _itemToDrag.transform.SetParent(_inventoryUI.mainCanvas.transform);
+            // Create a Ghost Icon (Copy of the real icon)
+            _ghostIconObj = Instantiate(_itemToDrag.gameObject, _inventoryUI.mainCanvas.transform);
+            _ghostIconObj.GetComponentInChildren<Image>().raycastTarget = false; // Important!
 
-        _itemIcon.raycastTarget = false;
+            // Optional: Update Ghost Text to show half amount
+            TextMeshProUGUI ghostText = _ghostIconObj.GetComponentInChildren<TextMeshProUGUI>();
+            if (ghostText) ghostText.text = _dragAmount.ToString();
+        }
+        else
+        {
+            _isSplitDrag = false;
+            _dragAmount = slotData.stackSize;
+
+            _originalParent = _itemToDrag.transform.parent;
+            _itemToDrag.transform.SetParent(_inventoryUI.mainCanvas.transform);
+            _itemIcon.raycastTarget = false;
+        }
 
         if (_inventoryUI.bgButton != null)
             _inventoryUI.bgButton.raycastTarget = false;
@@ -63,8 +90,16 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_itemIcon.enabled == false) return;
-        _itemToDrag.transform.position = Input.mousePosition;
+
+        if (_isSplitDrag && _ghostIconObj != null)
+        {
+            _ghostIconObj.transform.position = Input.mousePosition;
+        }
+        else if (!_isSplitDrag && _itemIcon.enabled)
+        {
+            _itemToDrag.transform.position = Input.mousePosition;
+        }
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -80,46 +115,68 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             // 3. Ensure Z axis stays at 0 (or same as player) to prevent sorting issues
             dropPos.z = playerTransform.position.z;
 
-            _inventoryUI.inventory.DropItem(_slotIndex, dropPos);
+            if (!_isSplitDrag)
+                _inventoryUI.inventory.DropItem(_slotIndex, dropPos);
 
         }
+
+        if (_isSplitDrag)
+        {
+            // Destroy the ghost copy
+            if (_ghostIconObj != null) Destroy(_ghostIconObj);
+        }
+        else
+        {
+            _itemToDrag.transform.SetParent(_originalParent);
+            _itemToDrag.transform.localPosition = Vector3.zero;
+            _itemIcon.raycastTarget = true;
+        }
+
+
         if (_inventoryUI.bgButton != null)
             _inventoryUI.bgButton.raycastTarget = true;
 
-        _itemToDrag.transform.SetParent(_originalParent);
-
-        _itemToDrag.transform.localPosition = Vector3.zero;
-
-        _itemIcon.raycastTarget = true;
     }
     public virtual void OnDrop(PointerEventData eventData)
     {
-        // 1. Who is being dropped on me?
         GameObject droppedObj = eventData.pointerDrag;
         if (droppedObj == null) return;
 
-        // 2. Get the slot script from that object
-        UIInventorySlot incomingSlot = droppedObj.GetComponent<UIInventorySlot>();
-
-        // 3. If it is a valid slot, tell the manager to swap our indices
-        if (incomingSlot != null)
+        UIInventorySlot incomingSlotUI = droppedObj.GetComponent<UIInventorySlot>();
+        if (incomingSlotUI != null)
         {
+            ItemDataSO incomingItem = incomingSlotUI.GetItem();
 
-
-            ItemDataSO incomingItem = incomingSlot.GetItem();
-
-            // 2. Validate: Do I accept this item type?
             if (CanAccept(incomingItem))
             {
-
                 ItemDataSO myItem = GetItem();
-                if (myItem == null || incomingSlot.CanAccept(myItem))
+
+                // Logic:
+                // 1. If it's a Split Drag -> Call Transfer
+                // 2. If it's a Normal Drag -> Call Swap
+
+                if (incomingSlotUI.IsSplitDrag)
                 {
-                    _inventoryUI.HandleSwap(incomingSlot.SlotIndex, this._slotIndex);
+                    // Only transfer if target accepts it or is empty
+                    if (myItem == null || incomingSlotUI.CanAccept(myItem))
+                    {
+                        // Call the NEW function in InventorySystem
+                        _inventoryUI.inventory.TransferItem(incomingSlotUI.SlotIndex, this._slotIndex, incomingSlotUI.DragAmount);
+                    }
+                }
+                else
+                {
+                    // Standard Swap
+                    if (myItem == null || incomingSlotUI.CanAccept(myItem))
+                    {
+                        _inventoryUI.HandleSwap(incomingSlotUI.SlotIndex, this._slotIndex);
+                    }
                 }
             }
         }
+        _isSplitDrag = false;
     }
+    
 
     public int SlotIndex => _slotIndex;
 
@@ -170,5 +227,15 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 _inventoryUI.OnQuickEquip(_slotIndex, 1);
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }

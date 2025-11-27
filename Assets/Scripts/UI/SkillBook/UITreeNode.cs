@@ -127,7 +127,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         _ui.skillToolTip.ShowSkillToolTip(_skillData, this);
-        _ui.ShowToolTip(true);
+        _ui.ShowSkillToolTip(true);
 
         _bacground.sprite = _selectedSprite;
 
@@ -149,7 +149,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _ui.ShowToolTip(false);
+        _ui.ShowSkillToolTip(false);
 
         _bacground.sprite = _unselectedSprite;
 
@@ -192,7 +192,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void OnDisable()
     {
-        _ui.ShowToolTip(false);
+        _ui.ShowSkillToolTip(false);
         _bacground.sprite = _unselectedSprite;
     }
 }

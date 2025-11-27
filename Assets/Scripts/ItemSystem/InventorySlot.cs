@@ -142,6 +142,6 @@ public class InventorySlot
 
     public bool HasItem => itemData != null;
     public bool CanAddStack() => stackSize < itemData.maxStackSize;
-    public void AddStack(int amount) => stackSize += amount;
+    public void AddToStack(int amount) => stackSize += amount;
     public void RemoveStack(int amount) => stackSize -= amount;
 }

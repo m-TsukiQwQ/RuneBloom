@@ -11,7 +11,7 @@ public class ObjectItemPickUp : MonoBehaviour
     private int _amount = 1;
 
     private InventorySlot _itemToAdd;
-    private Inventory_Base _inventory;
+    private InventoryBase _inventory;
 
     public void SetObject(ItemDataSO itemData, int amount)
     {
@@ -45,7 +45,7 @@ public class ObjectItemPickUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 1. Try to find the InventorySystem on the player
-        _inventory = collision.GetComponent<Inventory_Base>();
+        _inventory = collision.GetComponent<InventoryBase>();
 
 
         if (_inventory != null)

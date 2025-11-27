@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game Setup/Item Data/Armor item", fileName = "Armor data - ")]
+[CreateAssetMenu(menuName = "Game Setup/Item Data/Equipment item", fileName = "Equipment data - ")]
 public class EquipmentDataSO : ItemDataSO
 {
     [Header("Item modifiers")]

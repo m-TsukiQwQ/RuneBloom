@@ -15,7 +15,7 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject _toolbarPanel;
 
     [Header("References")]
-    public Inventory_Base inventory;
+    public InventoryBase inventory;
     public Transform itemsParent;
     public Canvas mainCanvas;
 
@@ -71,7 +71,7 @@ public class UIInventory : MonoBehaviour
     {
         
         if (inventory == null)
-            inventory = FindFirstObjectByType<Inventory_Base>();
+            inventory = FindFirstObjectByType<InventoryBase>();
         if (mainCanvas == null)
             mainCanvas = GetComponentInParent<Canvas>();
 

@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _freezeOverlay;
 
     [HideInInspector] public UISkillToolTip skillToolTip;
+    [HideInInspector] public UIItemToolTip itemToolTip;
 
     [SerializeField] private List<GameObject> _skillPages;
     [SerializeField] private GameObject _defaultPage;
@@ -22,7 +23,9 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
-        
+        itemToolTip = GetComponentInChildren<UIItemToolTip>(true);
+
+
     }
     private void Update()
     {
@@ -30,7 +33,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        ShowToolTip(false);
+        ShowSkillToolTip(false);
     }
 
     public void ToggleInventory()
@@ -54,9 +57,16 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public virtual void ShowToolTip(bool show)
+    public virtual void ShowSkillToolTip(bool show)
     {
         skillToolTip.gameObject.SetActive(show);
+        
+
+    }
+
+    public virtual void ShowItemToolTip(bool show)
+    {
+        itemToolTip.gameObject.SetActive(show);
         
 
     }
@@ -68,6 +78,7 @@ public class UIManager : MonoBehaviour
             page.gameObject.SetActive(false);
         }
     }
+
 
     public void OnSectionButtonClicked()
     {
