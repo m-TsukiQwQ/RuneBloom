@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Material data - Stick
   m_EditorClassIdentifier: 
   itemName: Stick
-  itemIcon: {fileID: -6752209579222859107, guid: eb5c743a04567564397d79f12685be4a, type: 3}
-  itemType: 0
+  itemIcon: {fileID: 21300000, guid: eb5c743a04567564397d79f12685be4a, type: 3}
+  itemDisplayType: 0
+  equipmentType: 0
+  description: "A fallen branch found on the ground. It\u2019s not Excalibur, but
+    you have to start somewhere."
   maxStackSize: 10

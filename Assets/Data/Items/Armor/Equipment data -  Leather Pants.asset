@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ca3be5f2afc8a468626d120db578db, type: 3}
   m_Name: Equipment data -  Leather Pants
   m_EditorClassIdentifier: 
-  itemName: 
-  itemIcon: {fileID: 0}
-  itemDisplayType: 0
-  equipmentType: 0
-  description: 
+  itemName: Leather pants
+  itemIcon: {fileID: 21300000, guid: 1f4e4293a87f52d48b0be9d7ab8f20e6, type: 3}
+  itemDisplayType: 2
+  equipmentType: 3
+  description: Tight-fitting and durable. They allow for maximum flexibility, perfect
+    for striking impossible poses or running away very, very fast.
   maxStackSize: 1
-  modifiers: []
+  modifiers:
+  - statType: 3
+    value: 2
+    isMultiplier: 0

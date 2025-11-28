@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 
 public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
@@ -26,12 +28,17 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private UIInventory _inventoryUI;
     private Transform _originalParent; // To remember where the icon belongs
-
+    [SerializeField] private UIManager _ui;
 
     private int _slotIndex;
     // Public getter so the Drop Target knows if we are splitting
     public bool IsSplitDrag => _isSplitDrag;
     public int DragAmount => _dragAmount;
+
+    private ItemDataSO ItemData()
+    {
+        return _inventoryUI.inventory.slots[SlotIndex].itemData;
+    }
 
     public void Select()
     {
@@ -46,8 +53,13 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void Awake()
     {
         _originalImage = _bg.sprite;
+        
         Deselect();
 
+    }
+    private void Start()
+    {
+        _ui = GetComponentInParent<UIManager>(true);
     }
     public void Init(int index, UIInventory inventory)
     {
@@ -57,6 +69,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        _ui.ShowItemToolTip(false);
 
         if (_itemIcon.enabled == false) return;
         InventorySlot slotData = _inventoryUI.inventory.slots[_slotIndex];
@@ -90,6 +103,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        _ui.ShowItemToolTip(false);
 
         if (_isSplitDrag && _ghostIconObj != null)
         {
@@ -104,6 +118,8 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        _ui.ShowItemToolTip(true);
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             Transform playerTransform = _inventoryUI.inventory.transform;
@@ -231,11 +247,23 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (ItemData() == null)
+            return;
+
+        _ui.itemToolTip.ShowItemToolTip(ItemData());
+
+        _ui.ShowItemToolTip(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+
+        _ui.ShowItemToolTip(false);
+    }
+
+    private void OnDisable()
+    {
+        _ui.ShowItemToolTip(false);
+
     }
 }

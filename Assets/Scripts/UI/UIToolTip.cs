@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class UIToolTip : MonoBehaviour
 {
     [Header("References")]
-    protected LayoutElement _layoutElement;
-    private RectTransform _rect;
-    private Canvas _canvas;
+    [SerializeField] protected LayoutElement _layoutElement;
+    [SerializeField] private RectTransform _rect;
+    [SerializeField] private Canvas _canvas;
 
     [Header("Positioning details")]
     [SerializeField] private Vector2 _offset = new Vector2(20, 20);
