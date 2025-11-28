@@ -45,7 +45,7 @@ public class ObjectItemPickUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 1. Try to find the InventorySystem on the player
-        _inventory = collision.GetComponent<InventoryBase>();
+        _inventory = collision.GetComponent<PlayerInventory>();
 
 
         if (_inventory != null)

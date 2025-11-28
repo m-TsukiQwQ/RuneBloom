@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class InventoryBase : MonoBehaviour
 {
-    [SerializeField] private EntityStats _playerStats;
+    
 
     public InventorySlot[] slots;
     public int maxInventorySize;
-    [SerializeField] private int _equipmentStartIndex = 32;
-    [SerializeField] private int _inventoryStartIndex = 8;
+    
 
     public event Action OnInventoryChanged;
 
     [SerializeField] private GameObject _pickupPrefab;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        _playerStats = GetComponent<EntityStats>();
+        
         slots = new InventorySlot[maxInventorySize];
         for (int i = 0; i < slots.Length; i++)
         {
@@ -27,8 +26,9 @@ public class InventoryBase : MonoBehaviour
 
 
 
-    public bool TryAddItem(ItemDataSO itemToAdd, int amountToAdd)
+    public virtual bool TryAddItem(ItemDataSO itemToAdd, int amountToAdd)
     {
+
         int difference;
         if (itemToAdd.maxStackSize > 1)
         {
@@ -57,17 +57,19 @@ public class InventoryBase : MonoBehaviour
             }
         }
 
+
         foreach (InventorySlot slot in slots)
         {
             if (!slot.HasItem)
             {
                 slot.AssignItem(itemToAdd, amountToAdd);
-
+                Debug.Log(slot.itemData.itemName);
                 OnInventoryChanged?.Invoke();
-                HandleEquipmentModifier();
+
                 return true;
             }
         }
+
 
         return false;
 
@@ -76,17 +78,9 @@ public class InventoryBase : MonoBehaviour
 
 
 
-    private void HandleEquipmentModifier()
-    {
-        if (_playerStats == null) return;
-        for (int i = _equipmentStartIndex; i < slots.Length; i++)
-        {
-            InventorySlot slot = slots[i];
-            slot.ManageModifier(_playerStats);
-        }
-    }
+    
 
-    public void DropItem(int slotIndex, Vector2 spawnPoint)
+    public virtual void DropItem(int slotIndex, Vector2 spawnPoint)
     {
         InventorySlot slot = slots[slotIndex];
         if (!slot.HasItem) return;
@@ -100,18 +94,15 @@ public class InventoryBase : MonoBehaviour
         slot.Clear();
 
         OnInventoryChanged?.Invoke();
-        HandleEquipmentModifier();
+        
     }
-    public void SwapItems(int indexA, int indexB)
+    public virtual void SwapItems(int indexA, int indexB)
     {
         InventorySlot slotA = slots[indexA];
         InventorySlot slotB = slots[indexB];
 
         if (!slotA.HasItem) return;
-        // If we move a Helmet from Equip(A) to Bag(B), we must remove its stats first.
-        // We do this for BOTH slots to be safe.
-        if (slotA != null && _playerStats != null) slotA.RemoveModifiers(_playerStats);
-        if (slotB != null && _playerStats != null) slotB.RemoveModifiers(_playerStats);
+
 
 
         if (slotB.itemData == slotA.itemData) // CASE 2: Stacking onto the same item
@@ -141,10 +132,10 @@ public class InventoryBase : MonoBehaviour
 
 
         OnInventoryChanged?.Invoke();
-        HandleEquipmentModifier();
+        
     }
 
-    public void TransferItem(int fromIndex, int toIndex, int amountToMove)
+    public virtual void TransferItem(int fromIndex, int toIndex, int amountToMove)
     {
         InventorySlot fromSlot = slots[fromIndex];
         InventorySlot toSlot = slots[toIndex];
@@ -181,14 +172,14 @@ public class InventoryBase : MonoBehaviour
         }
 
         OnInventoryChanged?.Invoke();
-        HandleEquipmentModifier();
+
     }
 
-    public void SortInventory()
+    public void SortInventory(int startOfList, int endOfList)
     {
         List<InventorySlot> listOfItems = new List<InventorySlot>();
 
-        for (int i = _inventoryStartIndex; i < _equipmentStartIndex; i++)
+        for (int i = startOfList; i < endOfList; i++)
         {
             InventorySlot slot = slots[i];
             if (slot.HasItem)
@@ -242,14 +233,7 @@ public class InventoryBase : MonoBehaviour
         compactedList.Sort((a, b) => string.Compare(a.itemData.itemName, b.itemData.itemName));
 
 
-        //for (int i = _inventoryStartIndex; i < _equipmentStartIndex; i++)
-        //{
-        //    slots[i].AssignItem(listOfItems[i].itemData, listOfItems[i].stackSize);
-
-
-        //}
-
-        int index = _inventoryStartIndex;
+        int index = startOfList;
         int listIndex = 0;
         foreach (var item in compactedList)
         {
@@ -263,6 +247,55 @@ public class InventoryBase : MonoBehaviour
         OnInventoryChanged?.Invoke();
 
 
+    }
+
+    // --- NEW: CROSS-INVENTORY LOGIC ---
+    // Moves an item from THIS inventory -> TARGET inventory
+    public virtual void TransferTo(InventoryBase targetInventory, int sourceIndex, int targetIndex)
+    {
+        InventorySlot mySlot = slots[sourceIndex];
+        InventorySlot targetSlot = targetInventory.slots[targetIndex];
+
+        // Safety Checks
+        if (!mySlot.HasItem) return;
+
+        // Logic A: Target is Empty -> Move everything
+        if (!!targetSlot.HasItem)
+        {
+            targetSlot.AssignItem(mySlot.itemData, mySlot.stackSize);
+            mySlot.Clear();
+        }
+        // Logic B: Target matches Item -> Stack it
+        else if (targetSlot.itemData == mySlot.itemData)
+        {
+            // Simple stack logic (assuming infinite for now or standard max)
+            int space = targetSlot.itemData.maxStackSize - targetSlot.stackSize;
+            int amountToMove = Mathf.Min(space, mySlot.stackSize);
+
+            if (amountToMove > 0)
+            {
+                targetSlot.AddToStack(amountToMove);
+                mySlot.stackSize -= amountToMove;
+                if (mySlot.stackSize <= 0) mySlot.Clear();
+            }
+            else
+            {
+                // No space to stack, do nothing (or swap if we implemented logic for that)
+                return;
+            }
+        }
+        else
+        {
+            // Logic C: Items are different.
+            // If dragging specifically to a slot, we could SWAP them across inventories.
+            // For simplicity in step 1, we only allow move to empty/stack.
+            // To add Swap: Perform a deep copy swap here.
+            return;
+        }
+
+        // IMPORTANT: Both inventories changed, so both UIs must redraw
+        this.OnInventoryChanged?.Invoke();
+        targetInventory.OnInventoryChanged?.Invoke();
     }
 
 

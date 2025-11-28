@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Leather boots
   itemIcon: {fileID: 21300000, guid: 125a78ba3b1a8a04f9d54174e2ede76c, type: 3}
-  itemDisplayType: 0
+  itemDisplayType: 2
   equipmentType: 4
   description: Sturdy soles meant for a long journey.
   maxStackSize: 1

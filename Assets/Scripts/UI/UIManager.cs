@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         ShowSkillToolTip(false);
         ShowItemToolTip(false);
+        ToggleInventory();
     }
 
     public void ToggleInventory()

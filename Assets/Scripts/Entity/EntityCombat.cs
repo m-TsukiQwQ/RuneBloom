@@ -8,6 +8,7 @@ public class EntityCombat : MonoBehaviour
 
     [Header("Target detection")]
     [SerializeField] protected Transform[] _targetChecks;
+
     [SerializeField] protected Vector2 _targetCheckRange;
     [SerializeField] protected LayerMask _whatIsTarget;
     protected Vector2 _attackDirection;
@@ -82,7 +83,7 @@ public class EntityCombat : MonoBehaviour
         return Physics2D.OverlapBoxAll(_targetChecks[index].position, _targetCheckRange, 0, _whatIsTarget);
     }
 
-    protected virtual int GetDominantDirection() //up = 0, left = 1, down = 2, right = 3
+    protected virtual int GetDominantDirection() //up = 2, left = 1, down = 1, right = 3
     {
 
 

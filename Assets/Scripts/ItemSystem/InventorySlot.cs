@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 [Serializable]
@@ -33,9 +34,9 @@ public class InventorySlot
         else
         {
             modifiers = null;
-            modifiers = null;
 
         }
+ 
     }
 
     public InventorySlot() // Empty Constructor

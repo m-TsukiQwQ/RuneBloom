@@ -19,15 +19,18 @@ public class UIInventory : MonoBehaviour
     public Transform itemsParent;
     public Canvas mainCanvas;
 
-    [Header("Equipment Slots")]
-    public UIEquipmentSlot hatSlot;
-    public UIEquipmentSlot shirtSlot;
-    public UIEquipmentSlot pantsSlot;
-    public UIEquipmentSlot necklaceSlot;
-    public UIEquipmentSlot ringSlot;
-    public UIEquipmentSlot bootsSlot;
 
-    public Image bgButton;
+    [Header("Equipment Slots")]
+    [SerializeField] private UIEquipmentSlot hatSlot;
+    [SerializeField] private UIEquipmentSlot shirtSlot;
+    [SerializeField] private UIEquipmentSlot pantsSlot;
+    [SerializeField] private UIEquipmentSlot necklaceSlot;
+    [SerializeField] private UIEquipmentSlot ringSlot;
+    [SerializeField] private UIEquipmentSlot bootsSlot;
+
+    [SerializeField] private GameObject _equipmentPanel;
+
+    public Image darkBGButton;
 
     private int selectedSlot = -1;
 
@@ -71,11 +74,12 @@ public class UIInventory : MonoBehaviour
     {
         
         if (inventory == null)
-            inventory = FindFirstObjectByType<InventoryBase>();
+            inventory = FindFirstObjectByType<PlayerInventory>();
         if (mainCanvas == null)
             mainCanvas = GetComponentInParent<Canvas>();
 
         inventory.OnInventoryChanged += UpdateUI;
+
 
 
 
@@ -157,14 +161,10 @@ public class UIInventory : MonoBehaviour
         // Initialize IDs for everyone
         for (int i = 0; i < _allSlots.Length; i++)
         {
-            _allSlots[i].Init(i, this);
+            _allSlots[i].Init(i, inventory, mainCanvas);
         }
     }
 
-    private void InitializeToolbar()
-    {
-
-    }
 
     private void UpdateUI()
     {
@@ -176,6 +176,7 @@ public class UIInventory : MonoBehaviour
             }
         }
 
+
     }
 
     public void HandleSwap(int indexA, int indexB)
@@ -185,6 +186,9 @@ public class UIInventory : MonoBehaviour
 
     public void OnQuickEquip(int sourceIndex, int caseOfClcik)
     {
+        if (_equipmentPanel.activeSelf == false)
+            return;
+        
         bool isBagSlot = sourceIndex < _gridSlotCount + _toolbarSize;
 
         if (isBagSlot)
