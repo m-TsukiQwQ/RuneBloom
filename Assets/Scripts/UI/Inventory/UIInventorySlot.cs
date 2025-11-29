@@ -1,9 +1,6 @@
-using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 
@@ -28,7 +25,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     [SerializeField] private UIInventory _inventoryUI;
     [SerializeField] private Transform _originalParent; // To remember where the icon belongs
-     [SerializeField] private Canvas _mainCanvas;
+    [SerializeField] private Canvas _mainCanvas;
 
 
     [SerializeField] private UIManager _ui;
@@ -58,22 +55,27 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void Awake()
     {
-        
+
         _originalImage = _bg.sprite;
-        
+
         Deselect();
 
     }
     private void Start()
     {
-        _ui = GetComponentInParent<UIManager>(true);
-        _inventoryUI = _ui.GetComponentInChildren<UIInventory>(true);
+
+        //_ui = GetComponentInParent<UIManager>(true);
+
+        //_inventoryUI = _ui.GetComponentInChildren<UIInventory>(true);
     }
     public void Init(int index, InventoryBase inventory, Canvas canvas)
     {
         _slotIndex = index;
         _myInventory = inventory;
         _mainCanvas = canvas;
+        _ui = _mainCanvas.GetComponentInChildren<UIManager>(true);
+        _inventoryUI = _ui.GetComponentInChildren<UIInventory>(true);
+
 
     }
 
@@ -129,7 +131,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
 
-        _ui.ShowItemToolTip(true);
+
 
 
         if (!EventSystem.current.IsPointerOverGameObject())
@@ -172,45 +174,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             ItemDataSO incomingItem = incomingSlotUI.GetItem();
 
-            //if (CanAccept(incomingItem))
-            //{
-            //    ItemDataSO myItem = GetItem();
 
-            //    if (incomingSlotUI.OwnerInventory == this.OwnerInventory)
-            //        // Logic:
-            //        // 1. If it's a Split Drag -> Call Transfer
-            //        // 2. If it's a Normal Drag -> Call Swap
-
-
-            //        if (incomingSlotUI.IsSplitDrag)
-            //    {
-            //        // Only transfer if target accepts it or is empty
-            //        if (myItem == null || incomingSlotUI.CanAccept(myItem))
-            //        {
-            //            // Call the NEW function in InventorySystem
-            //            _inventoryUI.inventory.TransferItem(incomingSlotUI.SlotIndex, this._slotIndex, incomingSlotUI.DragAmount);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        // Standard Swap
-            //        if (myItem == null || incomingSlotUI.CanAccept(myItem))
-            //        {
-            //            if (incomingSlotUI.OwnerInventory == this.OwnerInventory)
-            //            {
-            //                // Standard Swap
-            //                _myInventory.SwapItems(incomingSlotUI.SlotIndex, this._slotIndex);
-            //            }
-            //            // CASE 2: Different Owner (e.g. Bag to Chest)
-            //            else
-            //            {
-            //                // Transfer from THEM -> TO ME
-            //                incomingSlotUI.OwnerInventory.TransferTo(this.OwnerInventory, incomingSlotUI.SlotIndex, this._slotIndex);
-            //            }
-            //            //_inventoryUI.HandleSwap(incomingSlotUI.SlotIndex, this._slotIndex);
-            //        }
-            //    }
-            //}
 
             if (CanAccept(incomingItem))
             {
@@ -219,6 +183,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 // Check 1: Is this a LOCAL operation? (Same Inventory)
                 if (incomingSlotUI.OwnerInventory == this.OwnerInventory)
                 {
+                    Debug.Log("1");
                     if (myItem == null || incomingSlotUI.CanAccept(myItem))
                     {
                         // Split Drag (Right Click) -> Local Transfer
@@ -252,7 +217,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         _isSplitDrag = false;
     }
-    
+
 
     public int SlotIndex => _slotIndex;
 
@@ -298,28 +263,73 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         if (eventData.clickCount == 2 || eventData.clickCount == 1 && Input.GetKey(KeyCode.LeftShift))
         {
-            if (GetItem() != null)
+            ItemDataSO myItem = GetItem();
+            if (myItem == null) return;
+
+            PlayerInventory player = FindFirstObjectByType<PlayerInventory>();
+            if (player == null) return;
+
+            if (_myInventory is PlayerInventory)
             {
-                if (_myInventory is PlayerInventory playerSystem)
+                if (player.CurrentOpenChest != null)
                 {
-                    // We need to access the UI Manager to run logic, or call logic on the system
-                    // If OnQuickEquip is on UIInventory (Player UI), we can call it:
-                    if (_inventoryUI != null) _inventoryUI.OnQuickEquip(_slotIndex, 1);
+                    SmartTransfer(_myInventory, player.CurrentOpenChest, _slotIndex);
                 }
                 else
                 {
-                    // Logic: Loot entire stack to Player
-                    // We need to find the player's inventory to send it there.
-                    // Usually we find the Player Singleton or reference.
-
-                    PlayerInventory player = FindFirstObjectByType<PlayerInventory>();
-                    if (player != null)
-                    {
-                        // Transfer from ME (Chest) -> PLAYER
-                        // -1 as target index implies "Find First Empty Slot"
-                        _myInventory.TransferTo(player, _slotIndex, -1);
-                    }
+                    if (_inventoryUI != null)
+                        _inventoryUI.OnQuickEquip(_slotIndex, 1);
                 }
+            }
+            else
+            {
+                SmartTransfer(_myInventory, player, _slotIndex);
+            }
+
+
+
+
+        }
+    }
+
+    private void SmartTransfer(InventoryBase fromInv, InventoryBase toInv, int fromIndex)
+    {
+        if (fromInv == null || toInv == null) return;
+
+        if (fromIndex < 0 || fromIndex >= fromInv.slots.Length)
+        {
+            Debug.LogError($"[SmartTransfer] Invalid FromIndex {fromIndex}. Array size is {fromInv.slots.Length}.");
+            return;
+        }
+
+
+        InventorySlot sourceSlot = fromInv.slots[fromIndex];
+
+        ItemDataSO itemToMove = sourceSlot.itemData;
+
+        var targetSlots = toInv.slots;
+
+        for (int i = 0; i < targetSlots.Length; i++)
+
+        {
+            if (targetSlots[i] == null) continue;
+            if (targetSlots[i].itemData != null && targetSlots[i].HasItem && targetSlots[i].itemData == itemToMove && targetSlots[i].stackSize < itemToMove.maxStackSize)
+            {
+                fromInv.TransferTo(toInv, fromIndex, i);
+                if (!sourceSlot.HasItem) return; // Done
+            }
+        }
+
+        for (int i = 0; i < targetSlots.Length; i++)
+        {
+            if (toInv is PlayerInventory inv)
+                i = inv.inventoryStartIndex;
+            if (targetSlots[i] == null) continue;
+
+            if (!targetSlots[i].HasItem)
+            {
+                fromInv.TransferTo(toInv, fromIndex, i);
+                return; // Done
             }
         }
     }

@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
 {
     [Header("UI logic")]
     [SerializeField] private GameObject _inventoryPanel;
-    [SerializeField] private GameObject _skillBook;
+    [SerializeField] private GameObject _skillBookPanel;
+    [SerializeField] private GameObject _chestPanel;
+
+    [SerializeField] private GameObject[] _panels;
 
     [Header("Overlay logic")]
     [SerializeField] private GameObject _freezeOverlay;
@@ -20,11 +23,17 @@ public class UIManager : MonoBehaviour
 
     private UISectionButton _currentActiveButton;
 
+    [SerializeField ] private GameObject _darkBG;
+
     private void Awake()
     {
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
         itemToolTip = GetComponentInChildren<UIItemToolTip>(true);
 
+        _panels = new GameObject[3];
+        _panels[0] = _inventoryPanel;
+        _panels[1] = _chestPanel;
+        _panels[2] = _skillBookPanel;
 
     }
     private void Update()
@@ -35,22 +44,42 @@ public class UIManager : MonoBehaviour
     {
         ShowSkillToolTip(false);
         ShowItemToolTip(false);
-        ToggleInventory();
+        _inventoryPanel.SetActive(false);
     }
 
     public void ToggleInventory()
     {
-        if (_skillBook.activeSelf)
-            ToggleSkillBook();
+        foreach (var panel in _panels)
+        {
+            if (panel != _inventoryPanel)
+                panel.SetActive(false);
+        }
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
+        _darkBG.SetActive(_inventoryPanel.activeSelf);
         
 
     }
+    public void HideAllUI()
+    {
+        _inventoryPanel.SetActive(false);
+        _skillBookPanel.SetActive(false);
+        _chestPanel.SetActive(false);
+    }
+
+    public void ToggleInventoryPanel()
+    {
+
+    }
+
     public void ToggleSkillBook()
     {
-        if(_inventoryPanel.activeSelf)
-            ToggleInventory();
-        _skillBook.SetActive(!_skillBook.activeSelf);
+        foreach (var panel in _panels)
+        {
+            if (panel != _skillBookPanel)
+                panel.SetActive(false);
+        }
+        _skillBookPanel.SetActive(!_skillBookPanel.activeSelf);
+        _darkBG.SetActive(_skillBookPanel.activeSelf);
     }
 
     public void ShowCloseFreezeOverlay()

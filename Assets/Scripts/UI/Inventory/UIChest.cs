@@ -6,6 +6,10 @@ public class UIChest : MonoBehaviour
     public Transform itemsPanel;
     public GameObject slotPrefab;
     public Canvas mainCanvas;
+    [SerializeField] private GameObject _inventoryPanel;
+    [SerializeField] private GameObject _equipmentPanel;
+    [SerializeField] private GameObject _darkBG;
+
 
     private InventoryBase _currentChest;
     public InventoryBase CurrentChest => _currentChest;
@@ -15,6 +19,7 @@ public class UIChest : MonoBehaviour
     {
        
         if (mainCanvas == null) mainCanvas = GetComponentInParent<Canvas>();
+        
     }
 
     private void Start()
@@ -26,6 +31,15 @@ public class UIChest : MonoBehaviour
     {
         _currentChest = chestData;
         gameObject.SetActive(true);
+        _inventoryPanel?.gameObject.SetActive(true);
+        _equipmentPanel?.gameObject.SetActive(false);
+        _darkBG?.gameObject.SetActive(true);
+
+        PlayerInventory player = FindFirstObjectByType<PlayerInventory>();
+        if (player != null)
+        {
+            player.CurrentOpenChest = _currentChest;
+        }
 
         _currentChest.OnInventoryChanged += UpdateUI;
 
@@ -35,10 +49,18 @@ public class UIChest : MonoBehaviour
 
     public void Hide()
     {
+        PlayerInventory player = FindFirstObjectByType<PlayerInventory>();
+        if (player != null && player.CurrentOpenChest == _currentChest)
+        {
+            player.CurrentOpenChest = null;
+        }
         if (_currentChest != null)
             _currentChest.OnInventoryChanged -= UpdateUI;
 
         _currentChest = null;
+        _inventoryPanel?.gameObject.SetActive(false);
+        _darkBG?.gameObject.SetActive(false);
+        _equipmentPanel?.gameObject.SetActive(true);
         gameObject.SetActive(false);
     
 }

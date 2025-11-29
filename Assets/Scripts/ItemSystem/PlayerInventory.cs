@@ -6,6 +6,7 @@ public class PlayerInventory : InventoryBase
     private EntityStats _playerStats;
 
     [SerializeField] private int _equipmentStartIndex = 32;
+    public int inventoryStartIndex => _inventoryStartIndex;
     [SerializeField] private int _inventoryStartIndex = 8;
 
 
@@ -65,21 +66,21 @@ public class PlayerInventory : InventoryBase
         HandleEquipmentModifier();
     }
 
-    //public override void TransferTo(InventoryBase targetInventory, int sourceIndex, int targetIndex)
-    //{
-    //    // If we are moving an item OUT of the player, check if it had stats applied
-    //    InventorySlot mySlot = slots[sourceIndex];
-    //    if (mySlot != null && _playerStats != null)
-    //    {
-    //        mySlot.RemoveModifiers(_playerStats);
-    //    }
+    public override void TransferTo(InventoryBase targetInventory, int sourceIndex, int targetIndex)
+    {
+        // If we are moving an item OUT of the player, check if it had stats applied
+        InventorySlot mySlot = slots[sourceIndex];
+        if (mySlot != null && _playerStats != null)
+        {
+            mySlot.RemoveModifiers(_playerStats);
+        }
 
-    //    // Run the standard transfer logic
-    //    base.TransferTo(targetInventory, sourceIndex, targetIndex);
+        // Run the standard transfer logic
+        base.TransferTo(targetInventory, sourceIndex, targetIndex);
 
-    //    // Ensure stats are up to date
-    //    HandleEquipmentModifier();
-    //}
+        // Ensure stats are up to date
+        HandleEquipmentModifier();
+    }
 
     public void SortPlayersInventory()
     {

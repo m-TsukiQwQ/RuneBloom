@@ -8,7 +8,9 @@ public class InventoryBase : MonoBehaviour
 
     public InventorySlot[] slots;
     public int maxInventorySize;
-    
+
+    public InventoryBase CurrentOpenChest { get; set; }
+
 
     public event Action OnInventoryChanged;
 
@@ -63,7 +65,6 @@ public class InventoryBase : MonoBehaviour
             if (!slot.HasItem)
             {
                 slot.AssignItem(itemToAdd, amountToAdd);
-                Debug.Log(slot.itemData.itemName);
                 OnInventoryChanged?.Invoke();
 
                 return true;
@@ -286,11 +287,15 @@ public class InventoryBase : MonoBehaviour
         }
         else
         {
-            // Logic C: Items are different.
-            // If dragging specifically to a slot, we could SWAP them across inventories.
-            // For simplicity in step 1, we only allow move to empty/stack.
-            // To add Swap: Perform a deep copy swap here.
-            return;
+            // 1. Capture Target Data (e.g. Apple in Chest)
+            ItemDataSO tempItem = targetSlot.itemData;
+            int tempStack = targetSlot.stackSize;
+
+            // 2. Move Source -> Target (Sword to Chest)
+            targetSlot.AssignItem(mySlot.itemData, mySlot.stackSize);
+
+            // 3. Move Temp -> Source (Apple to Player)
+            mySlot.AssignItem(tempItem, tempStack);
         }
 
         // IMPORTANT: Both inventories changed, so both UIs must redraw

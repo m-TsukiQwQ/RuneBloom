@@ -43,6 +43,7 @@ public class UIInventory : MonoBehaviour
         selectedSlot = newValue;
     }
 
+
     private void Update()
     {
         if (Input.inputString != null)
@@ -55,7 +56,7 @@ public class UIInventory : MonoBehaviour
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0) 
+        if (scroll != 0)
         {
             int newValue = selectedSlot - (int)(scroll / Mathf.Abs(scroll));
             if (newValue < 0)
@@ -72,7 +73,7 @@ public class UIInventory : MonoBehaviour
     }
     private void Awake()
     {
-        
+
         if (inventory == null)
             inventory = FindFirstObjectByType<PlayerInventory>();
         if (mainCanvas == null)
@@ -163,6 +164,7 @@ public class UIInventory : MonoBehaviour
         {
             _allSlots[i].Init(i, inventory, mainCanvas);
         }
+        UpdateUI();
     }
 
 
@@ -188,7 +190,7 @@ public class UIInventory : MonoBehaviour
     {
         if (_equipmentPanel.activeSelf == false)
             return;
-        
+
         bool isBagSlot = sourceIndex < _gridSlotCount + _toolbarSize;
 
         if (isBagSlot)
@@ -251,6 +253,11 @@ public class UIInventory : MonoBehaviour
 
 
         }
+    }
+
+    private void OnDisable()
+    {
+        UpdateUI();
     }
 
 
