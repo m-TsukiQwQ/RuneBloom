@@ -35,6 +35,9 @@ public class ObjectBase : MonoBehaviour, IDamageable
     {
         _currentHealth -= health;
         if (_currentHealth <= 0)
+        {
+            GetComponent<LootSpawner>()?.SpawnLoot();
             Destroy(this.gameObject);
+        }
     }
 }

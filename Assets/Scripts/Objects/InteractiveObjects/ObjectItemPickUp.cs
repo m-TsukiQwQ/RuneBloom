@@ -1,32 +1,42 @@
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class ObjectItemPickUp : MonoBehaviour
 {
     private SpriteRenderer _sr;
-    [SerializeField]
-    private ItemDataSO _itemData;
-    [SerializeField]
-    private int _amount = 1;
+    [SerializeField] private ItemDataSO _itemData;
+    [SerializeField] private int _amount = 1;
 
-    private InventorySlot _itemToAdd;
     private InventoryBase _inventory;
+
+    [Header("Settings")]
+    public float pickupDelay = 0.5f; // Prevent picking up instantly after dropping
+    private bool _canPickup = false;
+    private void Awake()
+    {
+        _sr = GetComponentInChildren<SpriteRenderer>();
+        SetObject(_itemData, _amount);
+    }
+
+    private void Start()
+    {
+        StartCoroutine(EnablePickupRoutine());
+    }
+
+    private IEnumerator EnablePickupRoutine()
+    {
+        yield return new WaitForSeconds(pickupDelay);
+        _canPickup = true;
+    }
 
     public void SetObject(ItemDataSO itemData, int amount)
     {
         if (_itemData == null) return;
         if (_sr != null)
             _sr.sprite = itemData.itemIcon;
-       _amount = amount;
+        _amount = amount;
         _itemData = itemData;
 
-    }
-    private void Awake()
-    {
-        
-        _sr = GetComponentInChildren<SpriteRenderer>();
-        SetObject(_itemData, _amount);
     }
 
     private void OnValidate()
@@ -44,6 +54,8 @@ public class ObjectItemPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!_canPickup)
+            return;
         // 1. Try to find the InventorySystem on the player
         _inventory = collision.GetComponent<PlayerInventory>();
 
