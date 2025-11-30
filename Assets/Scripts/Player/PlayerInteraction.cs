@@ -8,10 +8,13 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerMovement _playerMovement;
     [SerializeField] private Collider2D _check;
 
+    private EntityStats _stats;
+
 
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
+        _stats = GetComponent<EntityStats>();
     }
 
     public virtual void Interact()
@@ -57,6 +60,22 @@ public class PlayerInteraction : MonoBehaviour
             // If direction.y is positive, cast up. Otherwise, cast down.
             return (playerIdle.y > 0) ? 2 : 0;
         }
+
+
+    }
+
+    public void UseInstrument()
+    {
+        Collider2D detectedTarget = GetDetectedCollider();
+        if (detectedTarget == null) return;
+
+        IDamageable interactable = detectedTarget.GetComponentInParent<IDamageable>();
+
+        if (interactable == null) return;
+
+        float choppingDamage = _stats.general.harvesting.choppingDamage.GetValue();
+
+        interactable.TakeDamage(choppingDamage);
 
 
     }

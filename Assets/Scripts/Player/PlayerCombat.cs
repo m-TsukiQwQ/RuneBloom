@@ -4,11 +4,12 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class PlayerCombat : EntityCombat
 {
     private Player _player;
-    [SerializeField] private Collider2D[] _checks;
+    [SerializeField] private Collider2D _checks;
 
 
     protected override void Awake()
     {
+
         base.Awake();
         _player = GetComponent<Player>();
 

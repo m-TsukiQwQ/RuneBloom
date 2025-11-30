@@ -22,12 +22,13 @@ public class EntityCombat : MonoBehaviour
     public virtual void PerformAttack()
     {
 
-        foreach (var target in GetDetectedColliders())
-        {
+        var target = GetDetectedColliders();
+        if (target == null) return;
+        
 
             IDamageable damageable = target.GetComponent<IDamageable>();
 
-            if (damageable == null) continue;
+            if (damageable == null) return;
 
             float elementalDamage = _stats.GetElementalDamage(out ElementType element);
             float physicalDamage = _stats.GetPhysicalDamage(out bool isCrit);
@@ -38,7 +39,7 @@ public class EntityCombat : MonoBehaviour
 
             if (targetGotHit)
                 _vFX?.CreateOnHitVFX(target.transform, isCrit, GetCritVFXRotation(GetDominantDirection()));
-        }
+        
 
 
     }
@@ -77,10 +78,10 @@ public class EntityCombat : MonoBehaviour
         }
     }
 
-    protected Collider2D[] GetDetectedColliders()
+    protected Collider2D GetDetectedColliders()
     {
         int index = GetDominantDirection();
-        return Physics2D.OverlapBoxAll(_targetChecks[index].position, _targetCheckRange, 0, _whatIsTarget);
+        return Physics2D.OverlapBox(_targetChecks[index].position, _targetCheckRange, 0, _whatIsTarget);
     }
 
     protected virtual int GetDominantDirection() //up = 2, left = 1, down = 1, right = 3

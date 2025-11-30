@@ -55,6 +55,6 @@ public class ObjectChest : InventoryBase, IInteractable
 
     private void OnDisable()
     {
-        _chestUI.Hide();
+        
     }
 }

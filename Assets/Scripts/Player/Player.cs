@@ -11,6 +11,7 @@ public class Player : Entity
     public PlayerStateAttack attackState { get; private set; }
     public PlayerStateDead deadState {  get; private set; }
     public PlayerStateFreezed freezedState { get; private set; }
+    public PlayerStateUseInstrument useInstrumentState { get; private set; }
 
 
 
@@ -26,6 +27,8 @@ public class Player : Entity
     private float _originalRunSpeedMultiplier;
     private float animSpeedMultiplier =1;
 
+    public ToolbarController toolbar;
+
     public static event Action OnPlayerDeath;
     protected override void Awake()
     {
@@ -38,7 +41,7 @@ public class Player : Entity
         _uiManager = GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
         animator.SetFloat("AnimSpeedMultiplier", animSpeedMultiplier);
         _statusHandler = GetComponent<EntityStatusHandler>();   
-
+        toolbar = GetComponentInChildren<ToolbarController>();
 
 
 
@@ -48,6 +51,7 @@ public class Player : Entity
         attackState = new PlayerStateAttack(this, _stateMachine, "Attack");
         deadState = new PlayerStateDead(this, _stateMachine, "Dead");
         freezedState = new PlayerStateFreezed(this, _stateMachine, "Freezed");
+        useInstrumentState = new PlayerStateUseInstrument(this, _stateMachine, "UseInstrument");
 
 
 

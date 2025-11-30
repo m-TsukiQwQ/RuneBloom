@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+
 public class EntityHealth : MonoBehaviour, IDamageable
 {
 
@@ -156,7 +157,8 @@ public class EntityHealth : MonoBehaviour, IDamageable
         _entity?.RecieveKnockback(knockback, CalculateKnockbackDuration(damage));
     }
 
-
-
-
+    public bool TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -1,20 +1,16 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerStateAttack : PlayerState
+public class PlayerStateUseInstrument : PlayerState
 {
-    private int AttackDirection;
-    public PlayerStateAttack(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public PlayerStateUseInstrument(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
-
-    
 
     public override void Enter()
     {
         base.Enter();
 
-        
+
         _player._playerAnimations.SetIdleAnimation(_player.inputHandler.mouseDirection);
     }
     public override void Update()
@@ -30,9 +26,4 @@ public class PlayerStateAttack : PlayerState
     {
         _stateMachine.ChangeState(_player.idleState);
     }
-
-    
-   
 }
-    
-

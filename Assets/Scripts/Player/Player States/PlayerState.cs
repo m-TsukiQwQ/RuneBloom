@@ -26,7 +26,10 @@ public abstract class PlayerState : EntityState
         {
             if (_player._playerMovement.input.Player.Attack.WasPressedThisFrame())
             {
-                _stateMachine.ChangeState(_player.attackState);
+                if(_player.toolbar.GetSelectedItem() is InstrumentDataSO)
+                _stateMachine.ChangeState(_player.useInstrumentState);
+                else
+                    _stateMachine.ChangeState(_player.attackState);
             }
         }
     }

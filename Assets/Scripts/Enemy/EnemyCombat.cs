@@ -4,7 +4,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class EnemyCombat : EntityCombat
 {
     private Enemy _enemy;
-    [SerializeField] private Collider2D[] _checks;
+    [SerializeField] private Collider2D _checks;
 
     protected override void Awake()
     {

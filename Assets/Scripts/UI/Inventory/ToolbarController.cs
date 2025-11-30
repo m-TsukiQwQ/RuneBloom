@@ -51,6 +51,12 @@ public class ToolbarController : MonoBehaviour
         _itemInHand.sprite = itemToHold.inHandIcon;
     }
 
+    public ItemDataSO GetSelectedItem()
+    {
+        ItemDataSO item = _inventory.slots[_selectedSlot].itemData;
+        return item;
+    }
+
 
 
 

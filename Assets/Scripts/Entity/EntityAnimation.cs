@@ -16,7 +16,7 @@ public class EntityAnimation : MonoBehaviour
     private readonly int _attackX = Animator.StringToHash("AttackX");
     private readonly int _attackY = Animator.StringToHash("AttackY");
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
         _entity = GetComponentInParent<Entity>();
@@ -30,8 +30,32 @@ public class EntityAnimation : MonoBehaviour
     }
     public void SetIdleAnimation(Vector2 direction)
     {
-        _animator.SetFloat(_idleX, direction.x);
-        _animator.SetFloat(_idleY, direction.y);
+        Vector2 newDirection = GetDominantDirection(direction);
+
+        _animator.SetFloat(_idleX, newDirection.x);
+        _animator.SetFloat(_idleY, newDirection.y);
+
+    }
+
+    private Vector2 GetDominantDirection(Vector2 direction) //up = 2, left = 1, down = 0, right = 3
+    {
+        Vector2 playerIdle = direction;
+
+        if (Mathf.Abs(playerIdle.x) > Mathf.Abs(playerIdle.y))
+        {
+            // --- Horizontal is dominant ---
+            // If direction.x is positive, cast right. Otherwise, cast left.
+            playerIdle.x = (playerIdle.x > 0) ? 1 : -1;
+        }
+        else
+        {
+            // --- Vertical is dominant ---
+            // If direction.y is positive, cast up. Otherwise, cast down.
+            playerIdle.y = (playerIdle.y > 0) ? 1 : -1;
+        }
+
+        return playerIdle;
+
 
     }
 
