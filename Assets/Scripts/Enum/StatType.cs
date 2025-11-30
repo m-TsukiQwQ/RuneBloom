@@ -38,7 +38,9 @@ public enum StatType
 
     FireResistance,
     IceResistance,
-    PoisonResistance
+    PoisonResistance,
+
+        ChoppingDamage
 
 
 }

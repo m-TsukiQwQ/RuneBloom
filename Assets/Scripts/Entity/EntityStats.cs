@@ -147,6 +147,8 @@ public class EntityStats : MonoBehaviour
             case StatType.IceResistance: return defence.iceResistance;
             case StatType.PoisonResistance: return defence.poisonResistance;
 
+            case StatType.ChoppingDamage: return general.harvesting.choppingDamage;
+
             default:
                 Debug.Log($"StatType {type} not implemented yet.");
                 return null;

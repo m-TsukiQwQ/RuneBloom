@@ -1,3 +1,4 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -5,7 +6,8 @@ public class PlayerInput : MonoBehaviour
     private UIManager _ui;
     private PlayerInputSystem _input;
     private PlayerInventory _playerInventory;
-    [SerializeField] private PlayerInteraction _playerInteraction;
+    private PlayerInteraction _playerInteraction;
+    private ToolbarController _toolbar;
 
 
     private void Awake()
@@ -14,6 +16,7 @@ public class PlayerInput : MonoBehaviour
         _ui = FindFirstObjectByType<UIManager>();
         _playerInventory = GetComponent<PlayerInventory>();
         _playerInteraction = GetComponent<PlayerInteraction>();
+        _toolbar = GetComponentInChildren<ToolbarController>();
     }
 
     private void OnEnable()
@@ -23,7 +26,8 @@ public class PlayerInput : MonoBehaviour
         _input.UI.ToggleInventory.performed += ctx => _ui.ToggleInventory();
         _input.UI.ToggleSkillBook.performed += ctx => _ui.ToggleSkillBook();
         _input.UI.SortInventory.performed += ctx => _playerInventory.SortPlayersInventory();
-        _input.Player.Interact.performed += ctx => _playerInteraction.Interact(); 
+        _input.Player.Interact.performed += ctx => _playerInteraction.Interact();
+        _input.Player.UseItem.performed += ctx => _toolbar.UseItem();
     }
 
     private void OnDisable()

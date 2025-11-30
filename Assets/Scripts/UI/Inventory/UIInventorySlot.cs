@@ -183,7 +183,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 // Check 1: Is this a LOCAL operation? (Same Inventory)
                 if (incomingSlotUI.OwnerInventory == this.OwnerInventory)
                 {
-                    Debug.Log("1");
+           
                     if (myItem == null || incomingSlotUI.CanAccept(myItem))
                     {
                         // Split Drag (Right Click) -> Local Transfer

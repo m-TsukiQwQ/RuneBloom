@@ -26,6 +26,11 @@ public class InventoryBase : MonoBehaviour
         }
     }
 
+    public virtual void RemoveItem(int slotIndex, int amountToRemove)
+    {
+        OnInventoryChanged?.Invoke();
+    }
+
 
 
     public virtual bool TryAddItem(ItemDataSO itemToAdd, int amountToAdd)

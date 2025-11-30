@@ -89,7 +89,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void IncreaseHealth(float healAmount)
+    public virtual void IncreaseHealth(float healAmount)
     {
         if (isDead)
             return;

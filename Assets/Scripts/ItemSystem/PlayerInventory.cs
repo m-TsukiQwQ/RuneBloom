@@ -38,6 +38,12 @@ public class PlayerInventory : InventoryBase
 
     }
 
+    public override void RemoveItem(int slotIndex, int amountToRemove)
+    {
+        slots[slotIndex].RemoveStack(amountToRemove);
+        base.RemoveItem(slotIndex, amountToRemove);
+    }
+
     public override void DropItem(int slotIndex, Vector2 spawnPoint)
     {
         base.DropItem(slotIndex, spawnPoint);

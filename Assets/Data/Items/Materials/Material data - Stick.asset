@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Stick
   itemIcon: {fileID: 21300000, guid: eb5c743a04567564397d79f12685be4a, type: 3}
+  inHandIcon: {fileID: -4770995402214003316, guid: df3706fb152c43f4ca285338c89a2b99, type: 3}
   itemDisplayType: 0
   equipmentType: 0
   description: "A fallen branch found on the ground. It\u2019s not Excalibur, but

@@ -5,6 +5,7 @@ public class ItemDataSO : ScriptableObject
 {
     public string itemName;
     public Sprite itemIcon;
+    public Sprite inHandIcon;
     public ItemType itemDisplayType;
     public EquipmentType equipmentType;
     [TextArea] public string description;

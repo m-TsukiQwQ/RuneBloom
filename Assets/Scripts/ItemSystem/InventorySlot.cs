@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using Unity.VisualScripting;
 
 [Serializable]
 public class InventorySlot
@@ -62,6 +63,67 @@ public class InventorySlot
         if(itemData != null)
         {
             AddModifiers(playerStats);
+        }
+    }
+
+    public void SimpleAddModifier(EntityStats playerStats, string source)
+    {
+        if (itemData is InstrumentDataSO instrument)
+        {
+            if (instrument.modifiers != null)
+            {
+                modifiers = instrument.modifiers;
+
+            }
+            else
+                modifiers = new ItemModifier[0];
+        }
+        if (modifiers == null || modifiers.Length == 0)
+            return;
+
+        for(int i = 0;  i < modifiers.Length; i++)
+        {
+            var modData = modifiers[i];
+
+            if (modData == null || modData.statType == StatType.None)
+                continue;
+
+            Stat statToModify = playerStats.GetStatByType(modData.statType);
+
+            if (statToModify == null)
+                continue;
+
+            if (modData.isMultiplier)
+                statToModify.AddMultiplier(modData.value, source);
+            else
+                statToModify.AddModifier(modData.value, source);
+
+        }
+
+    }
+
+    public void SimpleRemoveModifiers(EntityStats playerStats, string source)
+    {
+        if (modifiers == null || modifiers.Length == 0)
+            return;
+
+        for (int i = 0; i < modifiers.Length; i++)
+        {
+            var modData = modifiers[i];
+
+            if (modData == null || modData.statType == StatType.None)
+                continue;
+
+            Stat statToModify = playerStats.GetStatByType(modData.statType);
+
+            if (statToModify == null)
+                continue;
+
+            if (modData.isMultiplier)
+                statToModify.RemoveMultiplier( source);
+            else
+                statToModify.RemoveModifier( source);
+
         }
     }
 

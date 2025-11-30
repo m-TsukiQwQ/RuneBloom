@@ -51,6 +51,12 @@ public class PlayerHunger : MonoBehaviour
 
     }
 
+    public void RestoreHunger(float hunger)
+    {
+        _currentHunger += hunger;
+        UpdateHungerBar();
+    }
+
     private void UpdateHungerBar()
     {
         if (_hungerBar == null) return;

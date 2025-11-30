@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e02f6b8853b1543b97ddf571112f5a, type: 3}
+  m_Name: Food data - Apple
+  m_EditorClassIdentifier: 
+  itemName: Apple
+  itemIcon: {fileID: 21300000, guid: adb3c63d3f51c3e4f90331d2d988842a, type: 3}
+  inHandIcon: {fileID: 1580028889970760191, guid: 9d3136c524bacf64596fb68ca8e2f249, type: 3}
+  itemDisplayType: 4
+  equipmentType: 0
+  description: Shiny, crisp, and falls with gravity. Doctors hate this one simple
+    trick.
+  maxStackSize: 20
+  health: 0
+  hunger: 5
+  magicPower: 0
