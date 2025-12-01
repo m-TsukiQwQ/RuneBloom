@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class LootDrop
+public class LootItems
 {
     public ItemDataSO item;
     [Range(0f, 100f)] public float dropChance; // 0 to 100%
@@ -12,9 +12,9 @@ public class LootDrop
 }
 
 [CreateAssetMenu(menuName = "Game Setup/Loot Table", fileName = "Loot Table - ")]
-public class LootTableSO : ScriptableObject
+public class LootTableS0 : ScriptableObject
 {
-    public List<LootDrop> lootTable;
+    public List<LootItems> lootTable;
 
     public List<InventorySlot> GetLoot()
     {

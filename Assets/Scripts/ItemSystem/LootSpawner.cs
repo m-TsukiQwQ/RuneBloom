@@ -3,7 +3,7 @@ using UnityEngine;
 public class LootSpawner : MonoBehaviour
 {
     [Header("Config")]
-    public LootTableSO lootTable;
+    public LootTableS0 lootTable;
 
     [SerializeField] private GameObject _pickUpPrefab;
 

@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public UISkillToolTip skillToolTip;
     [HideInInspector] public UIItemToolTip itemToolTip;
+    [HideInInspector] public UICraftItemToolTip craftItemToolTip;
 
     [SerializeField] private List<GameObject> _skillPages;
     [SerializeField] private GameObject _defaultPage;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
     {
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
         itemToolTip = GetComponentInChildren<UIItemToolTip>(true);
+        craftItemToolTip = GetComponentInChildren<UICraftItemToolTip>(true);
 
         _panels = new GameObject[3];
         _panels[0] = _inventoryPanel;
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour
     {
         ShowSkillToolTip(false);
         ShowItemToolTip(false);
+        ShowCraftItemToolTip(false);
         _inventoryPanel.SetActive(false);
     }
 
@@ -98,6 +101,12 @@ public class UIManager : MonoBehaviour
     public virtual void ShowItemToolTip(bool show)
     {
         itemToolTip.gameObject.SetActive(show);
+        
+
+    }
+    public virtual void ShowCraftItemToolTip(bool show)
+    {
+        craftItemToolTip.gameObject.SetActive(show);
         
 
     }

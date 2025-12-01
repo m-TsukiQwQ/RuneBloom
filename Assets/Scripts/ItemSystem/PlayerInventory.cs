@@ -11,10 +11,48 @@ public class PlayerInventory : InventoryBase
 
 
 
+
     protected override void Awake()
     {
         _playerStats = GetComponent<EntityStats>();
         base.Awake();
+    }
+
+    public void TryToCraft(CraftingRecipeSO recipe)
+    {
+        if (recipe == null) return;
+
+        foreach (var ingredient in recipe.ingredients)
+        {
+            if(GetTotalAmount(ingredient.ItemData) < ingredient.amount)
+                    return;
+        }
+
+
+
+        foreach(var ingredient in recipe.ingredients)
+        {
+            RemoveItem(ingredient.ItemData, ingredient.amount);
+        }
+
+        bool added = TryAddItem(recipe.craftItem, recipe.quantity);
+
+
+        if(!added)
+        {
+
+            if (_pickupPrefab != null)
+            {
+                Vector2 randomSpread = Random.insideUnitCircle * 1.0f;
+                Vector3 spawnPos = transform.position + (Vector3)randomSpread;
+
+                GameObject item = Instantiate(_pickupPrefab, spawnPos, Quaternion.identity);
+                ObjectItemPickUp _pickup = item.GetComponent<ObjectItemPickUp>();
+                _pickup.SetObject(recipe.craftItem, recipe.quantity);
+            }
+        }
+
+        HandleEquipmentModifier();
     }
 
     private void HandleEquipmentModifier()

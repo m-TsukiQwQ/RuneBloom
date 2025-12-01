@@ -14,7 +14,7 @@ public class InventoryBase : MonoBehaviour
 
     public event Action OnInventoryChanged;
 
-    [SerializeField] private GameObject _pickupPrefab;
+    [SerializeField] protected GameObject _pickupPrefab;
 
     protected virtual void Awake()
     {
@@ -309,5 +309,43 @@ public class InventoryBase : MonoBehaviour
     }
 
 
+    public int GetTotalAmount(ItemDataSO itemData)
+    {
+        int totalAmount = 0;
+        foreach (var slot in slots)
+        {
+            if (slot.itemData == itemData && slot.HasItem)
+                totalAmount += slot.stackSize;
+        }
 
+        return totalAmount;
+    }
+
+    public bool RemoveItem(ItemDataSO itemData, int amountToRemove)
+    {
+        if (itemData == null) return false;
+
+        if (GetTotalAmount(itemData) < amountToRemove) return false;
+
+        foreach (var slot in slots)
+        {
+            if(slot.HasItem && slot.itemData == itemData)
+            {
+                if(slot.stackSize > amountToRemove)
+                {
+                    slot.stackSize -= amountToRemove;
+                    amountToRemove = 0;
+                }
+                else
+                {
+                    amountToRemove -= slot.stackSize;
+                    slot.Clear();
+                }
+                if (amountToRemove <= 0) break;
+            }
+        }
+
+        OnInventoryChanged?.Invoke();
+        return true;
+    }
 }
