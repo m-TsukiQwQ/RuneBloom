@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
   m_Name: Skill data - Frigid Touch
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  descriptionNumber: 0
-  icon: {fileID: 0}
-  maximumLevel: 0
-  statToUpgrade: 0
-  value: 0
+  skillName: Frigid Touch
+  description: '% slow Down Multiplier per rank (making the slow stronger).'
+  descriptionNumber: 2
+  icon: {fileID: -3263406208654114928, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
+  maximumLevel: 5
+  cost: 1
+  statToUpgrade: 12
+  value: 1
+  isMultiplier: 0
+  type: 0

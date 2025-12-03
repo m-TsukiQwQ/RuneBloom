@@ -30,6 +30,7 @@ public class UICraft : MonoBehaviour
         
         playerInventory.OnInventoryChanged += UpdateUI;
         UpdateUI();
+        gameObject.SetActive(false);
     }
 
     private void UpdateUI()

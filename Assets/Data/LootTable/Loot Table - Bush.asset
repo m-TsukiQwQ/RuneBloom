@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Loot Table - Stump
-  m_EditorClassIdentifier: Assembly-CSharp::LootTableSO
+  m_Name: Loot Table - Bush
+  m_EditorClassIdentifier: Assembly-CSharp::LootTableS0
   lootTable:
-  - item: {fileID: 11400000, guid: 62de882784326b94285cdaad541b5bf6, type: 2}
+  - item: {fileID: 11400000, guid: a47e3c0bf778514489987dba7ba7b527, type: 2}
     dropChance: 100
-    minAmount: 1
-    maxAmount: 2
+    minAmount: 2
+    maxAmount: 1

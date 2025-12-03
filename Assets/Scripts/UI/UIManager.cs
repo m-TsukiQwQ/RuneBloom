@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _inventoryPanel;
     [SerializeField] private GameObject _skillBookPanel;
     [SerializeField] private GameObject _chestPanel;
+    [SerializeField] private GameObject _craftPanel;
 
     [SerializeField] private GameObject[] _panels;
 
@@ -32,10 +33,11 @@ public class UIManager : MonoBehaviour
         itemToolTip = GetComponentInChildren<UIItemToolTip>(true);
         craftItemToolTip = GetComponentInChildren<UICraftItemToolTip>(true);
 
-        _panels = new GameObject[3];
+        _panels = new GameObject[4];
         _panels[0] = _inventoryPanel;
         _panels[1] = _chestPanel;
         _panels[2] = _skillBookPanel;
+        _panels[3] = _craftPanel;
 
     }
     private void Update()
@@ -48,6 +50,18 @@ public class UIManager : MonoBehaviour
         ShowItemToolTip(false);
         ShowCraftItemToolTip(false);
         _inventoryPanel.SetActive(false);
+        
+    }
+    public void ToggleCraft()
+    {
+        foreach (var panel in _panels)
+        {
+            if (panel != _craftPanel)
+                panel.SetActive(false);
+        }
+        
+        _craftPanel.SetActive(!_craftPanel.activeSelf);
+        _darkBG.SetActive(_craftPanel.activeSelf);
     }
 
     public void ToggleInventory()
@@ -57,6 +71,7 @@ public class UIManager : MonoBehaviour
             if (panel != _inventoryPanel)
                 panel.SetActive(false);
         }
+
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
         _darkBG.SetActive(_inventoryPanel.activeSelf);
         
@@ -67,6 +82,7 @@ public class UIManager : MonoBehaviour
         _inventoryPanel.SetActive(false);
         _skillBookPanel.SetActive(false);
         _chestPanel.SetActive(false);
+        _craftPanel.SetActive(false);
     }
 
     public void ToggleInventoryPanel()

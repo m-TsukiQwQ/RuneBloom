@@ -1,0 +1,722 @@
+fileFormatVersion: 2
+guid: d4efebabdaba2ca4db1523830c7053c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7318953786020403597
+    second: Object_WoodenFence_0
+  - first:
+      213: 7783737265111234414
+    second: Object_WoodenFence_1
+  - first:
+      213: -7822137600864489363
+    second: Object_WoodenFence_2
+  - first:
+      213: 2193536064921050427
+    second: Object_WoodenFence_3
+  - first:
+      213: -6345026876526122060
+    second: Object_WoodenFence_4
+  - first:
+      213: 9203695473693371913
+    second: Object_WoodenFence_5
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Object_WoodenFence_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d891f3fd0b5229560800000000000000
+      internalID: 7318953786020403597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -8, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67fce77dc3650c60800000000000000
+      internalID: 7783737265111234414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -8, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60fe34ab4f227390800000000000000
+      internalID: -7822137600864489363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d90afdd61017e10800000000000000
+      internalID: 2193536064921050427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -7}
+        - {x: 16, y: -7}
+        - {x: 16, y: -2}
+        - {x: -16, y: -1}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bbaa565cafe1f7a0800000000000000
+      internalID: -6345026876526122060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 1.8544626, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98bc2ef68899f734281d535fc1f420c2
+      internalID: 1888537987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+        - {x: -3.9227753, y: -6}
+        - {x: -8, y: -6}
+      - - {x: -3, y: -7}
+        - {x: -2, y: -7}
+        - {x: -2, y: -7}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dcb6dbc2694e004a9457c74d6641cd2
+      internalID: 574135736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -8, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21734a8cbd49ca240b0102a4f3a0d796
+      internalID: 2021372502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22029f0244b63e642b4f05c3c588092d
+      internalID: -505241064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -7}
+        - {x: -7, y: -7}
+        - {x: -7, y: -2}
+        - {x: -16, y: -2}
+      - - {x: 7, y: -7}
+        - {x: 16, y: -7}
+        - {x: 16, y: -2}
+        - {x: 7, y: -2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7561df6803fd5574d9ab081f715d9560
+      internalID: 737893901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161c5a6d98a759e49b58a81f4a6504d4
+      internalID: 1549523565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -8, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a64d1e21fd6c440a0c610bb88cd2c7
+      internalID: 761346876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -6}
+        - {x: -8, y: -6}
+        - {x: -8, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -3}
+        - {x: 1.9613953, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da0db569b1c08c4890b01d3f1c03d5c
+      internalID: -1915216452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -3}
+        - {x: 1.9613953, y: -3}
+        - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb21a6d6e440b2d4fa980aca2af8df88
+      internalID: -153092600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716e0d03ebacdd74aaae122edc5e4b3e
+      internalID: 537332146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -6}
+        - {x: 4, y: -6}
+        - {x: 4, y: -3}
+        - {x: 2, y: -3}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -8, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ea914566cf69a409f31af90b4eb400
+      internalID: -1856406936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -6}
+        - {x: -8, y: -6}
+        - {x: -8, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -3}
+        - {x: 1.9613953, y: -3}
+        - {x: -2, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bac6bfb8be710245a90f10d515dc105
+      internalID: -1315641957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_WoodenFence_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -3}
+        - {x: -4, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2837183b160a44ba7a0abb25a7ba98
+      internalID: -2123825287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0e49e6f45821849479a28a93644dab68
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Object_WoodenFence_0: 7318953786020403597
+      Object_WoodenFence_1: 7783737265111234414
+      Object_WoodenFence_10: 737893901
+      Object_WoodenFence_11: -839492339
+      Object_WoodenFence_12: 1549523565
+      Object_WoodenFence_13: 761346876
+      Object_WoodenFence_14: -1915216452
+      Object_WoodenFence_15: -153092600
+      Object_WoodenFence_16: 537332146
+      Object_WoodenFence_17: -1856406936
+      Object_WoodenFence_18: -1315641957
+      Object_WoodenFence_19: -2123825287
+      Object_WoodenFence_2: -7822137600864489363
+      Object_WoodenFence_3: 2193536064921050427
+      Object_WoodenFence_4: -6345026876526122060
+      Object_WoodenFence_5: 9203695473693371913
+      Object_WoodenFence_6: 1888537987
+      Object_WoodenFence_7: 574135736
+      Object_WoodenFence_8: 2021372502
+      Object_WoodenFence_9: -505241064
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

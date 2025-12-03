@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aaa907dd6f1a9a479991184433bcb38, type: 3}
   m_Name: Skill data - Frost Affinity
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  descriptionNumber: 0
-  icon: {fileID: 0}
-  maximumLevel: 0
+  skillName: Frost Affinity
+  description: '% mana/energy cost for Ice spells per rank.'
+  descriptionNumber: -2
+  icon: {fileID: 3204668205381181086, guid: bb681f5569386c3419f2281aa94422d8, type: 3}
+  maximumLevel: 5
+  cost: 1
   statToUpgrade: 0
-  value: 0
+  value: 1
+  isMultiplier: 0
+  type: 0

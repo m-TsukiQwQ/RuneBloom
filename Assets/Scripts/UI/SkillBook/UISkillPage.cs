@@ -58,7 +58,7 @@ public class UISkillPage : MonoBehaviour
         {
             foreach (var node in _childNodes)
             {
-                node.OnSkillUpgradeRemovePoints += RemovePoint;
+                node.OnSkillUpgradeRemovePoints -= RemovePoint;
                 //node.OnSkillRemove -= RemoveSkillModifiers;
             }
         }

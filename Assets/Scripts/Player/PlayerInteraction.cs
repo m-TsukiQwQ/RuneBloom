@@ -39,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
         int index = GetDominantDirection();
 
         Collider2D target = Physics2D.OverlapBox(_targetCheck[index].position, _targetCheckRange, 0, _whatIsTarget);
-
+        Debug.Log("1");
         _check = target;
         return target;
     }
