@@ -5,4 +5,6 @@ using UnityEngine.Tilemaps;
 public class BuildableItemSO : ItemDataSO
 {
     [field:SerializeField] public TileBase tile { get; private set; }
+
+
 }
