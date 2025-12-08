@@ -1,8 +1,8 @@
-using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace InputSystem
-{public class PlayerInput : MonoBehaviour
+{
+    public class PlayerInput : MonoBehaviour
     {
         private UIManager _ui;
         private PlayerInputSystem _input;

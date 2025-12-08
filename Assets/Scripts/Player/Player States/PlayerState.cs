@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using InputSystem;
 public abstract class PlayerState : EntityState
 {
     protected Player _player;

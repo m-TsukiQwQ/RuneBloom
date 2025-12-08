@@ -1,14 +1,12 @@
 using UnityEngine;
+using InputSystem;
 
-
+ 
 public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField]
-        public float walkSpeed;
+        [SerializeField] public float walkSpeed;
         [SerializeField]
         public float runSpeedMultiplier = 1;
-
-
 
 
         public PlayerInputSystem input { get; private set; }

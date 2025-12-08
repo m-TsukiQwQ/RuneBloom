@@ -6,5 +6,5 @@ public class BuildableItemSO : ItemDataSO
 {
     [field:SerializeField] public TileBase tile { get; private set; }
 
-
+    [field: SerializeField] public Vector3 tileOffset;
 }
