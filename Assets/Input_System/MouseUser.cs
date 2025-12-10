@@ -68,7 +68,9 @@ namespace InputSystem
 
         public bool IsMouseButtonPressed(MouseButton button)
         {
-            return button == MouseButton.Left ? _isLeftMouseButtonPressed : _isRightMouseButtonPressed;
+            bool result = button == MouseButton.Left ? _isLeftMouseButtonPressed : _isRightMouseButtonPressed;
+            Debug.Log(result);
+            return  result;
         }
     }
 }

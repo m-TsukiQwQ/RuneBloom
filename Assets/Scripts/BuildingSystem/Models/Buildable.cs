@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Object = UnityEngine.Object;
+
 
 [Serializable]
 public class Buildable
@@ -20,5 +22,14 @@ public class Buildable
         coordinates = coords;
         gameObject = gameObj;
 
+    }
+
+    public void Destroy()
+    {
+        if (gameObject != null)
+        {
+            Object.Destroy(gameObject);
+        }
+        parentTileMap.SetTile(coordinates, null);
     }
 }

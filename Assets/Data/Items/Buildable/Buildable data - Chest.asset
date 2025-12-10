@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304aa71722959b744a22e7ab2b3ef2cc, type: 3}
+  m_Name: Buildable data - Chest
+  m_EditorClassIdentifier: 
+  itemName: Chest
+  itemIcon: {fileID: 4018475147859452071, guid: 3b5ff71b41e716d4db0b015f5a8828dc, type: 3}
+  inHandIcon: {fileID: 0}
+  itemDisplayType: 6
+  equipmentType: 0
+  description: 
+  maxStackSize: 10
+  <tile>k__BackingField: {fileID: 0}
+  tileOffset: {x: 0, y: -0.5, z: 0}
+  <previewSprite>k__BackingField: {fileID: 4018475147859452071, guid: 3b5ff71b41e716d4db0b015f5a8828dc, type: 3}
+  <GameObject>k__BackingField: {fileID: 8838473936577826316, guid: 9a49dceba145ebc4baf04d72ae1c9cc2, type: 3}

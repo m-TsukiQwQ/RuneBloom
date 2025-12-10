@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 304aa71722959b744a22e7ab2b3ef2cc, type: 3}
-  m_Name: Buildable data - Stone Path
+  m_Name: Buildable data - Wooden Fence
   m_EditorClassIdentifier: 
-  itemName: Stone path
-  itemIcon: {fileID: -8061286505436617906, guid: 2ed88b55287e08f46a53c12c350f3b10, type: 3}
+  itemName: Wooden Fence
+  itemIcon: {fileID: 7783737265111234414, guid: d4efebabdaba2ca4db1523830c7053c3, type: 3}
   inHandIcon: {fileID: 0}
   itemDisplayType: 0
   equipmentType: 0
   description: 
   maxStackSize: 1
-  <tile>k__BackingField: {fileID: 11400000, guid: 40e85c5eaacfe8243a8ad489dd574456, type: 2}
-  tileOffset: {x: 0, y: 0.5, z: 0}
-  <previewSprite>k__BackingField: {fileID: -8061286505436617906, guid: 2ed88b55287e08f46a53c12c350f3b10, type: 3}
+  <tile>k__BackingField: {fileID: 11400000, guid: 531d33c2bf7bc5f48af8792902e1729e, type: 2}
+  tileOffset: {x: 0, y: 0, z: 0}
+  <previewSprite>k__BackingField: {fileID: -2123825287, guid: d4efebabdaba2ca4db1523830c7053c3, type: 3}
   <GameObject>k__BackingField: {fileID: 0}

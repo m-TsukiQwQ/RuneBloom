@@ -1,3 +1,4 @@
+using InputSystem;
 using UnityEngine;
 
 public class ToolbarController : MonoBehaviour
@@ -9,12 +10,21 @@ public class ToolbarController : MonoBehaviour
     private PlayerHealth _health;
 
     [SerializeField] private SpriteRenderer _itemInHand;
+    [SerializeField] private BuildingPlacer _buildingPlacer;
 
     private int _toolbarSize;
 
     private int _selectedSlot = -1;
 
 
+    [field: SerializeField] public BuildableItemSO activeBuildable { get; private set; }
+
+    [SerializeField] private float _maxBuildingDistance = 3;
+
+    [SerializeField] private ConstructionLayer _constructionLayer;
+    [SerializeField] private MouseUser _mouseUser;
+
+    [SerializeField] private PreviewLayer _previewLayer;
 
 
     private void Awake()
@@ -36,7 +46,14 @@ public class ToolbarController : MonoBehaviour
 
     private void Start()
     {
+        if (_buildingPlacer != null)
+            _buildingPlacer.OnPlaceSuccess += HandleBuildingPlaced;
         _selectedSlot = 0;
+    }
+    private void OnDestroy()
+    {
+        if (_buildingPlacer != null)
+            _buildingPlacer.OnPlaceSuccess -= HandleBuildingPlaced;
     }
 
     private void ShowSelectedItem()
@@ -57,7 +74,19 @@ public class ToolbarController : MonoBehaviour
         return item;
     }
 
+    private void HandleBuildingPlaced()
+    {
+        // Remove 1 item
+        _inventory.RemoveItem(_selectedSlot, 1);
 
+        // Check if we ran out of items
+        if (_inventory.slots[_selectedSlot].stackSize <= 0)
+        {
+            // Clear the hand and the builder
+            _buildingPlacer.ChangeBuildable(null);
+            _itemInHand.sprite = null;
+        }
+    }
 
 
     private void HandleScroll()
@@ -96,14 +125,23 @@ public class ToolbarController : MonoBehaviour
             oldSlot.SimpleRemoveModifiers(_stats, "Selected item");
         }
 
+
         _selectedSlot = newValue;
         InventorySlot newSlot = _inventory.slots[_selectedSlot];
         newSlot.SimpleAddModifier(_stats, "Selected item");
+        if(newSlot.itemData is BuildableItemSO buildable)
+        {
+
+            _buildingPlacer.ChangeBuildable(buildable);
+        }
+        else
+            _buildingPlacer.ChangeBuildable(null);
     }
 
     public void UseItem()
     {
-        if(_inventory.slots[_selectedSlot].itemData is FoodDataSO food)
+        var selectedSlotItem = _inventory.slots[_selectedSlot].itemData;
+        if(selectedSlotItem is FoodDataSO food)
         {
             if (food.hunger != 0)
                 _hunger.RestoreHunger(food.hunger);
@@ -112,6 +150,8 @@ public class ToolbarController : MonoBehaviour
 
             _inventory.RemoveItem(_selectedSlot, 1);
         }
+        
+        
     }
 }
 

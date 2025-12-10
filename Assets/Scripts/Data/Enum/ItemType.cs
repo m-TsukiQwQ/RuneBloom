@@ -7,6 +7,7 @@ public enum ItemType
     Armor,
     Trinket,
     Food,
-    Instrument
+    Instrument,
+    Structure
 
 }

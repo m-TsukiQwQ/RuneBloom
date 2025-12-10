@@ -28,6 +28,8 @@ public class InventoryBase : MonoBehaviour
 
     public virtual void RemoveItem(int slotIndex, int amountToRemove)
     {
+        if (slots[slotIndex].stackSize <= 0)
+            slots[slotIndex].Clear();
         OnInventoryChanged?.Invoke();
     }
 
