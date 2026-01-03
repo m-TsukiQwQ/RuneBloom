@@ -83,10 +83,13 @@ public class InventoryBase : MonoBehaviour
 
     }
 
+    public void Start()
+    {
+        OnInventoryChanged?.Invoke();
+    }
 
 
 
-    
 
     public virtual void DropItem(int slotIndex, Vector2 spawnPoint)
     {

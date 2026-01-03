@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class PlayerInventory : InventoryBase
+public class PlayerInventory : InventoryBase, ISaveable
 {
+
+    [Header("Save System")]
+    [SerializeField] private ItemDatabaseSO _database;
 
     private EntityStats _playerStats;
 
@@ -10,7 +13,60 @@ public class PlayerInventory : InventoryBase
     [SerializeField] private int _inventoryStartIndex = 8;
 
 
+    public void SaveData(ref GameData data)
+    {
 
+        data.playerInventory.Clear();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            InventorySlot slot = slots[i];
+
+
+            if (slot.HasItem)
+            {
+                InventoryItemSaveData itemToSave = new InventoryItemSaveData(
+                    slot.itemData.itemID,
+                    slot.stackSize,
+                    i 
+                );
+
+                data.playerInventory.Add(itemToSave);
+            }
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        
+        foreach (InventorySlot slot in slots)
+        {
+            slot.Clear();
+        }
+
+        
+        foreach (InventoryItemSaveData savedItem in data.playerInventory)
+        {
+            
+            if (savedItem.slotIndex >= 0 && savedItem.slotIndex < slots.Length)
+            {
+                
+                ItemDataSO itemRef = _database.GetItemByID(savedItem.itemID);
+
+                if (itemRef != null)
+                {
+                    
+                    slots[savedItem.slotIndex].AssignItem(itemRef, savedItem.stackSize);
+                }
+                else
+                {
+                    Debug.LogWarning($"Saved item ID '{savedItem.itemID}' not found in Database!");
+                }
+            }
+        }
+
+        
+        HandleEquipmentModifier();
+    }
 
     protected override void Awake()
     {
@@ -24,13 +80,13 @@ public class PlayerInventory : InventoryBase
 
         foreach (var ingredient in recipe.ingredients)
         {
-            if(GetTotalAmount(ingredient.ItemData) < ingredient.amount)
-                    return;
+            if (GetTotalAmount(ingredient.ItemData) < ingredient.amount)
+                return;
         }
 
 
 
-        foreach(var ingredient in recipe.ingredients)
+        foreach (var ingredient in recipe.ingredients)
         {
             RemoveItem(ingredient.ItemData, ingredient.amount);
         }
@@ -38,7 +94,7 @@ public class PlayerInventory : InventoryBase
         bool added = TryAddItem(recipe.craftItem, recipe.quantity);
 
 
-        if(!added)
+        if (!added)
         {
 
             if (_pickupPrefab != null)
@@ -130,4 +186,6 @@ public class PlayerInventory : InventoryBase
     {
         SortInventory(_inventoryStartIndex, _equipmentStartIndex);
     }
+
+
 }

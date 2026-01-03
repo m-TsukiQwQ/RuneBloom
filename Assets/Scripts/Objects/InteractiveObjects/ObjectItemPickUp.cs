@@ -34,9 +34,17 @@ public class ObjectItemPickUp : MonoBehaviour
         if (_itemData == null) return;
         if (_sr != null)
             _sr.sprite = itemData.itemIcon;
-        _amount = amount;
-        _itemData = itemData;
+        if (_itemData is BuildableItemSO buidable)
+        {
+            if (buidable.GameObject == null)
+            {
+                _sr.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+        }
+            _amount = amount;
+            _itemData = itemData;
 
+        
     }
 
     private void OnValidate()
@@ -46,6 +54,13 @@ public class ObjectItemPickUp : MonoBehaviour
         _sr = GetComponentInChildren<SpriteRenderer>();
         if (_sr != null)
             _sr.sprite = _itemData.itemIcon;
+        if (_itemData is BuildableItemSO buidable)
+        {
+            if (buidable.GameObject == null)
+            {
+                _sr.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+        }
         gameObject.name = "Object_ItemPickup - " + _itemData.itemName;
     }
 

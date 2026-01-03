@@ -1,14 +1,20 @@
 using NUnit.Framework.Interfaces;
 using UnityEngine;
 
-public class ObjectChest : InventoryBase, IInteractable
+public class ObjectChest : InventoryBase, IInteractable, ISaveable
 {
+
+    [Header("Save Settings")]
+    [SerializeField] private ItemDatabaseSO _database; // Needed to load items back
+
     [SerializeField] private UIChest _chestUI;
+
+    private string _id;
 
 
     public void Intercat()
     {
-        Debug.Log("Interactions");
+
         ToggleChest();
     }
 
@@ -56,5 +62,63 @@ public class ObjectChest : InventoryBase, IInteractable
     private void OnDisable()
     {
         
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        // 1. Find if this chest already exists in the save file
+        ChestSaveData chestData = data.chests.Find(x => x.chestID == _id);
+
+        // 2. If not, create a new entry and add it
+        if (chestData == null)
+        {
+            chestData = new ChestSaveData(_id);
+            data.chests.Add(chestData);
+        }
+
+        // 3. Clear old items in the save file for this specific chest
+        chestData.items.Clear();
+
+        // 4. Loop and Save
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].HasItem)
+            {
+                InventoryItemSaveData itemToSave = new InventoryItemSaveData(
+                    slots[i].itemData.itemID,
+                    slots[i].stackSize,
+                    i
+                );
+                chestData.items.Add(itemToSave);
+            }
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        // 1. Find my data using my ID
+        ChestSaveData chestData = data.chests.Find(x => x.chestID == _id);
+
+        // 2. If found, load items
+        if (chestData != null)
+        {
+            // Clear current state first
+            foreach (InventorySlot slot in slots) slot.Clear();
+
+            foreach (InventoryItemSaveData savedItem in chestData.items)
+            {
+                if (savedItem.slotIndex < slots.Length)
+                {
+                    ItemDataSO itemRef = _database.GetItemByID(savedItem.itemID);
+                    if (itemRef != null)
+                    {
+                        slots[savedItem.slotIndex].AssignItem(itemRef, savedItem.stackSize);
+                    }
+                }
+            }
+
+            // Update UI if this chest is currently open
+            //OnInventoryChanged?.Invoke();
+        }
     }
 }
