@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17579a2110815a34fa4614b86c59e161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: {fileID: 11400000, guid: 08df9d3561ae77b4cac26ba12f124f4c, type: 2}
+  lootTable: {fileID: 11400000, guid: 1713c240d66400642adcfb77de9721d5, type: 2}
   _pickUpPrefab: {fileID: 5010663178491987950, guid: c3df1b4714eec9542b1ea2754f60fa09, type: 3}
 --- !u!114 &6463423873654645161
 MonoBehaviour:

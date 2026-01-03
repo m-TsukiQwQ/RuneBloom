@@ -37,8 +37,13 @@ public class WorldGenerator : MonoBehaviour
 
     [Header("Nature Objects")]
     public GameObject treePrefab;
-    public GameObject bushPrefab;
+    public GameObject smallRockPrefab;
+    public GameObject stickPrefab;
+    public GameObject stumpPrefab;
+    public GameObject trunkPrefab;
+
     public GameObject rockPrefab;
+    public GameObject[] flowerPrefabs;
 
     public Transform objectsParent;
 
@@ -56,7 +61,9 @@ public class WorldGenerator : MonoBehaviour
     [Range(0, 1)] public float treeChance = 0.05f;  // 5%
     [Range(0, 1)] public float stickChance = 0.05f;  // 5%
     [Range(0, 1)] public float smallRockChance = 0.2f;
-    [Range(0, 1)] public float stuntChance = 0.2f;
+    [Range(0, 1)] public float stumpChance = 0.2f;
+    [Range(0, 1)] public float trunkChance = 0.2f;
+    [Range(0, 1)] public float flowerChance = 0.2f;
 
     [Header("Visual Randomness")]
     [Tooltip("How much objects can shift from the tile center. 0 = Center, 0.5 = Full Tile Range.")]
@@ -246,18 +253,55 @@ public class WorldGenerator : MonoBehaviour
         currentTreshold += rockChance;
         if (roll < currentTreshold)
         {
-            if (rockPrefab)
-                Instantiate(rockPrefab, spawnPos, Quaternion.identity, objectsParent);
+            SpawnObject(rockPrefab, spawnPos, objectsParent);
             return;
         }
 
         currentTreshold += treeChance;
         if (roll < currentTreshold)
         {
-            if (treePrefab)
-                Instantiate(treePrefab, spawnPos, Quaternion.identity, objectsParent);
+            SpawnObject(treePrefab, spawnPos, objectsParent);
             return;
         }
+
+        currentTreshold += stumpChance;
+        if (roll < currentTreshold)
+        {
+            SpawnObject(stumpPrefab, spawnPos, objectsParent);
+            return;
+        }
+
+        currentTreshold += trunkChance;
+        if (roll < currentTreshold)
+        {
+            SpawnObject(trunkPrefab, spawnPos, objectsParent);
+            return;
+        }
+
+
+
+        currentTreshold += stickChance;
+        if (roll < currentTreshold)
+        {
+            SpawnObject(stickPrefab, spawnPos, objectsParent);
+            return;
+        }
+
+        currentTreshold += smallRockChance;
+        if (roll < currentTreshold)
+        {
+            SpawnObject(smallRockPrefab, spawnPos, objectsParent);
+            return;
+        }
+
+        currentTreshold += flowerChance;
+        if (roll < currentTreshold)
+        {
+            SpawnObject(flowerPrefabs[Random.Range(0,3)], spawnPos, objectsParent);
+            return;
+        }
+
+
 
         float grassNoiseOffset = seed * 55.5f;
         float xPatch = (x / grassPatchScale) + grassNoiseOffset;
@@ -292,6 +336,23 @@ public class WorldGenerator : MonoBehaviour
 
         if (grassToSpawn != null)
             Instantiate(grassToSpawn, spawnPos, Quaternion.identity, transform);
+    }
+
+    private void Flip(GameObject gameObject)
+    {
+         float roll = Random.value;
+        if (roll > 0.5)
+            gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+    }
+
+    private void SpawnObject(GameObject objectPrefab, Vector3 spawnPos, Transform parent)
+    {
+        if (objectPrefab)
+        {
+            GameObject spawnedObject = Instantiate(objectPrefab, spawnPos, Quaternion.identity, parent);
+            Flip(spawnedObject);
+        }
+        
     }
 }
 

@@ -30,7 +30,7 @@ public class LootSpawner : MonoBehaviour
         }
 
         // 1. Calculate Position (Random spread circle)
-        Vector2 randomSpread = Random.insideUnitCircle * 1.0f;
+        Vector2 randomSpread = Random.insideUnitCircle * 0.3f;
         Vector3 spawnPos = transform.position + (Vector3)randomSpread;
 
         // 2. Instantiate

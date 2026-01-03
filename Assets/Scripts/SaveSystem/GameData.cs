@@ -8,11 +8,16 @@ public class GameData
     public float timeOfDay;
     public int dayCount;
 
+    public int worldSeed;
+    public List<Vector2Int> removedWorldObjects;
+
+
     public Vector3 playerPosition;
     public int playerHealth;
 
     public List<InventoryItemSaveData> playerInventory;
     public List<ChestSaveData> chests;
+    public List<EnemySaveData> enemies;
 
     public GameData()
     {
@@ -51,6 +56,21 @@ public class ChestSaveData
     {
         chestID = id;
         items = new List<InventoryItemSaveData>();
+    }
+}
+
+[System.Serializable]
+public class EnemySaveData
+{
+    public string enemyID;
+    public Vector3 position;
+    public bool isDead;
+
+    public EnemySaveData(string id, Vector3 pos, bool dead)
+    {
+        enemyID = id;
+        position = pos;
+        isDead = dead;
     }
 }
 
