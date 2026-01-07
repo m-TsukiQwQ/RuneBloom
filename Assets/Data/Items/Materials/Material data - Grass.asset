@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19b0c44f1b7fb645a0aaa82e03cb20a, type: 3}
   m_Name: Material data - Grass
   m_EditorClassIdentifier: 
+  itemID: a47e3c0bf778514489987dba7ba7b527
   itemName: Grass
   itemIcon: {fileID: 21300000, guid: b4825af3890099d4194933ed014103be, type: 3}
   inHandIcon: {fileID: 0}
+  description: 
   itemDisplayType: 0
   equipmentType: 0
-  description: 
   maxStackSize: 20

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game Setup/Item Data/Material item", fileName = "Material data - ")]
@@ -19,10 +20,34 @@ public class ItemDataSO : ScriptableObject
 
     private void OnValidate()
     {
-        if (string.IsNullOrEmpty(itemID))
+#if UNITY_EDITOR
+        // Get the unique file path ID (GUID) from Unity
+        string path = AssetDatabase.GetAssetPath(this);
+        string guid = AssetDatabase.AssetPathToGUID(path);
+
+        // If the ItemID is empty, OR if it doesn't match the file's GUID (e.g. we duplicated the item),
+        // update it to match the file.
+        if (!string.IsNullOrEmpty(guid) && itemID != guid)
         {
-            itemID = System.Guid.NewGuid().ToString();
+            itemID = guid;
+
+            // Mark as dirty so Unity knows to save this change eventually
+            EditorUtility.SetDirty(this);
         }
+#endif
+    }
+
+    // Right-click the component header to manually reset if needed
+    [ContextMenu("Regenerate ID")]
+    public void RegenerateID()
+    {
+#if UNITY_EDITOR
+        // Force reset to the file's GUID
+        string path = AssetDatabase.GetAssetPath(this);
+        itemID = AssetDatabase.AssetPathToGUID(path);
+        EditorUtility.SetDirty(this);
+        Debug.Log($"Reset ID to File GUID: {itemID}");
+#endif
     }
 }
 

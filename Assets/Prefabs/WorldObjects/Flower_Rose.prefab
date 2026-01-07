@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397715432874988218}
   - component: {fileID: 5930887537395856808}
+  - component: {fileID: 3873829981178246797}
   m_Layer: 10
   m_Name: Flower_Rose
   m_TagString: Untagged
@@ -88,6 +89,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &3873829981178246797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678939446220946918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2447ddeb932c17c4f9cf7962a9385383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0aee43ff-c6a8-4bf7-b49b-351254f807cf
+  _maximumHealth: 0
+  _currentHealth: 0
 --- !u!1 &8928641697341401108
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,24 +10,46 @@ public class GameData
 
     public int worldSeed;
     public List<Vector2Int> removedWorldObjects;
+    public List<PlacedObjectSaveData> createdWorldObjects;
 
 
     public Vector3 playerPosition;
     public int playerHealth;
 
     public List<InventoryItemSaveData> playerInventory;
+
     public List<ChestSaveData> chests;
     public List<EnemySaveData> enemies;
 
     public GameData()
     {
-        this.timeOfDay = 0;
-        this.dayCount = 0;
+        this.timeOfDay = 0f;
+        this.dayCount = 1;
 
+
+        this.worldSeed = 0;
+        this.removedWorldObjects = new List<Vector2Int>();
+        this.createdWorldObjects = new List<PlacedObjectSaveData>();
+
+        this.playerHealth = 100;
         this.playerPosition = Vector3.zero;
-
         this.playerInventory = new List<InventoryItemSaveData>();
+
         this.chests = new List<ChestSaveData>();
+        this.enemies = new List<EnemySaveData>();
+    }
+}
+
+[Serializable]
+public class PlacedObjectSaveData
+{
+    public string objectID;
+    public Vector3 position;
+
+    public PlacedObjectSaveData(string id, Vector3 pos)
+    {
+        objectID = id;
+        position = pos;
     }
 }
 

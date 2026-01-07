@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44427a18a9329814baeda71f2425b128, type: 3}
   m_Name: Instrument data - Axe
   m_EditorClassIdentifier: 
+  itemID: e6ecab10d314d7b45b1924c56472d534
   itemName: Axe
   itemIcon: {fileID: 21300000, guid: 9c9e1263d8dde9f449aa7b86c607c437, type: 3}
   inHandIcon: {fileID: 2904236050757712941, guid: 6676c645fed97bd43addd11b425a2a0e, type: 3}
+  description: For when nature gets in your way. CHOP.
   itemDisplayType: 5
   equipmentType: 0
-  description: For when nature gets in your way. CHOP.
   maxStackSize: 1
   modifiers:
   - statType: 28

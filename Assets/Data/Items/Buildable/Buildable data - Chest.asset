@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304aa71722959b744a22e7ab2b3ef2cc, type: 3}
   m_Name: Buildable data - Chest
   m_EditorClassIdentifier: 
+  itemID: bd58f75d6b422e948be8d6eb98871df2
   itemName: Chest
   itemIcon: {fileID: 4018475147859452071, guid: 3b5ff71b41e716d4db0b015f5a8828dc, type: 3}
   inHandIcon: {fileID: 0}
+  description: 
   itemDisplayType: 6
   equipmentType: 0
-  description: 
   maxStackSize: 10
   <tile>k__BackingField: {fileID: 0}
   tileOffset: {x: 0, y: -0.5, z: 0}

@@ -312,6 +312,15 @@ namespace InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenPauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""a528d954-7ac9-44a3-a224-47932d48196f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,8 +352,19 @@ namespace InputSystem
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SortInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77e6fa98-0108-4a53-926e-932972848645"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -384,6 +404,7 @@ namespace InputSystem
             m_UI_ToggleSkillBook = m_UI.FindAction("ToggleSkillBook", throwIfNotFound: true);
             m_UI_ToggleInventory = m_UI.FindAction("ToggleInventory", throwIfNotFound: true);
             m_UI_SortInventory = m_UI.FindAction("SortInventory", throwIfNotFound: true);
+            m_UI_OpenPauseMenu = m_UI.FindAction("OpenPauseMenu", throwIfNotFound: true);
         }
 
         ~@PlayerInputSystem()
@@ -630,6 +651,7 @@ namespace InputSystem
         private readonly InputAction m_UI_ToggleSkillBook;
         private readonly InputAction m_UI_ToggleInventory;
         private readonly InputAction m_UI_SortInventory;
+        private readonly InputAction m_UI_OpenPauseMenu;
         /// <summary>
         /// Provides access to input actions defined in input action map "UI".
         /// </summary>
@@ -653,6 +675,10 @@ namespace InputSystem
             /// Provides access to the underlying input action "UI/SortInventory".
             /// </summary>
             public InputAction @SortInventory => m_Wrapper.m_UI_SortInventory;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/OpenPauseMenu".
+            /// </summary>
+            public InputAction @OpenPauseMenu => m_Wrapper.m_UI_OpenPauseMenu;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -688,6 +714,9 @@ namespace InputSystem
                 @SortInventory.started += instance.OnSortInventory;
                 @SortInventory.performed += instance.OnSortInventory;
                 @SortInventory.canceled += instance.OnSortInventory;
+                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
             }
 
             /// <summary>
@@ -708,6 +737,9 @@ namespace InputSystem
                 @SortInventory.started -= instance.OnSortInventory;
                 @SortInventory.performed -= instance.OnSortInventory;
                 @SortInventory.canceled -= instance.OnSortInventory;
+                @OpenPauseMenu.started -= instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed -= instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled -= instance.OnOpenPauseMenu;
             }
 
             /// <summary>
@@ -839,6 +871,13 @@ namespace InputSystem
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnSortInventory(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "OpenPauseMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnOpenPauseMenu(InputAction.CallbackContext context);
         }
     }
 }

@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 6322246931778524929}
   - component: {fileID: 5253820333741704126}
   - component: {fileID: 5509347611657583270}
+  - component: {fileID: -8091155050775977740}
   m_Layer: 10
   m_Name: Object_Chest
   m_TagString: Untagged
@@ -307,4 +308,18 @@ MonoBehaviour:
   slots: []
   maxInventorySize: 16
   _pickupPrefab: {fileID: 5010663178491987950, guid: c3df1b4714eec9542b1ea2754f60fa09, type: 3}
+  _database: {fileID: 0}
   _chestUI: {fileID: 0}
+--- !u!114 &-8091155050775977740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838473936577826316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7d9184a88a1f24d914b36f82fba8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0b60d40d-6ab3-4b0c-b01f-c28e89f0219c

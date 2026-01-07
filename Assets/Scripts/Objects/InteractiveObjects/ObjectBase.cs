@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class ObjectBase : MonoBehaviour, IDamageable
+public class ObjectBase : SaveableEntity, IDamageable 
 {
     [SerializeField] protected float _maximumHealth;
     [SerializeField] protected float _currentHealth;
@@ -36,6 +37,12 @@ public class ObjectBase : MonoBehaviour, IDamageable
         _currentHealth -= health;
         if (_currentHealth <= 0)
         {
+            WorldGenerator generator = FindFirstObjectByType<WorldGenerator>();
+
+            if (generator != null)
+            {
+                generator.NotifyObjectRemoved(transform.position);
+            }
             GetComponent<LootSpawner>()?.SpawnLoot();
             Destroy(this.gameObject);
         }

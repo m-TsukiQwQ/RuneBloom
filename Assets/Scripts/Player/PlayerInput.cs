@@ -29,6 +29,7 @@ namespace InputSystem
             _input.UI.SortInventory.performed += ctx => _playerInventory.SortPlayersInventory();
             _input.Player.Interact.performed += ctx => _playerInteraction.Interact();
             _input.Player.UseItem.performed += ctx => _toolbar.UseItem();
+            _input.UI.OpenPauseMenu.performed += ctx => _ui.TogglePauseMenu();
         }
 
         private void OnDisable()

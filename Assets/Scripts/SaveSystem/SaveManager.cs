@@ -52,6 +52,7 @@ public class SaveManager : MonoBehaviour
         LoadGame();
     }
 
+    [ContextMenu("NewGame")]
     public void NewGame()
     {
         _gameData = new GameData();

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19b0c44f1b7fb645a0aaa82e03cb20a, type: 3}
   m_Name: Material data - Stone
   m_EditorClassIdentifier: 
+  itemID: 018681767aff66e4592217fc7797e5e7
   itemName: Stone
   itemIcon: {fileID: 21300000, guid: 4145ca0d2576bc741a1cb709f4595ef8, type: 3}
   inHandIcon: {fileID: 0}
+  description: Yo, Angelo.
   itemDisplayType: 0
   equipmentType: 0
-  description: Yo, Angelo.
   maxStackSize: 10

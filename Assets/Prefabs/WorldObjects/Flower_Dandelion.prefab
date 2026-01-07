@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2597977799251495424}
   - component: {fileID: 9176416270237144471}
+  - component: {fileID: -1728796079140337427}
   m_Layer: 10
   m_Name: Flower_Dandelion
   m_TagString: Untagged
@@ -88,6 +89,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &-1728796079140337427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270262960953281068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2447ddeb932c17c4f9cf7962a9385383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 54b20a11-35d9-4631-9fb1-32dbc1442423
+  _maximumHealth: 0
+  _currentHealth: 0
 --- !u!1 &7504953320664762566
 GameObject:
   m_ObjectHideFlags: 0

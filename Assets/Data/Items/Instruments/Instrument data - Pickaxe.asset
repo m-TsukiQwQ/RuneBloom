@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44427a18a9329814baeda71f2425b128, type: 3}
   m_Name: Instrument data - Pickaxe
   m_EditorClassIdentifier: 
+  itemID: 8dee1d648e350ea468c38b68114e5af6
   itemName: Pickaxe
   itemIcon: {fileID: 21300000, guid: 25e0f21a2d5ae024097bf6ab683b7302, type: 3}
   inHandIcon: {fileID: 0}
+  description: 
   itemDisplayType: 5
   equipmentType: 0
-  description: 
   maxStackSize: 1
   modifiers:
   - statType: 0

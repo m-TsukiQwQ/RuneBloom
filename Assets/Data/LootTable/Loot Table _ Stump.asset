@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1423c325c0abda04fb40dbdf8590a9d7, type: 3}
   m_Name: Loot Table _ Stump
   m_EditorClassIdentifier: Assembly-CSharp::LootTableS0
   lootTable:
   - item: {fileID: 11400000, guid: 62de882784326b94285cdaad541b5bf6, type: 2}
     dropChance: 100
-    minAmount: 3
+    minAmount: 1
     maxAmount: 1

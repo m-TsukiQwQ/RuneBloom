@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ca3be5f2afc8a468626d120db578db, type: 3}
   m_Name: Eqipment data - Leather Jacket
   m_EditorClassIdentifier: 
+  itemID: a5acdfd1528e1a1478dd74c1d28e967a
   itemName: Leather jacket
   itemIcon: {fileID: 21300000, guid: 07f4f91e70bd39f48b09194079df6fc4, type: 3}
+  inHandIcon: {fileID: 0}
+  description: A tough jacket made from cured hide.
   itemDisplayType: 2
   equipmentType: 2
-  description: A tough jacket made from cured hide.
   maxStackSize: 1
   modifiers:
   - statType: 1

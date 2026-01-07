@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19b0c44f1b7fb645a0aaa82e03cb20a, type: 3}
   m_Name: Material data - Wood
   m_EditorClassIdentifier: 
+  itemID: 62de882784326b94285cdaad541b5bf6
   itemName: Wood
   itemIcon: {fileID: 21300000, guid: 0ce768994de3b1342b1093fe4036f674, type: 3}
   inHandIcon: {fileID: 20523079822586348, guid: eb653d3026b0e074a936c1dd66c5ca83, type: 3}
+  description: It's big, it's heavy, it's wood.
   itemDisplayType: 0
   equipmentType: 0
-  description: It's big, it's heavy, it's wood.
   maxStackSize: 20

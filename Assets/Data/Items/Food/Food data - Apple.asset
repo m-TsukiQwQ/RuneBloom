@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e02f6b8853b1543b97ddf571112f5a, type: 3}
   m_Name: Food data - Apple
   m_EditorClassIdentifier: 
+  itemID: d61af662d6c7e5240849c761a995f53e
   itemName: Apple
   itemIcon: {fileID: 21300000, guid: adb3c63d3f51c3e4f90331d2d988842a, type: 3}
   inHandIcon: {fileID: 1580028889970760191, guid: 9d3136c524bacf64596fb68ca8e2f249, type: 3}
-  itemDisplayType: 4
-  equipmentType: 0
   description: Shiny, crisp, and falls with gravity. Doctors hate this one simple
     trick.
+  itemDisplayType: 4
+  equipmentType: 0
   maxStackSize: 20
   health: 0
   hunger: 5

@@ -40,15 +40,24 @@ public class ObjectChest : InventoryBase, IInteractable, ISaveable
         }
     }
 
- 
-
 
     protected override void Awake()
     {
-        base.Awake();
+        base.Awake(); // Initialize slots
         _chestUI = FindFirstObjectByType<UIChest>(FindObjectsInactive.Include);
-        
+
+        // FIX: Get the unique ID from the SaveableEntity component
+        SaveableEntity saveable = GetComponent<SaveableEntity>();
+        if (saveable != null)
+        {
+            _id = saveable.Id;
+        }
+        else
+        {
+            Debug.LogError($"ObjectChest '{gameObject.name}' is missing a SaveableEntity component!");
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {

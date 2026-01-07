@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19b0c44f1b7fb645a0aaa82e03cb20a, type: 3}
   m_Name: Material data - Leather
   m_EditorClassIdentifier: 
+  itemID: 65931ea2e6a75a14ca45b0530d1a4b54
   itemName: Leather
   itemIcon: {fileID: -4374259725409579208, guid: 6187113377f72da4aa139f7c0551253e, type: 3}
   inHandIcon: {fileID: 0}
+  description: Just skin
   itemDisplayType: 0
   equipmentType: 0
-  description: Just skin
   maxStackSize: 5

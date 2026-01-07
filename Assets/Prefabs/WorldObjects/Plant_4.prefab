@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4363293244578532637}
   - component: {fileID: 6928735726639414230}
+  - component: {fileID: -6640101106362782500}
   m_Layer: 10
   m_Name: Plant_4
   m_TagString: Untagged
@@ -166,3 +167,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &-6640101106362782500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031676868273612362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2447ddeb932c17c4f9cf7962a9385383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 39bdf2b5-b3b3-4b8d-aab3-3cdd1aeec3c9
+  _maximumHealth: 0
+  _currentHealth: 0

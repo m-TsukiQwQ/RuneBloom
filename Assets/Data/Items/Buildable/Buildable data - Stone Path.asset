@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304aa71722959b744a22e7ab2b3ef2cc, type: 3}
   m_Name: Buildable data - Stone Path
   m_EditorClassIdentifier: 
+  itemID: 3ecebb6598c10da4fab384b6dc6a4c40
   itemName: Stone path
   itemIcon: {fileID: -8061286505436617906, guid: 2ed88b55287e08f46a53c12c350f3b10, type: 3}
   inHandIcon: {fileID: 0}
+  description: 
   itemDisplayType: 0
   equipmentType: 0
-  description: 
   maxStackSize: 1
   <tile>k__BackingField: {fileID: 11400000, guid: 40e85c5eaacfe8243a8ad489dd574456, type: 2}
   tileOffset: {x: 0, y: 0.5, z: 0}

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _skillBookPanel;
     [SerializeField] private GameObject _chestPanel;
     [SerializeField] private GameObject _craftPanel;
+    [SerializeField] private GameObject _pauseMenuPanel;
 
     [SerializeField] private GameObject[] _panels;
 
@@ -25,7 +28,11 @@ public class UIManager : MonoBehaviour
 
     private UISectionButton _currentActiveButton;
 
-    [SerializeField ] private GameObject _darkBG;
+    [SerializeField] private GameObject _darkBG;
+
+    private bool _pauseMenuToggle = false;
+
+    private SaveManager _saveManager;
 
     private void Awake()
     {
@@ -42,15 +49,48 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        
+
     }
     private void Start()
     {
+        _saveManager = FindFirstObjectByType<SaveManager>();
         ShowSkillToolTip(false);
         ShowItemToolTip(false);
         ShowCraftItemToolTip(false);
         _inventoryPanel.SetActive(false);
-        
+
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SaveAndExitGame()
+    {
+        _saveManager.SaveGame();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SaveGame()
+    {
+        _saveManager.SaveGame();
+    }
+    public void TogglePauseMenu()
+    {
+        _pauseMenuToggle = !_pauseMenuToggle;
+        HideAllUI();
+        if (_pauseMenuToggle)
+        {
+            Time.timeScale = 0;
+            _pauseMenuPanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            _pauseMenuPanel.SetActive(false);
+        }
+
     }
     public void ToggleCraft()
     {
@@ -59,7 +99,7 @@ public class UIManager : MonoBehaviour
             if (panel != _craftPanel)
                 panel.SetActive(false);
         }
-        
+
         _craftPanel.SetActive(!_craftPanel.activeSelf);
         _darkBG.SetActive(_craftPanel.activeSelf);
     }
@@ -74,7 +114,7 @@ public class UIManager : MonoBehaviour
 
         _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
         _darkBG.SetActive(_inventoryPanel.activeSelf);
-        
+
 
     }
     public void HideAllUI()
@@ -83,6 +123,7 @@ public class UIManager : MonoBehaviour
         _skillBookPanel.SetActive(false);
         _chestPanel.SetActive(false);
         _craftPanel.SetActive(false);
+        _darkBG.SetActive(false);
     }
 
     public void ToggleInventoryPanel()
@@ -110,26 +151,26 @@ public class UIManager : MonoBehaviour
     public virtual void ShowSkillToolTip(bool show)
     {
         skillToolTip.gameObject.SetActive(show);
-        
+
 
     }
 
     public virtual void ShowItemToolTip(bool show)
     {
         itemToolTip.gameObject.SetActive(show);
-        
+
 
     }
     public virtual void ShowCraftItemToolTip(bool show)
     {
         craftItemToolTip.gameObject.SetActive(show);
-        
+
 
     }
 
     public void HideAllPages()
     {
-        foreach(var page in _skillPages)
+        foreach (var page in _skillPages)
         {
             page.gameObject.SetActive(false);
         }
@@ -138,14 +179,14 @@ public class UIManager : MonoBehaviour
 
     public void OnSectionButtonClicked()
     {
-        
+
         GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
         if (clickedObj == null) return;
 
         UISectionButton clickedButton = clickedObj.GetComponent<UISectionButton>();
         if (clickedButton == null) return;
 
-        
+
         if (_currentActiveButton == clickedButton)
         {
             _currentActiveButton.SetState(false);
@@ -159,10 +200,10 @@ public class UIManager : MonoBehaviour
             _currentActiveButton.SetState(false);
         }
 
-        
+
         clickedButton.SetState(true);
 
-        
+
         _currentActiveButton = clickedButton;
     }
 

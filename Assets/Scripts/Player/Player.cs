@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : Entity, ISaveable
 {
     //states
     public PlayerStateIdle idleState {  get; private set; }
@@ -129,5 +129,20 @@ public class Player : Entity
 
     }
 
-    
+    public void LoadData(GameData data)
+    {
+        if (data.playerPosition != Vector3.zero)
+        {
+           
+            transform.position = data.playerPosition;
+
+            
+        }
+
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = transform.position;
+    }
 }

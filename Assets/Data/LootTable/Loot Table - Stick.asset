@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1423c325c0abda04fb40dbdf8590a9d7, type: 3}
   m_Name: Loot Table - Stick
   m_EditorClassIdentifier: Assembly-CSharp::LootTableS0
   lootTable:

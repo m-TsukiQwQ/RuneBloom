@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class WorldGenerator : MonoBehaviour
+public class WorldGenerator : MonoBehaviour, ISaveable
 {
     [Header("Map Dimensions")]
     public int width = 100;
@@ -73,9 +74,16 @@ public class WorldGenerator : MonoBehaviour
     [Tooltip("Any noise value below this will be empty ground. 0.6 means 60% of the island is empty dirt, 40% is grass.")]
     [Range(0f, 1f)] public float grassThreshold = 0.6f;
 
+    private HashSet<Vector2Int> _removedNatureCoordinates = new HashSet<Vector2Int>();
+
     private void Start()
     {
-        GenerateWorld();
+        // If there is no SaveManager, generate a default world immediately.
+        // If SaveManager exists, it will call LoadData -> InitializeWorld instead.
+        if (FindFirstObjectByType<SaveManager>() == null)
+        {
+            GenerateWorld();
+        }
     }
 
     public void GenerateWorld()
@@ -240,19 +248,22 @@ public class WorldGenerator : MonoBehaviour
 
     private void SpawnNature(Vector3Int gridPos, int x, int y)
     {
+        
+
         Vector3 basePos = groundTilemap.CellToWorld(gridPos) + new Vector3(.5f, .5f, 0);
         float offsetX = Random.Range(-positionJitter, positionJitter);
         float offsetY = Random.Range(-positionJitter, positionJitter);
         Vector3 spawnPos = basePos + new Vector3(offsetX, offsetY, 0);
+        bool isRemoved = _removedNatureCoordinates.Contains((Vector2Int)gridPos);
 
+        float roll = Mathf.PerlinNoise(x * 0.8f + seed, y * 0.8f + seed);
 
-
-        float roll = Random.value;
         float currentTreshold = 0f;
 
         currentTreshold += rockChance;
         if (roll < currentTreshold)
         {
+            if(!isRemoved)
             SpawnObject(rockPrefab, spawnPos, objectsParent);
             return;
         }
@@ -260,21 +271,24 @@ public class WorldGenerator : MonoBehaviour
         currentTreshold += treeChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(treePrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(treePrefab, spawnPos, objectsParent);
             return;
         }
 
         currentTreshold += stumpChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(stumpPrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(stumpPrefab, spawnPos, objectsParent);
             return;
         }
 
         currentTreshold += trunkChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(trunkPrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(trunkPrefab, spawnPos, objectsParent);
             return;
         }
 
@@ -283,21 +297,24 @@ public class WorldGenerator : MonoBehaviour
         currentTreshold += stickChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(stickPrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(stickPrefab, spawnPos, objectsParent);
             return;
         }
 
         currentTreshold += smallRockChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(smallRockPrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(smallRockPrefab, spawnPos, objectsParent);
             return;
         }
 
         currentTreshold += flowerChance;
         if (roll < currentTreshold)
         {
-            SpawnObject(flowerPrefabs[Random.Range(0,3)], spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(flowerPrefabs[Random.Range(0, 3)], spawnPos, objectsParent);
             return;
         }
 
@@ -334,13 +351,13 @@ public class WorldGenerator : MonoBehaviour
             grassToSpawn = tallGrassPrefab;
         }
 
-        if (grassToSpawn != null)
+        if (grassToSpawn != null && !isRemoved)
             Instantiate(grassToSpawn, spawnPos, Quaternion.identity, transform);
     }
 
     private void Flip(GameObject gameObject)
     {
-         float roll = Random.value;
+        float roll = Random.value;
         if (roll > 0.5)
             gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
@@ -352,7 +369,34 @@ public class WorldGenerator : MonoBehaviour
             GameObject spawnedObject = Instantiate(objectPrefab, spawnPos, Quaternion.identity, parent);
             Flip(spawnedObject);
         }
-        
+
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.seed = data.worldSeed;
+
+        _removedNatureCoordinates.Clear();
+        foreach (Vector2Int coord in data.removedWorldObjects)
+        {
+            _removedNatureCoordinates.Add(coord);
+        }
+
+        GenerateWorld();
+
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.worldSeed = this.seed;
+        data.removedWorldObjects = new List<Vector2Int>(_removedNatureCoordinates);
+    }
+
+    public void NotifyObjectRemoved(Vector3 worldPosition)
+    {
+        Vector3Int cellPos = groundTilemap.WorldToCell(worldPosition);
+        _removedNatureCoordinates.Add((Vector2Int)cellPos);
+
     }
 }
 

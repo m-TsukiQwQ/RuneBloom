@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3740736843680943921}
   - component: {fileID: 1655656262370576981}
+  - component: {fileID: 8283765881990613964}
   m_Layer: 10
   m_Name: Flower_Tulip
   m_TagString: Untagged
@@ -88,6 +89,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &8283765881990613964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536251109411558710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2447ddeb932c17c4f9cf7962a9385383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 246defdd-85a8-457c-b4ac-88a42439678f
+  _maximumHealth: 0
+  _currentHealth: 0
 --- !u!1 &4722440826504924654
 GameObject:
   m_ObjectHideFlags: 0
