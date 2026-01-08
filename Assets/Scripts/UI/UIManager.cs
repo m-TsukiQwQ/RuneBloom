@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         skillToolTip = GetComponentInChildren<UISkillToolTip>(true);
         itemToolTip = GetComponentInChildren<UIItemToolTip>(true);
         craftItemToolTip = GetComponentInChildren<UICraftItemToolTip>(true);

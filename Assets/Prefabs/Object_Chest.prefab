@@ -308,7 +308,7 @@ MonoBehaviour:
   slots: []
   maxInventorySize: 16
   _pickupPrefab: {fileID: 5010663178491987950, guid: c3df1b4714eec9542b1ea2754f60fa09, type: 3}
-  _database: {fileID: 0}
+  _database: {fileID: 11400000, guid: 7da5c3130c22e794a8b1aa9ded11c358, type: 2}
   _chestUI: {fileID: 0}
 --- !u!114 &-8091155050775977740
 MonoBehaviour:

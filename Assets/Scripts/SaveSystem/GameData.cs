@@ -18,6 +18,8 @@ public class GameData
 
     public List<InventoryItemSaveData> playerInventory;
 
+    public PlayerStatsSaveData playerStats;
+
     public List<ChestSaveData> chests;
     public List<EnemySaveData> enemies;
 
@@ -35,6 +37,8 @@ public class GameData
         this.playerPosition = Vector3.zero;
         this.playerInventory = new List<InventoryItemSaveData>();
 
+        this.playerStats = new PlayerStatsSaveData();
+
         this.chests = new List<ChestSaveData>();
         this.enemies = new List<EnemySaveData>();
     }
@@ -45,11 +49,48 @@ public class PlacedObjectSaveData
 {
     public string objectID;
     public Vector3 position;
+    public string instanceID;
 
-    public PlacedObjectSaveData(string id, Vector3 pos)
+    public PlacedObjectSaveData(string id, Vector3 pos, string guid = null)
     {
         objectID = id;
         position = pos;
+        instanceID = guid;
+    }
+}
+
+[System.Serializable]
+public class PlayerStatsSaveData
+{
+    // Vitals (Variable values that change constantly)
+    public float currentHealth;
+    public float currentHunger;
+    public float currentMagic;
+
+    // Permanent Base Stats (Progression)
+    // We use a List so we can iterate through your StatType enum dynamically
+    public List<StatSaveEntry> baseStats;
+
+    public PlayerStatsSaveData()
+    {
+        // Set safe defaults to prevent death loops on new game
+        currentHealth = 100f;
+        currentHunger = 100f;
+        currentMagic = 50f;
+        baseStats = new List<StatSaveEntry>();
+    }
+}
+
+[System.Serializable]
+public class StatSaveEntry
+{
+    public StatType stat; // Ensure your StatType Enum is visible to this script
+    public float value;
+
+    public StatSaveEntry(StatType statType, float val)
+    {
+        stat = statType;
+        value = val;
     }
 }
 

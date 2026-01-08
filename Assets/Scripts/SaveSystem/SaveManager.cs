@@ -15,6 +15,9 @@ public class SaveManager : MonoBehaviour
 
     public static SaveManager Instance { get; private set; }
 
+    public bool HasLoadedData => _gameData != null;
+    public GameData CurrentGameData => _gameData;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.M))
@@ -89,5 +92,21 @@ public class SaveManager : MonoBehaviour
         IEnumerable<ISaveable> saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();  
 
         return new List<ISaveable>(saveables);
+    }
+
+    public void RegisterSaveable(ISaveable saveable)
+    {
+        if (!_saveableObjects.Contains(saveable))
+        {
+            _saveableObjects.Add(saveable);
+        }
+    }
+
+    public void UnregisterSaveable(ISaveable saveable)
+    {
+        if (_saveableObjects.Contains(saveable))
+        {
+            _saveableObjects.Remove(saveable);
+        }
     }
 }

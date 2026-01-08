@@ -83,7 +83,7 @@ public class InventoryBase : MonoBehaviour
 
     }
 
-    public void Start()
+    protected virtual void Start()
     {
         OnInventoryChanged?.Invoke();
     }
