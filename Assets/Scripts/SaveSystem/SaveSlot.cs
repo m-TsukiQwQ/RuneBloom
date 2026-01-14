@@ -10,6 +10,7 @@ public class SaveSlot : MonoBehaviour
 
     [Header("Data Fields")]
     [SerializeField] private TextMeshProUGUI _dayCountText;
+    [SerializeField] private TextMeshProUGUI _worldNameText;
     [SerializeField] private TextMeshProUGUI _lastPlayedText; // Optional: To show date
 
     private Button _button;
@@ -29,7 +30,9 @@ public class SaveSlot : MonoBehaviour
     public void SetData(GameData data)
     {
         
-            if (_dayCountText) _dayCountText.text = $"Day {data.dayCount}";
+            if (_dayCountText) _dayCountText.text = $"Day {data.dayCount + 1}";
+            if (_lastPlayedText) _lastPlayedText.text =  data.saveDate;
+            if (_worldNameText) _worldNameText.text =  data.worldName;
 
     }
 

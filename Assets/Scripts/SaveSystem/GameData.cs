@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class GameData
 {
+    public string worldName;
+    public string saveDate;
     public long worldTimeTicks;
     public int dayCount;
 
@@ -25,7 +27,10 @@ public class GameData
 
     public GameData()
     {
+        this.worldName = "New Game";
+        this.saveDate = "";
         this.worldTimeTicks = 0;
+        this.dayCount = 1;
 
 
         this.worldSeed = 0;

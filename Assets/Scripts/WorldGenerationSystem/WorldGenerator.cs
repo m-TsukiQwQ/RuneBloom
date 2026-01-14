@@ -76,6 +76,11 @@ public class WorldGenerator : MonoBehaviour, ISaveable
 
     private HashSet<Vector2Int> _removedNatureCoordinates = new HashSet<Vector2Int>();
 
+    // --- FIX: Store offsets generated from seed, not the seed itself ---
+    private Vector2 _natureOffset;
+    private Vector2 _grassOffset;
+    private Vector2 _decorTileOffset;
+
     private void Start()
     {
         // If there is no SaveManager, generate a default world immediately.
@@ -92,11 +97,20 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         cliffTilemap.ClearAllTiles();
         decorationTilemap.ClearAllTiles();
 
+        // Cleanup old objects
+        foreach (Transform child in objectsParent) Destroy(child.gameObject);
+
         // Initialize the Random State so the same seed produces the exact same world
         Random.InitState(seed);
 
+        // --- FIX: Generate safe offsets used for Perlin Noise ---
+        // Random.Range returns floats within safe precision limits (-10k to 10k)
         float xOffset = Random.Range(-10000f, 10000f);
         float yOffset = Random.Range(-10000f, 10000f);
+
+        _natureOffset = new Vector2(Random.Range(-10000f, 10000f), Random.Range(-10000f, 10000f));
+        _grassOffset = new Vector2(Random.Range(-10000f, 10000f), Random.Range(-10000f, 10000f));
+        _decorTileOffset = new Vector2(Random.Range(-10000f, 10000f), Random.Range(-10000f, 10000f));
 
         // Center point used for the circular island calculations
         Vector2 center = new Vector2(width / 2f, height / 2f);
@@ -111,10 +125,8 @@ public class WorldGenerator : MonoBehaviour, ISaveable
             for (int y = 0; y < height; y++)
             {
                 // A. PERLIN NOISE GENERATION
-                // Calculate the coordinates to sample from the noise map
                 float xCoord = (float)x / width * noiseScale + xOffset;
                 float yCoord = (float)y / height * noiseScale + yOffset;
-                // Get value between 0.0 and 1.0 (creates natural, cloud-like patterns)
                 float noiseValue = Mathf.PerlinNoise(xCoord, yCoord);
 
                 // Calculate distance from center of the map
@@ -122,12 +134,9 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                 // Normalize distance (0.0 at center, 1.0 at edge of the defined circle)
                 float t = distFromCenter / (minDimension / 2f);
                 // Curve the gradient using Power function.
-                // t^3 makes the "safe zone" in the center wider, then drops off sharply at edges.
                 float gradient = Mathf.Pow(t, 3f);
 
-                // Combine Noise with Gradient:
-                // - Center: Noise - 0 = Original Noise (Likely Land)
-                // - Edges: Noise - Large Number = Negative (Forced Water)
+                // Combine Noise with Gradient
                 float finalValue = noiseValue - (gradient / islandSize);
 
                 // Land (1) or Water (0)
@@ -146,32 +155,24 @@ public class WorldGenerator : MonoBehaviour, ISaveable
 
         for (int i = 0; i < smoothingIterations; i++)
         {
-
             int[,] cleanMap = (int[,])mapData.Clone();
-
 
             for (int x = 1; x < width - 1; x++)
             {
                 for (int y = 1; y < height - 1; y++)
                 {
-                    // Check the 4 immediate neighbors (Up, Down, Left, Right) in the OLD data
                     bool waterLeft = mapData[x - 1, y] == 0;
                     bool waterRight = mapData[x + 1, y] == 0;
                     bool waterUp = mapData[x, y + 1] == 0;
                     bool waterDown = mapData[x, y - 1] == 0;
 
-
-                    // If a land tile is squeezed between water on opposite sides, it's too thin.
                     if (mapData[x, y] == 1)
                     {
-
                         if ((waterLeft && waterRight) || (waterUp && waterDown))
                         {
                             cleanMap[x, y] = 0;
                         }
                     }
-
-                    // If a water tile is surrounded by mostly land, fill it in
                     else if (mapData[x, y] == 0)
                     {
                         int landNeighbors = 0;
@@ -180,7 +181,6 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                         if (!waterUp) landNeighbors++;
                         if (!waterDown) landNeighbors++;
 
-                        // If 3 or more neighbors are land, turn this water into land
                         if (landNeighbors >= 3)
                         {
                             cleanMap[x, y] = 1;
@@ -188,33 +188,29 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                     }
                 }
             }
-
             mapData = cleanMap;
         }
 
-        //spawn tiles
+        // Spawn tiles
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                // Calculate position relative to center so (0,0) is the middle of the island
                 Vector3Int pos = new Vector3Int(x - width / 2, y - height / 2, 0);
 
                 if (mapData[x, y] == 1)
                 {
                     groundTilemap.SetTile(pos, grassTile);
                     cliffTilemap.SetTile(pos, cliffTile);
+
                     if (decorationTilemap != null && grassDecorationTile != null)
                     {
-                        // Calculate specific noise for decorations (using a different scale if desired)
-                        // Adding 'seed' shifts the noise so decoration patches move when seed changes
-                        float decorX = (float)x / width * decorationNoiseScale + seed;
-                        float decorY = (float)y / height * decorationNoiseScale + seed;
+                        // Use the safe offset generated from the seed
+                        float decorX = (float)x / width * decorationNoiseScale + _decorTileOffset.x;
+                        float decorY = (float)y / height * decorationNoiseScale + _decorTileOffset.y;
 
                         float decorValue = Mathf.PerlinNoise(decorX, decorY);
 
-                        // If noise is high enough (clump logic), spawn decoration
-                        // (1 - chance) ensures that if chance is 0.2, we only spawn above 0.8
                         if (decorValue > (1f - decorationChance))
                         {
                             decorationTilemap.SetTile(pos, grassDecorationTile);
@@ -223,8 +219,6 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                         // --- NEIGHBOR CHECK: PREVENT COAST SPAWNING ---
                         bool nextToWater = false;
 
-                        // Check neighbors boundaries to avoid IndexOutOfRange
-                        // (x > 0 && mapData[x-1,y] == 0) means neighbor is water
                         if (x > 0 && mapData[x - 1, y] == 0) nextToWater = true;
                         else if (x < width - 1 && mapData[x + 1, y] == 0) nextToWater = true;
                         else if (y > 0 && mapData[x, y - 1] == 0) nextToWater = true;
@@ -235,36 +229,34 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                         {
                             SpawnNature(pos, x, y);
                         }
-
                     }
-
                 }
-
-                waterTilemap.SetTile(pos, waterTile);
-
+                else
+                {
+                    waterTilemap.SetTile(pos, waterTile);
+                }
             }
         }
     }
 
     private void SpawnNature(Vector3Int gridPos, int x, int y)
     {
-        
-
         Vector3 basePos = groundTilemap.CellToWorld(gridPos) + new Vector3(.5f, .5f, 0);
         float offsetX = Random.Range(-positionJitter, positionJitter);
         float offsetY = Random.Range(-positionJitter, positionJitter);
         Vector3 spawnPos = basePos + new Vector3(offsetX, offsetY, 0);
         bool isRemoved = _removedNatureCoordinates.Contains((Vector2Int)gridPos);
 
-        float roll = Mathf.PerlinNoise(x * 0.8f + seed, y * 0.8f + seed);
+        // --- FIX: Use safe offsets, not raw seed addition ---
+        float roll = Mathf.PerlinNoise(x * 0.8f + _natureOffset.x, y * 0.8f + _natureOffset.y);
 
         float currentTreshold = 0f;
 
         currentTreshold += rockChance;
         if (roll < currentTreshold)
         {
-            if(!isRemoved)
-            SpawnObject(rockPrefab, spawnPos, objectsParent);
+            if (!isRemoved)
+                SpawnObject(rockPrefab, spawnPos, objectsParent);
             return;
         }
 
@@ -292,8 +284,6 @@ public class WorldGenerator : MonoBehaviour, ISaveable
             return;
         }
 
-
-
         currentTreshold += stickChance;
         if (roll < currentTreshold)
         {
@@ -318,18 +308,15 @@ public class WorldGenerator : MonoBehaviour, ISaveable
             return;
         }
 
-
-
-        float grassNoiseOffset = seed * 55.5f;
-        float xPatch = (x / grassPatchScale) + grassNoiseOffset;
-        float yPatch = (y / grassPatchScale) + grassNoiseOffset;
+        // --- FIX: Use safe offsets for grass patches too ---
+        float xPatch = (x / grassPatchScale) + _grassOffset.x;
+        float yPatch = (y / grassPatchScale) + _grassOffset.y;
 
         float patchNoise = Mathf.PerlinNoise(xPatch, yPatch);
 
         // If below threshold, this is empty ground (Dirt/Clearing)
         if (patchNoise < grassThreshold) return;
 
-        // Calculate ranges for the 3 types based on what's left (e.g., 0.6 to 1.0)
         float range = 1.0f - grassThreshold;
         float step = range / 3f;
 
@@ -369,7 +356,6 @@ public class WorldGenerator : MonoBehaviour, ISaveable
             GameObject spawnedObject = Instantiate(objectPrefab, spawnPos, Quaternion.identity, parent);
             Flip(spawnedObject);
         }
-
     }
 
     public void LoadData(GameData data)
@@ -383,7 +369,6 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         }
 
         GenerateWorld();
-
     }
 
     public void SaveData(ref GameData data)
@@ -396,8 +381,5 @@ public class WorldGenerator : MonoBehaviour, ISaveable
     {
         Vector3Int cellPos = groundTilemap.WorldToCell(worldPosition);
         _removedNatureCoordinates.Add((Vector2Int)cellPos);
-
     }
 }
-
-

@@ -1,5 +1,7 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +12,8 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private string _fileName = "data.game";
 
     [SerializeField] private string _selectedProfileId = "test_profile";
+
+    private string _saveDate;
 
 
     private GameData _gameData;
@@ -61,9 +65,12 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    public void NewGame()
+    public void NewGame(int worldSeed, string worldName = "New World")
     {
+        Debug.Log(worldName);
         _gameData = new GameData();
+        _gameData.worldName = worldName;
+        _gameData.worldSeed = worldSeed;
     }
 
     public void LoadGame()
@@ -72,7 +79,7 @@ public class SaveManager : MonoBehaviour
         if (_gameData == null)
         {
             Debug.Log("No save data found. Initializing new game.");
-            NewGame();
+            NewGame(Math.Abs((int)System.DateTime.Now.Ticks));
         }
 
         foreach (ISaveable saveable in _saveableObjects)
@@ -87,6 +94,14 @@ public class SaveManager : MonoBehaviour
         {
             saveable.SaveData(ref _gameData);
         }
+
+        DateTime localDate = DateTime.Now;
+        string cultureName = "ru-RU";
+        var culture = new CultureInfo(cultureName);
+
+        string saveTime = localDate.ToString(culture);
+        _gameData.saveDate = saveTime;
+
 
         _dataHandler.Save(_gameData, _selectedProfileId);
         Debug.Log("Game Saved!");

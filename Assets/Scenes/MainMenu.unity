@@ -1591,7 +1591,7 @@ GameObject:
   - component: {fileID: 580648450}
   - component: {fileID: 580648449}
   m_Layer: 5
-  m_Name: World_Name_input
+  m_Name: World_Seed_input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4029,6 +4029,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameSceneName: Game
+  _saveNameInput: {fileID: 824177509}
+  _seedInput: {fileID: 580648449}
   _slotsContainer: {fileID: 1859920609}
   _saveSlotPrefab: {fileID: 5314267046761255526, guid: 434e24ae424dd7b46a6ca3db72782d20, type: 3}
 --- !u!4 &1018995760
@@ -4937,8 +4939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.2000122, y: 0}
+  m_SizeDelta: {x: -6.400015, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168528974
 MonoBehaviour:
@@ -4962,15 +4964,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9ebc9b8896d0fc54394cda9818a08391, type: 2}
+  m_sharedMaterial: {fileID: -1248568213300134244, guid: 9ebc9b8896d0fc54394cda9818a08391, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4290756595
+  m_fontColor: {r: 0.95294124, g: 0.7490196, b: 0.7490196, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4987,8 +4989,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25.7
+  m_fontSizeBase: 25.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5745,7 +5747,7 @@ GameObject:
   - component: {fileID: 1424630469}
   - component: {fileID: 1424630468}
   m_Layer: 5
-  m_Name: Name_World_tmp
+  m_Name: Seed_World_tmp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6365,7 +6367,7 @@ GameObject:
   - component: {fileID: 1644843576}
   - component: {fileID: 1644843575}
   m_Layer: 5
-  m_Name: Name_World_tmp (1)
+  m_Name: info_tmp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

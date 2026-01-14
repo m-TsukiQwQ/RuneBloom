@@ -1,15 +1,23 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WorldTime;
 
 public class SaveSlotMenu : MonoBehaviour
 {
 
     [Header("Navigation")]
     [SerializeField] private string _gameSceneName = "Game";
+    [Space]
 
+    [Header("New Game Setup")]
+    [SerializeField] private TMP_InputField _saveNameInput;
+    [SerializeField] private TMP_InputField _seedInput;
+    [Space]
 
     [Header("Load Game Setup")]
     [SerializeField] private Transform _slotsContainer; // The ScrollView Content
@@ -25,6 +33,20 @@ public class SaveSlotMenu : MonoBehaviour
 
     public void OnNewGameClicked()
     {
+        string worldName = "New World";
+        if (_saveNameInput != null && !string.IsNullOrWhiteSpace(_saveNameInput.text))
+        {
+            worldName = _saveNameInput.text;
+        }
+
+        int worldSeed = Math.Abs((int)System.DateTime.Now.Ticks);
+        if (_seedInput != null && !string.IsNullOrWhiteSpace(_seedInput.text))
+        {
+            worldSeed = int.Parse(_seedInput.text);
+        }
+
+
+
         Debug.Log("Creating");
         // 1. Generate a unique Profile ID based don time so it never conflicts
         string newProfileId = "Profile_" + System.DateTime.Now.Ticks;
@@ -33,7 +55,11 @@ public class SaveSlotMenu : MonoBehaviour
         SaveManager.Instance.ChangeSelectedProfileId(newProfileId);
 
         // 3. Force a New Game state (Reset data)
-        SaveManager.Instance.NewGame();
+
+        Debug.Log(worldName);
+        SaveManager.Instance.NewGame(worldSeed,worldName);
+
+        SaveManager.Instance.SaveGame();
 
         // 4. Start
         SceneManager.LoadScene(_gameSceneName);

@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profileId: 
   _dayCountText: {fileID: 5074477607074737058}
+  _worldNameText: {fileID: 771276271595385999}
   _lastPlayedText: {fileID: 2431490300980988637}
 --- !u!1 &5531089024912784320
 GameObject:
