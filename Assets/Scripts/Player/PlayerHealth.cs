@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : EntityHealth
+public class PlayerHealth : EntityHealth, ISaveable
 {
     [Header("Health Bar")]
     [SerializeField] private Image _healthBar;
@@ -31,5 +31,15 @@ public class PlayerHealth : EntityHealth
     {
         base.IncreaseHealth(healAmount);
         UpdateHealthBar();
+    }
+
+    public void LoadData(GameData data)
+    {
+        _currentHealth = data.playerStats.currentHealth;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerStats.currentHealth = _currentHealth;
     }
 }

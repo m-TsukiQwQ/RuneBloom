@@ -9,6 +9,9 @@ public class SaveManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string _fileName = "data.game";
 
+    [SerializeField] private string _selectedProfileId = "test_profile";
+
+
     private GameData _gameData;
     private List<ISaveable> _saveableObjects;
     private FileDataHandler _dataHandler;
@@ -38,15 +41,8 @@ public class SaveManager : MonoBehaviour
         _dataHandler = new FileDataHandler(Application.persistentDataPath, _fileName);
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode   )
     {
@@ -55,7 +51,16 @@ public class SaveManager : MonoBehaviour
         LoadGame();
     }
 
-    [ContextMenu("NewGame")]
+    public void ChangeSelectedProfileId(string newProfileId)
+    {
+        // Call this from Main Menu buttons: "Slot 1", "Slot 2", etc.
+        _selectedProfileId = newProfileId;
+
+        // Reload game data for this new profile
+        LoadGame();
+    }
+
+
     public void NewGame()
     {
         _gameData = new GameData();
@@ -63,7 +68,7 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame()
     {
-        _gameData = _dataHandler.Load();
+        _gameData = _dataHandler.Load(_selectedProfileId);
         if (_gameData == null)
         {
             Debug.Log("No save data found. Initializing new game.");
@@ -83,7 +88,7 @@ public class SaveManager : MonoBehaviour
             saveable.SaveData(ref _gameData);
         }
 
-        _dataHandler.Save(_gameData);
+        _dataHandler.Save(_gameData, _selectedProfileId);
         Debug.Log("Game Saved!");
     }
 
@@ -108,5 +113,10 @@ public class SaveManager : MonoBehaviour
         {
             _saveableObjects.Remove(saveable);
         }
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return _dataHandler.LoadAllProfiles();
     }
 }

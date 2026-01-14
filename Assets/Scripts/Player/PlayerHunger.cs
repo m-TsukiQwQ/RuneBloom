@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHunger : MonoBehaviour
+public class PlayerHunger : MonoBehaviour, ISaveable
 {
     private PlayerHealth _playerHealth;
     private EntityStats _stats;
@@ -62,5 +62,15 @@ public class PlayerHunger : MonoBehaviour
         if (_hungerBar == null) return;
 
         _hungerBar.fillAmount = _currentHunger / _stats.GetMaxHunger();
+    }
+
+    public void LoadData(GameData data)
+    {
+        _currentHunger = data.playerStats.currentHunger;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerStats.currentHunger = _currentHunger;
     }
 }

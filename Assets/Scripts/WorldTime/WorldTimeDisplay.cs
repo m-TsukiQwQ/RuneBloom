@@ -20,12 +20,29 @@ namespace WorldTime
             _worldTime.WorldTimeChanged += OnWorldTimeChanged;
         }
 
+        private void Start()
+        {
+            // FIX: Initialize the text immediately on startup.
+            // This ensures we see "08:00" instantly instead of waiting for the first minute to tick.
+            if (_worldTime != null)
+            {
+                UpdateText(_worldTime.CurrentTime);
+            }
+        }
+
+        private void UpdateText(TimeSpan time)
+        {
+            double totalDays = time.TotalDays;
+            int dayNumber = (int)totalDays;
+
+            // Format to 24h clock (08:00)
+            _timeText.SetText(time.ToString(@"hh\:mm"));
+            _dayText.SetText("Day " + (dayNumber + 1));
+        }
+
         private void OnWorldTimeChanged(object sender, TimeSpan newTime)
         {
-            double totalDays = newTime.TotalDays;
-            int dayNumber = (int)totalDays;
-            _timeText.SetText(newTime.ToString(@"hh\:mm"));
-            _dayText.SetText("Day  " + (dayNumber + 1));
+            UpdateText(newTime);
         }
 
         private void OnDisable()

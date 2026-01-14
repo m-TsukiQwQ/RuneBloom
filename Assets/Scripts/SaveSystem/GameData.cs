@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class GameData
 {
-    public float timeOfDay;
+    public long worldTimeTicks;
     public int dayCount;
 
     public int worldSeed;
@@ -14,7 +14,7 @@ public class GameData
 
 
     public Vector3 playerPosition;
-    public int playerHealth;
+
 
     public List<InventoryItemSaveData> playerInventory;
 
@@ -25,15 +25,13 @@ public class GameData
 
     public GameData()
     {
-        this.timeOfDay = 0f;
-        this.dayCount = 1;
+        this.worldTimeTicks = 0;
 
 
         this.worldSeed = 0;
         this.removedWorldObjects = new List<Vector2Int>();
         this.createdWorldObjects = new List<PlacedObjectSaveData>();
 
-        this.playerHealth = 100;
         this.playerPosition = Vector3.zero;
         this.playerInventory = new List<InventoryItemSaveData>();
 
@@ -75,7 +73,7 @@ public class PlayerStatsSaveData
     {
         // Set safe defaults to prevent death loops on new game
         currentHealth = 100f;
-        currentHunger = 100f;
+        currentHunger = 150f;
         currentMagic = 50f;
         baseStats = new List<StatSaveEntry>();
     }
