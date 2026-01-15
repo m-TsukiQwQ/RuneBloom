@@ -9,11 +9,9 @@ public class SaveableEntity : MonoBehaviour
     public string Id => _id;
 
     [ContextMenu("Generate ID")]
-    private void GenerateId()
+    public void GenerateId()
     {
         _id = Guid.NewGuid().ToString();
-
-        
 #if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(this);
 #endif

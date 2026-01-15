@@ -44,12 +44,19 @@ public class ConstructionLayer : TilemapLayer, ISaveable
             itemObject = Instantiate(item.GameObject, _tilemap.CellToWorld(coords) + _tilemap.cellSize / 4 + item.tileOffset /2 , Quaternion.identity);
             // --- CRITICAL RESTORE LOGIC ---
             // If we are loading a save, force this object to use the old ID
-            if (!string.IsNullOrEmpty(loadId))
+            var saveable = itemObject.GetComponent<SaveableEntity>();
+            if (saveable != null)
             {
-                var saveable = itemObject.GetComponent<SaveableEntity>();
-                if (saveable != null)
+                // CASE 1: LOADING GAME (Restore old ID)
+                if (!string.IsNullOrEmpty(loadId))
                 {
                     saveable.RestoreId(loadId);
+                }
+                // CASE 2: PLACING NEW OBJECT (Generate Fresh ID)
+                // This overwrites the Prefab's hardcoded ID with a unique one for this specific chest instance.
+                else
+                {
+                    saveable.GenerateId();
                 }
             }
         }
