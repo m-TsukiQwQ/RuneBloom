@@ -5,14 +5,19 @@ public class PlayerHealth : EntityHealth, ISaveable
 {
     [Header("Health Bar")]
     [SerializeField] private Image _healthBar;
+    public float CurrentHealth => _currentHealth;
 
     private void UpdateHealthBar()
     {
         if (_healthBar == null) return;
 
-        _healthBar.fillAmount = _currentHealth / _stats.GetMaxHealth();
+        _healthBar.fillAmount = _currentHealth / GetMaxHealth();
     }
 
+    public float GetMaxHealth()
+    {
+        return _stats.GetMaxHealth();
+    }
     protected override void Awake()
     {
         base.Awake();

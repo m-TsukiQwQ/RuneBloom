@@ -27,6 +27,12 @@ public class Stat
         return _finalValue;
     }
 
+    public void SetBaseValue(float value)
+    {
+        _baseValue = value;
+        _needToBeRecalculated = true;
+    }
+
 
     public void AddModifier(float value, string source)
     {

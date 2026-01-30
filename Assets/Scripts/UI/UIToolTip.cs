@@ -54,6 +54,8 @@ public class UIToolTip : MonoBehaviour
 
 
         _rect.position = pointerPosition;
+
+        
     }
 
     protected string GetColoredText(string text, string color)

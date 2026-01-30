@@ -37,50 +37,51 @@ public class InventoryBase : MonoBehaviour
 
     public virtual bool TryAddItem(ItemDataSO itemToAdd, int amountToAdd)
     {
-
-        int difference;
+        // 1. Try to stack into existing slots first
         if (itemToAdd.maxStackSize > 1)
         {
             foreach (InventorySlot slot in slots)
             {
-                if (slot.HasItem && slot.itemData == itemToAdd)
+                // Is this the right item and is there space?
+                if (slot.HasItem && slot.itemData == itemToAdd && slot.stackSize < itemToAdd.maxStackSize)
                 {
-                    if (slot.itemData.maxStackSize >= slot.stackSize + amountToAdd)
-                    {
-                        slot.AddToStack(amountToAdd);
+                    int spaceRemaining = itemToAdd.maxStackSize - slot.stackSize;
+                    
+                    // Take whichever is smaller: the space we have, or the amount we need to add
+                    int amountToStack = Mathf.Min(spaceRemaining, amountToAdd);
+                    
+                    slot.AddToStack(amountToStack);
+                    amountToAdd -= amountToStack; // Reduce the amount we still need to place
+                    
+                    OnInventoryChanged?.Invoke();
 
-                        OnInventoryChanged?.Invoke();
-                        return true;
-                    }
-                    else if (slot.itemData.maxStackSize < slot.stackSize + amountToAdd)
-                    {
-                        difference = (slot.stackSize + amountToAdd) - slot.itemData.maxStackSize; ;
-                        slot.stackSize = slot.itemData.maxStackSize;
-                        amountToAdd = difference;
-
-                        OnInventoryChanged?.Invoke();
-
-                    }
+                    // If we have placed everything, we are done!
+                    if (amountToAdd <= 0) return true;
                 }
-
             }
         }
 
-
+        // 2. Fill empty slots with whatever is remaining
         foreach (InventorySlot slot in slots)
         {
             if (!slot.HasItem)
             {
-                slot.AssignItem(itemToAdd, amountToAdd);
+                // FIX: Don't just dump all 'amountToAdd'. Check the max stack again!
+                int amountToAssign = Mathf.Min(amountToAdd, itemToAdd.maxStackSize);
+                
+                slot.AssignItem(itemToAdd, amountToAssign);
+                amountToAdd -= amountToAssign;
+                
                 OnInventoryChanged?.Invoke();
 
-                return true;
+                // If we have placed everything, we are done
+                if (amountToAdd <= 0) return true;
             }
         }
 
-
-        return false;
-
+        // If we exit the loops and amountToAdd is still > 0, it means we ran out of space.
+        // Usually, you might drop the remainder on the ground here, or just return false.
+        return amountToAdd <= 0;
     }
 
     protected virtual void Start()

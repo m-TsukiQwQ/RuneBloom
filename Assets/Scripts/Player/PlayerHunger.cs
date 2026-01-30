@@ -16,6 +16,8 @@ public class PlayerHunger : MonoBehaviour, ISaveable
     [SerializeField]
     private float _hungerTimer;
 
+    public float CurrentHunger => _currentHunger;
+
     private void Awake()
     {
         _playerHealth = GetComponent<PlayerHealth>();
@@ -23,6 +25,11 @@ public class PlayerHunger : MonoBehaviour, ISaveable
 
         _currentHunger = _stats.GetMaxHunger();
         UpdateHungerBar();
+    }
+
+    public float GetMaxHunger()
+    {
+        return _stats.GetMaxHunger();
     }
 
     private void FixedUpdate()

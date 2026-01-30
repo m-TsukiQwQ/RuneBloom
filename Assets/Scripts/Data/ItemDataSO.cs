@@ -4,7 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game Setup/Item Data/Material item", fileName = "Material data - ")]
 public class ItemDataSO : ScriptableObject
 {
-
     public string itemID;
 
     [Header("Visuals & Data")]
@@ -25,8 +24,6 @@ public class ItemDataSO : ScriptableObject
         string path = AssetDatabase.GetAssetPath(this);
         string guid = AssetDatabase.AssetPathToGUID(path);
 
-        // If the ItemID is empty, OR if it doesn't match the file's GUID (e.g. we duplicated the item),
-        // update it to match the file.
         if (!string.IsNullOrEmpty(guid) && itemID != guid)
         {
             itemID = guid;
@@ -37,7 +34,7 @@ public class ItemDataSO : ScriptableObject
 #endif
     }
 
-    // Right-click the component header to manually reset if needed
+    // Right click the component header to manually reset if needed
     [ContextMenu("Regenerate ID")]
     public void RegenerateID()
     {

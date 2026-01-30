@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Diagnostics;
 
 public class WorldGenerator : MonoBehaviour, ISaveable
 {
@@ -202,6 +203,7 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                 {
                     groundTilemap.SetTile(pos, grassTile);
                     cliffTilemap.SetTile(pos, cliffTile);
+                    waterTilemap.SetTile(pos, waterTile);
 
                     if (decorationTilemap != null && grassDecorationTile != null)
                     {
@@ -382,4 +384,41 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         Vector3Int cellPos = groundTilemap.WorldToCell(worldPosition);
         _removedNatureCoordinates.Add((Vector2Int)cellPos);
     }
+
+    [ContextMenu("Profiling Test")]
+    public void RunPerformanceBenchmark()
+    {
+        Stopwatch sw = new Stopwatch();
+
+        // Test 1: Ma?a mapa (50x50)
+        width = 50; height = 50;
+        sw.Restart();
+        GenerateWorld();
+        sw.Stop();
+        UnityEngine.Debug.Log($"Profiling Test [50x50]: {sw.ElapsedMilliseconds} ms");
+
+        // Test 2: ?rednia mapa (100x100 - domy?lna)
+        width = 100; height = 100;
+        sw.Restart();
+        GenerateWorld();
+        sw.Stop();
+        UnityEngine.Debug.Log($"Profiling Test [100x100]: {sw.ElapsedMilliseconds} ms");
+
+        // Test 3: Du?a mapa (200x200) - 4x wi?cej kafelków
+        width = 200; height = 200;
+        sw.Restart();
+        GenerateWorld();
+        sw.Stop();
+        UnityEngine.Debug.Log($"Profiling Test [200x200]: {sw.ElapsedMilliseconds} ms");
+
+        // Opcjonalnie: Przywró? domy?lne 100x100 po te?cie
+        width = 100; height = 100;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            RunPerformanceBenchmark();
+    }
 }
+
