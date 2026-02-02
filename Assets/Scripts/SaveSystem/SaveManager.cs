@@ -109,7 +109,8 @@ public class SaveManager : MonoBehaviour
 
     private List<ISaveable> FindAllSaveableObjects()
     {
-        IEnumerable<ISaveable> saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();  
+        IEnumerable<ISaveable> saveables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+        .OfType<ISaveable>();
 
         return new List<ISaveable>(saveables);
     }

@@ -19,8 +19,6 @@ public class ToolbarController : MonoBehaviour
 
     [field: SerializeField] public BuildableItemSO activeBuildable { get; private set; }
 
-    [SerializeField] private float _maxBuildingDistance = 3;
-
     [SerializeField] private ConstructionLayer _constructionLayer;
     [SerializeField] private MouseUser _mouseUser;
 

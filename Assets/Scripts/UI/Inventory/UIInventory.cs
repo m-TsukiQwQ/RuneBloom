@@ -116,7 +116,7 @@ public class UIInventory : MonoBehaviour
             _allSlots[index] = newSlotObj.GetComponent<UIInventorySlot>();
         }
 
-        for (index = index; index < _gridSlotCount + _toolbarSize; index++)
+        for (int i = index; index < _gridSlotCount + _toolbarSize; index++)
         {
             GameObject newSlotObj = Instantiate(_slotPrefab);
             newSlotObj.transform.SetParent(itemsParent, false);

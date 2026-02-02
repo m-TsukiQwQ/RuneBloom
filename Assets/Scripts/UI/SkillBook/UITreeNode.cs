@@ -64,7 +64,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (_skillData.maximumLevel <= currentNodeLevel)
             return false;
 
-        if(GetCurrentPoints() < _skillData.cost)
+        if (GetCurrentPoints() < _skillData.cost)
             return false;
 
 
@@ -72,6 +72,13 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         return true;
     }
+
+    [ContextMenu("Remove Skill")]
+    private void RemoveSkill()
+    {
+        OnSkillRemove?.Invoke(_skillData);
+    }
+
     private bool CanBeUnlocked()
     {
         if (isUnlocked || isLocked)
