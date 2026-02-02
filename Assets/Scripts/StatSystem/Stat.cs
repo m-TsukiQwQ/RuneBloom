@@ -16,6 +16,14 @@ public class Stat
     public List<StatModifier> Modifiers() => _modifiers;
     public List<StatModifier> Multipliers() => _multipliers;
 
+    public Stat()
+    {
+        _modifiers = new List<StatModifier>();
+        _multipliers = new List<StatModifier>();
+        _needToBeRecalculated = true;
+        _baseValue = 0;
+    }
+
     public float GetValue()
     {
         if (_needToBeRecalculated)
@@ -59,18 +67,26 @@ public class Stat
         _needToBeRecalculated = true;
     }
 
+
     public float GetFinalValue()
     {
         float finalValue = _baseValue;
 
-        foreach (var modifier in _modifiers)
+        if (_modifiers != null)
         {
-            finalValue += modifier.value;
+            foreach (var modifier in _modifiers)
+            {
+                finalValue += modifier.value;
+            }
         }
+
         _multipliersSum = 100;
-        foreach (var multiplier in _multipliers)
+        if (_multipliers != null)
         {
-            _multipliersSum += multiplier.value;
+            foreach (var multiplier in _multipliers)
+            {
+                _multipliersSum += multiplier.value;
+            }
         }
         finalValue *= (_multipliersSum / 100);
 

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public StatGroupResources resources;
-    public StatGroupGeneral general;
-    public StatGroupOffence offence;
-    public StatGroupDefence defence;
+    public StatGroupResources resources = new StatGroupResources();
+    public StatGroupGeneral general = new StatGroupGeneral();
+    public StatGroupOffence offence = new StatGroupOffence();
+    public StatGroupDefence defence = new StatGroupDefence();
 
     public float GetHealthRegeneration()
     {

@@ -78,7 +78,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     public virtual void ReduceHealth(float damage)
     {
-        Vector2 position = new Vector2(_entity.transform.position.x, _entity.transform.position.y);
+        Vector2 position = _entity != null ? (Vector2)_entity.transform.position : (Vector2)transform.position;
         _currentHealth -= damage;
         _entityVfx?.ShowDamageText(damage, position);
         _entityVfx?.PlayOnDamageVfx();
@@ -92,23 +92,26 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     public virtual void IncreaseHealth(float healAmount)
     {
-        if (isDead)
-            return;
+        Debug.Log("--- Start IncreaseHealth ---");
+        if (isDead || _stats?.resources?.healthRegenerationMultiplier == null) return;
 
-        float healthRegenerationMultiplier = Mathf.Max( (_stats.resources.healthRegenerationMultiplier.GetValue() / 100), 0);
+        float multValue = _stats.resources.healthRegenerationMultiplier.GetValue();
+        Debug.Log($"Stat Raw Value: {multValue}");
 
+        float multiplier = Mathf.Max((multValue / 100), 0);
+        float maxH = _stats.GetMaxHealth();
+        Debug.Log($"Max Health allowed: {maxH}");
 
-        float newHealth = _currentHealth + (healAmount * healthRegenerationMultiplier);
-        float maxHealth = _stats.GetMaxHealth();
+        _currentHealth = Mathf.Clamp(_currentHealth + (healAmount * multiplier), 0, maxH);
+        Debug.Log($"Resulting Health: {_currentHealth}");
 
-        _currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
 
     }
 
     private void ApplyRegenerationEffect()
     {
         float regenerationAmount = _stats.resources.healthRegeneration.GetValue();
-        
+
         float regenerationInterval = _stats.resources.healthRegenerationInterval.GetValue();
 
         if (_canRegenerateHealth && _regenerationHealthCo == null)
@@ -119,7 +122,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
     {
 
         IncreaseHealth(regenerationAmount);
-        
+
         yield return new WaitForSeconds(regenerationInterval);
         _regenerationHealthCo = null;
 
@@ -129,7 +132,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
     {
         isDead = true;
 
-        _entity.EntityDeath();
+        _entity?.EntityDeath();
     }
 
     private bool AttackEvaded() => Random.Range(1, 100) <= _stats.GetEvasion();
@@ -162,5 +165,5 @@ public class EntityHealth : MonoBehaviour, IDamageable
         throw new System.NotImplementedException();
     }
 
-    
+
 }
