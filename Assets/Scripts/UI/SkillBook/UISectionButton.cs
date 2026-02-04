@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 public class UISectionButton : MonoBehaviour
 {
@@ -8,10 +10,15 @@ public class UISectionButton : MonoBehaviour
     [SerializeField] private Sprite _unselectedIcon;
     private Image _image;
 
+    [SerializeField] private Color _selectedColor;
+    [SerializeField] private Color _unselectedColor;
+    private TextMeshProUGUI _text;
+
 
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _text = GetComponentInChildren<TextMeshProUGUI>();
 
         UpdateVisuals(false);
     }
@@ -31,6 +38,13 @@ public class UISectionButton : MonoBehaviour
         if (_image != null)
         {
             _image.sprite = isActive ? _selectedIcon : _unselectedIcon;
+        }
+
+        if (_text != null)
+        {
+            Color color = isActive ? _selectedColor : _unselectedColor;
+
+            _text.color = color;
         }
     }
 
