@@ -10,7 +10,7 @@ namespace WorldTime
 
         [SerializeField] private float _dayLength; //in seconds
 
-        [SerializeField] private int _startHour = 8;
+        [SerializeField] private int _startHour = 0;
         [SerializeField] private int _startMinute = 0;
 
         private TimeSpan _currentTime;
