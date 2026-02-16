@@ -731,7 +731,7 @@ MonoBehaviour:
         _multipliers: []
   offence:
     physicalDamage:
-      _baseValue: 2
+      _baseValue: 1
       _modifiers: []
       _multipliers: []
     critPower:
@@ -769,19 +769,19 @@ MonoBehaviour:
         _multipliers: []
     fire:
       fireDamage:
-        _baseValue: 1
+        _baseValue: 0
         _modifiers: []
         _multipliers: []
       burnDuration:
-        _baseValue: 5
+        _baseValue: 0
         _modifiers: []
         _multipliers: []
       maxBurnStacks:
-        _baseValue: 2
+        _baseValue: 0
         _modifiers: []
         _multipliers: []
       burnDamage:
-        _baseValue: 1
+        _baseValue: 0
         _modifiers: []
         _multipliers: []
     poison:

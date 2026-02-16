@@ -6,6 +6,8 @@ public class EntityAnimation : MonoBehaviour
     private Animator _animator;
     private EntityCombat _entityCombat;
 
+    private EntitySFX _sfx;
+
 
     private readonly int _moveX = Animator.StringToHash("MoveX");
     private readonly int _moveY = Animator.StringToHash("MoveY");
@@ -21,6 +23,7 @@ public class EntityAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
         _entity = GetComponentInParent<Entity>();
         _entityCombat = GetComponentInParent<EntityCombat>();
+        _sfx = GetComponentInParent<EntitySFX>();
     }
     public void SetMoveAnimation(Vector2 direction)
     {
@@ -83,5 +86,10 @@ public class EntityAnimation : MonoBehaviour
     {
         
         _entityCombat.PerformAttack();
+    }
+
+    private void AttackSound()
+    {
+        _sfx.PlayAttackHit();
     }
 }

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9620f4ff429759149839c6ff3756f572, type: 3}
   m_Name: Audio Database
   m_EditorClassIdentifier: 
-  player: []
-  ui: []
+  playerAudio:
+  - audioName: attack_Hit
+    clips:
+    - {fileID: 8300000, guid: 34bef1ae52083dc42b4d9f8b5688dcc4, type: 3}
+    volume: 0
+  uiAudio: []

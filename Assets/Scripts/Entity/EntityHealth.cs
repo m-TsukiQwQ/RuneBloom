@@ -92,19 +92,14 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     public virtual void IncreaseHealth(float healAmount)
     {
-        Debug.Log("--- Start IncreaseHealth ---");
         if (isDead || _stats?.resources?.healthRegenerationMultiplier == null) return;
 
         float multValue = _stats.resources.healthRegenerationMultiplier.GetValue();
-        Debug.Log($"Stat Raw Value: {multValue}");
 
         float multiplier = Mathf.Max((multValue / 100), 0);
         float maxH = _stats.GetMaxHealth();
-        Debug.Log($"Max Health allowed: {maxH}");
 
         _currentHealth = Mathf.Clamp(_currentHealth + (healAmount * multiplier), 0, maxH);
-        Debug.Log($"Resulting Health: {_currentHealth}");
-
 
     }
 

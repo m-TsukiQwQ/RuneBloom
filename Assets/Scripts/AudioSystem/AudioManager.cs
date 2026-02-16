@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
         var clip = data.GetRandomClip();
         if (clip == null) return;
 
+        sfxSource.pitch = Random.Range(data.standardPitch - .3f, data.standardPitch + .3f);
         sfxSource.clip = clip;
         sfxSource.PlayOneShot(clip);
 
