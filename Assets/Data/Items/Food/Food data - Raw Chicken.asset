@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e02f6b8853b1543b97ddf571112f5a, type: 3}
+  m_Name: Food data - Raw Chicken
+  m_EditorClassIdentifier: 
+  itemID: 3fd6fd820e18c0c419fdb0ba6b09ee1a
+  itemName: Raw Chicken
+  itemIcon: {fileID: 21300000, guid: fd2cfadbf5f7015498ef7db2596f3b3a, type: 3}
+  inHandIcon: {fileID: 0}
+  description: Pale, plucked, and slimy. It looks harmless enough, but eating this
+    raw is a gamble you don't want to take
+  itemDisplayType: 4
+  equipmentType: 0
+  maxStackSize: 64
+  health: -1
+  hunger: 5
+  magicPower: 0

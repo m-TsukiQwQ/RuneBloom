@@ -10,6 +10,7 @@ public class AnimalStateDead : AnimalState
     {
         base.Enter();
         _animal.GetComponentInChildren<Collider2D>().enabled = false;
+        _animal.GetComponent<LootSpawner>()?.SpawnLoot();
 
         _animal.Death();
         _stateMachine.SwithOffMachine();

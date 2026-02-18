@@ -14,6 +14,9 @@ public class EntitySFX : MonoBehaviour
 
     public void PlayAttackHit()
     {
-        AudioManager.instance.PlaySFX(_attackHit, _audioSource);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(_attackHit, _audioSource);
+        }
     }
 }

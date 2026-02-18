@@ -124,12 +124,12 @@ TextureImporter:
       name: Pig_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 31
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: Pig_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 31
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,19 +168,19 @@ TextureImporter:
       name: Pig_2
       rect:
         serializedVersion: 2
-        x: 65
-        y: 31
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4f92dbf70e589bc90800000000000000
+      spriteID: b98dd9871bfc5224093edbade92af59d
       internalID: -7153539333839050252
       vertices: []
       indices: 
@@ -190,19 +190,19 @@ TextureImporter:
       name: Pig_3
       rect:
         serializedVersion: 2
-        x: 97
-        y: 31
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8d4806669b241dad0800000000000000
+      spriteID: 1c3c176c218b43042af55d90ca29f3a9
       internalID: -2679286939254749992
       vertices: []
       indices: 
@@ -212,19 +212,19 @@ TextureImporter:
       name: Pig_4
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eb2e70cbfc60d2b30800000000000000
+      spriteID: 8e96d642f9591f948b298d1d9829959f
       internalID: 4264071911472358078
       vertices: []
       indices: 
@@ -234,19 +234,19 @@ TextureImporter:
       name: Pig_5
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ceab49473edcbaf70800000000000000
+      spriteID: e65e85a10a629964db278fe3416dbdc4
       internalID: 9199673040631544556
       vertices: []
       indices: 
@@ -256,19 +256,19 @@ TextureImporter:
       name: Pig_6
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 917ab03a3a3ad5950800000000000000
+      spriteID: d0b55cb9096cbcb42bc4fa570ad4d9ce
       internalID: 6439482965420123929
       vertices: []
       indices: 
@@ -278,19 +278,19 @@ TextureImporter:
       name: Pig_7
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 0
-        width: 29
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 750eb789efb4635e0800000000000000
+      spriteID: 5d11d43dbaa417746b25d7a394dac25f
       internalID: -1930271833429647273
       vertices: []
       indices: 
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9dd9cf7dc03ad0d48a714d5b5226432e
     internalID: 0
     vertices: []
     indices: 

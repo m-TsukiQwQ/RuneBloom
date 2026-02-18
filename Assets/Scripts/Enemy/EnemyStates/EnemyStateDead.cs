@@ -11,6 +11,7 @@ public class EnemyStateDead : EnemyState
         base.Enter();
         _enemy.GetComponentInChildren<Collider2D>().enabled = false;
 
+
         _enemy.Death();
         _stateMachine.SwithOffMachine();
     }

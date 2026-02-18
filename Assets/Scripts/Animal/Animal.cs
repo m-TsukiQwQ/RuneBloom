@@ -56,6 +56,7 @@ public class Animal : Entity
     public override void EntityDeath()
     {
         base.EntityDeath();
+
         _stateMachine.ChangeState(deadState);
     }
     public void Death()

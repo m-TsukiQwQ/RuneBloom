@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e02f6b8853b1543b97ddf571112f5a, type: 3}
+  m_Name: Food data - Raw Beef
+  m_EditorClassIdentifier: 
+  itemID: 41a7c5c4ca3899d4289776765baa418e
+  itemName: Raw Beef
+  itemIcon: {fileID: 21300000, guid: b5db4828c6d91bf46aaf6dd57186a258, type: 3}
+  inHandIcon: {fileID: 0}
+  description: "A heavy slab of muscle, marbled with stark white fat against deep,
+    shivering blue meat. It\u2019s cold to the touch even without refrigeration and
+    smells faintly of ozone and static electricity"
+  itemDisplayType: 4
+  equipmentType: 0
+  maxStackSize: 64
+  health: 0
+  hunger: 6
+  magicPower: 0

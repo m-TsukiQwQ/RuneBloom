@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,7 +61,9 @@ public class PlayerHunger : MonoBehaviour, ISaveable
 
     public void RestoreHunger(float hunger)
     {
-        _currentHunger += hunger;
+
+        float newHunger = _currentHunger + hunger;
+        _currentHunger = Math.Clamp(newHunger, 0, GetMaxHunger());
         UpdateHungerBar();
     }
 

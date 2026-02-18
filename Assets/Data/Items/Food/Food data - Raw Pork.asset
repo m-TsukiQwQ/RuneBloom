@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e02f6b8853b1543b97ddf571112f5a, type: 3}
+  m_Name: Food data - Raw Pork
+  m_EditorClassIdentifier: 
+  itemID: fdae3fe6d36a40f49824d208832ff0bb
+  itemName: Raw Pork
+  itemIcon: {fileID: 21300000, guid: f51f9a3515d3c93418d5550395aa915a, type: 3}
+  inHandIcon: {fileID: 0}
+  description: If you didn't know better, you'd think this was a giant block of dark
+    chocolate. It has a rich, earthy scent, like damp soil and cocoa beans. Definitely
+    meat, but your brain is confused
+  itemDisplayType: 4
+  equipmentType: 0
+  maxStackSize: 64
+  health: -1
+  hunger: 6
+  magicPower: 0
