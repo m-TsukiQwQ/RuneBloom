@@ -18,6 +18,11 @@ public class UISkillPage : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        UpdateSkillPointsText();
+    }
+
     [ContextMenu("AddPoint")]
     private void AddPoint()
     {

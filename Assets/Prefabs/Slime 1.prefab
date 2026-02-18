@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 6265617863591019234}
   - component: {fileID: 3371706195162656549}
   - component: {fileID: 7534496490595294978}
+  - component: {fileID: -3539932894418390099}
   m_Layer: 9
   m_Name: Slime 1
   m_TagString: Untagged
@@ -575,7 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources:
     maxHealth:
-      _baseValue: 100
+      _baseValue: 10
       _modifiers: []
       _multipliers: []
     healthRegeneration:
@@ -847,6 +848,20 @@ MonoBehaviour:
   _currentPoisonCharge: 0
   _corrosionCharge: 0
   _poisonPrefab: {fileID: 6722773258418719848, guid: 1fc076b9c35a11b42a7f67d5393df2ef, type: 3}
+--- !u!114 &-3539932894418390099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368695604070408285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17579a2110815a34fa4614b86c59e161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: cec0ba4648b5c5942b229dd52aa684e0, type: 2}
+  _pickUpPrefab: {fileID: 5010663178491987950, guid: c3df1b4714eec9542b1ea2754f60fa09, type: 3}
 --- !u!1 &5467158427533408181
 GameObject:
   m_ObjectHideFlags: 0

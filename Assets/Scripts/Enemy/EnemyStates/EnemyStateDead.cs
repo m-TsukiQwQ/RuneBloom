@@ -10,6 +10,8 @@ public class EnemyStateDead : EnemyState
     {
         base.Enter();
         _enemy.GetComponentInChildren<Collider2D>().enabled = false;
+        _enemy.GetComponent<LootSpawner>()?.SpawnLoot();
+        SkillManager.instance.AddSkillPointsByType(UISkillBookPageType.ElementIce, 1);
 
 
         _enemy.Death();

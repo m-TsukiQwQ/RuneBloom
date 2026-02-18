@@ -5,11 +5,21 @@ public class SkillManager : MonoBehaviour
 {
     [SerializeField] private Dictionary<UISkillBookPageType, int> _skillPoints = new Dictionary<UISkillBookPageType, int>();
 
+    public static SkillManager instance;
+
 
     private EntityStats _statsToModify;
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+
         _statsToModify = GetComponent<EntityStats>();
         foreach (UISkillBookPageType type in System.Enum.GetValues(typeof(UISkillBookPageType)))
         {
