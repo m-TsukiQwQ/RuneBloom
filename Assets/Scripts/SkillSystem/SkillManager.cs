@@ -35,14 +35,14 @@ public class SkillManager : MonoBehaviour
 
     void OnEnable()
     {
-        // Subscribe to the events
+
         UITreeNode.OnSkillUpgrade += AddSkillModifiers;
         UITreeNode.OnSkillRemove += RemoveSkillModifiers;
     }
 
     void OnDisable()
     {
-        // ALWAYS unsubscribe
+
         UITreeNode.OnSkillUpgrade -= AddSkillModifiers;
         UITreeNode.OnSkillRemove -= RemoveSkillModifiers;
     }

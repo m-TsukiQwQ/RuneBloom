@@ -77,15 +77,13 @@ public class WorldGenerator : MonoBehaviour, ISaveable
 
     private HashSet<Vector2Int> _removedNatureCoordinates = new HashSet<Vector2Int>();
 
-    // --- FIX: Store offsets generated from seed, not the seed itself ---
     private Vector2 _natureOffset;
     private Vector2 _grassOffset;
     private Vector2 _decorTileOffset;
 
     private void Start()
     {
-        // If there is no SaveManager, generate a default world immediately.
-        // If SaveManager exists, it will call LoadData -> InitializeWorld instead.
+
         if (FindFirstObjectByType<SaveManager>() == null)
         {
             GenerateWorld();
@@ -104,8 +102,8 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         // Initialize the Random State so the same seed produces the exact same world
         Random.InitState(seed);
 
-        // --- FIX: Generate safe offsets used for Perlin Noise ---
-        // Random.Range returns floats within safe precision limits (-10k to 10k)
+
+        // Random.Range returns floats within safe precision limits
         float xOffset = Random.Range(-10000f, 10000f);
         float yOffset = Random.Range(-10000f, 10000f);
 
@@ -125,7 +123,7 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         {
             for (int y = 0; y < height; y++)
             {
-                // A. PERLIN NOISE GENERATION
+                // PERLIN NOISE GENERATION
                 float xCoord = (float)x / width * noiseScale + xOffset;
                 float yCoord = (float)y / height * noiseScale + yOffset;
                 float noiseValue = Mathf.PerlinNoise(xCoord, yCoord);
@@ -218,7 +216,7 @@ public class WorldGenerator : MonoBehaviour, ISaveable
                             decorationTilemap.SetTile(pos, grassDecorationTile);
                         }
 
-                        // --- NEIGHBOR CHECK: PREVENT COAST SPAWNING ---
+                        // PREVENT COAST SPAWNING
                         bool nextToWater = false;
 
                         if (x > 0 && mapData[x - 1, y] == 0) nextToWater = true;
@@ -249,7 +247,7 @@ public class WorldGenerator : MonoBehaviour, ISaveable
         Vector3 spawnPos = basePos + new Vector3(offsetX, offsetY, 0);
         bool isRemoved = _removedNatureCoordinates.Contains((Vector2Int)gridPos);
 
-        // --- FIX: Use safe offsets, not raw seed addition ---
+        // Use safe offsets, not raw seed addition 
         float roll = Mathf.PerlinNoise(x * 0.8f + _natureOffset.x, y * 0.8f + _natureOffset.y);
 
         float currentTreshold = 0f;
@@ -310,7 +308,7 @@ public class WorldGenerator : MonoBehaviour, ISaveable
             return;
         }
 
-        // --- FIX: Use safe offsets for grass patches too ---
+        // Use safe offsets for grass patches too 
         float xPatch = (x / grassPatchScale) + _grassOffset.x;
         float yPatch = (y / grassPatchScale) + _grassOffset.y;
 
@@ -390,28 +388,28 @@ public class WorldGenerator : MonoBehaviour, ISaveable
     {
         Stopwatch sw = new Stopwatch();
 
-        // Test 1: Ma?a mapa (50x50)
+        // Test 1:  (50x50)
         width = 50; height = 50;
         sw.Restart();
         GenerateWorld();
         sw.Stop();
         UnityEngine.Debug.Log($"Profiling Test [50x50]: {sw.ElapsedMilliseconds} ms");
 
-        // Test 2: ?rednia mapa (100x100 - domy?lna)
+        // Test 2:  (100x100 - domy?lna)
         width = 100; height = 100;
         sw.Restart();
         GenerateWorld();
         sw.Stop();
         UnityEngine.Debug.Log($"Profiling Test [100x100]: {sw.ElapsedMilliseconds} ms");
 
-        // Test 3: Du?a mapa (200x200) - 4x wi?cej kafelków
+        // Test 3: (200x200) - 4x wi?cej kafelków
         width = 200; height = 200;
         sw.Restart();
         GenerateWorld();
         sw.Stop();
         UnityEngine.Debug.Log($"Profiling Test [200x200]: {sw.ElapsedMilliseconds} ms");
 
-        // Opcjonalnie: Przywró? domy?lne 100x100 po te?cie
+      
         width = 100; height = 100;
     }
 

@@ -11,10 +11,10 @@ public class LootSpawner : MonoBehaviour
     {
         if (lootTable == null) return;
 
-        // 1. Calculate drops
+        // Calculate drops
         var drops = lootTable.GetLoot();
 
-        // 2. Spawn them
+        //Spawn them
         foreach (var drop in drops)
         {
             SpawnSingleItem(drop.itemData, drop.stackSize);
@@ -29,22 +29,21 @@ public class LootSpawner : MonoBehaviour
             return;
         }
 
-        // 1. Calculate Position (Random spread circle)
+        // Calculate Position 
         Vector2 randomSpread = Random.insideUnitCircle * 0.3f;
         Vector3 spawnPos = transform.position + (Vector3)randomSpread;
 
-        // 2. Instantiate
+        // Instantiate
         GameObject lootObj = Instantiate(_pickUpPrefab, spawnPos, Quaternion.identity);
 
-        // 3. Initialize Data (So 5 Wood contains "5", not "1")
+        //Initialize Data 
         ObjectItemPickUp pickup = lootObj.GetComponent<ObjectItemPickUp>();
         if (pickup != null)
         {
             pickup.SetObject(item, amount);
         }
 
-        // 4. (Optional) Animation/Bounce
-        // If your item has a Rigidbody2D, add a small force
+
         Rigidbody2D rb = lootObj.GetComponent<Rigidbody2D>();
         if (rb != null)
         {

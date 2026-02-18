@@ -49,13 +49,13 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Mathf.Abs(playerIdle.x) > Mathf.Abs(playerIdle.y))
         {
-            // --- Horizontal is dominant ---
+            // Horizontal is dominant
             // If direction.x is positive, cast right. Otherwise, cast left.
             return (playerIdle.x > 0) ? 3 : 1;
         }
         else
         {
-            // --- Vertical is dominant ---
+            //Vertical is dominant
             // If direction.y is positive, cast up. Otherwise, cast down.
             return (playerIdle.y > 0) ? 2 : 0;
         }

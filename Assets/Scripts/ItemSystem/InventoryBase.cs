@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class InventoryBase : MonoBehaviour
 {
-    
-
     public InventorySlot[] slots;
     public int maxInventorySize;
 
@@ -66,7 +64,6 @@ public class InventoryBase : MonoBehaviour
         {
             if (!slot.HasItem)
             {
-                // FIX: Don't just dump all 'amountToAdd'. Check the max stack again!
                 int amountToAssign = Mathf.Min(amountToAdd, itemToAdd.maxStackSize);
                 
                 slot.AssignItem(itemToAdd, amountToAssign);
@@ -117,7 +114,7 @@ public class InventoryBase : MonoBehaviour
 
 
 
-        if (slotB.itemData == slotA.itemData) // CASE 2: Stacking onto the same item
+        if (slotB.itemData == slotA.itemData) // Stacking onto the same item
         {
             if (slotB.stackSize + slotA.stackSize <= slotB.itemData.maxStackSize)
             {
@@ -127,7 +124,7 @@ public class InventoryBase : MonoBehaviour
             }
             else
             {
-                // Optional: Handle overflow (fill target, keep rest in source)
+                //Handle overflow 
                 int space = slotB.itemData.maxStackSize - slotB.stackSize;
                 slotB.AddToStack(space);
                 slotA.stackSize -= space;
@@ -171,13 +168,13 @@ public class InventoryBase : MonoBehaviour
             }
             else
             {
-                // Optional: Handle overflow (fill target, keep rest in source)
+                //Handle overflow
                 int space = toSlot.itemData.maxStackSize - toSlot.stackSize;
                 toSlot.AddToStack(space);
                 fromSlot.stackSize -= space;
             }
         }
-        // Cleanup: If source is now empty, clear it
+       
         if (fromSlot.stackSize <= 0)
         {
             fromSlot.Clear();
@@ -261,7 +258,7 @@ public class InventoryBase : MonoBehaviour
 
     }
 
-    // --- NEW: CROSS-INVENTORY LOGIC ---
+
     // Moves an item from THIS inventory -> TARGET inventory
     public virtual void TransferTo(InventoryBase targetInventory, int sourceIndex, int targetIndex)
     {
@@ -309,7 +306,7 @@ public class InventoryBase : MonoBehaviour
             mySlot.AssignItem(tempItem, tempStack);
         }
 
-        // IMPORTANT: Both inventories changed, so both UIs must redraw
+        //Both inventories changed, so both UIs must redraw
         this.OnInventoryChanged?.Invoke();
         targetInventory.OnInventoryChanged?.Invoke();
     }

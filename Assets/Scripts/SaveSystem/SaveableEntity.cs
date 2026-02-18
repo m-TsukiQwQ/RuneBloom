@@ -25,7 +25,7 @@ public class SaveableEntity : MonoBehaviour
         }
     }
 
-    // --- NEW: CALL THIS FROM YOUR BUILDING SYSTEM ---
+
     public void RestoreId(string id)
     {
         _id = id;

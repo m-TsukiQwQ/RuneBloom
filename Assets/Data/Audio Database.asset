@@ -16,5 +16,6 @@ MonoBehaviour:
   - audioName: attack_Hit
     clips:
     - {fileID: 8300000, guid: 34bef1ae52083dc42b4d9f8b5688dcc4, type: 3}
-    volume: 0
+    volume: 1
+    standardPitch: 1.45
   uiAudio: []

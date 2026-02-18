@@ -5,7 +5,6 @@ using UnityEngine;
 public class UICraft : MonoBehaviour
 {
     [Header("Configuration")]
-    // Drag all your Recipe assets here manually in Inspector
     [SerializeField] private List<CraftingRecipeSO> _allRecipes;
     private List<UICraftingSlot> _slots = new List<UICraftingSlot>();
 
@@ -17,7 +16,7 @@ public class UICraft : MonoBehaviour
     [SerializeField] private Transform _container;   // The Grid Panel
     [SerializeField] private GameObject _slotPrefab; // Prefab with CraftingSlotUI
 
-    // Reference to the backend (needed later for checking materials)
+    // Reference to the backend 
     public PlayerInventory playerInventory;
 
     private void Awake()
@@ -53,11 +52,11 @@ public class UICraft : MonoBehaviour
 
         foreach (CraftingRecipeSO recipe in _allRecipes)
         {
-            // 3. Create Button
+
             GameObject slotObj = Instantiate(_slotPrefab, _container);
             slotObj.transform.localScale = Vector3.one;
 
-            // 4. Setup Data
+
             UICraftingSlot slotScript = slotObj.GetComponent<UICraftingSlot>();
             slotScript.Init(recipe, this);
             _slots.Add(slotScript);

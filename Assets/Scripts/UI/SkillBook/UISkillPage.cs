@@ -53,7 +53,7 @@ public class UISkillPage : MonoBehaviour
 
     private void OnDisable()
     {
-        // IMPORTANT: Loop through and unsubscribe
+        // Loop through and unsubscribe
         if (_childNodes != null)
         {
             foreach (var node in _childNodes)

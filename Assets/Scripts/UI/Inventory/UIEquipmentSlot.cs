@@ -18,7 +18,7 @@ public class UIEquipmentSlot : UIInventorySlot
     public override bool CanAccept(ItemDataSO item)
     {
 
-        if (item == null) return true; // Empty is fine
+        if (item == null) return true; 
 
         // Only return true if the types match
         return item.equipmentType == allowedType;

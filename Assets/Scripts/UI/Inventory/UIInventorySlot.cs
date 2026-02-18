@@ -34,6 +34,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public InventoryBase OwnerInventory => _myInventory;
 
     private int _slotIndex;
+
     // Public getter so the Drop Target knows if we are splitting
     public bool IsSplitDrag => _isSplitDrag;
     public int DragAmount => _dragAmount;
@@ -89,13 +90,13 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (eventData.button == PointerEventData.InputButton.Right && slotData.stackSize > 1)
         {
             _isSplitDrag = true;
-            _dragAmount = Mathf.CeilToInt(slotData.stackSize / 2f); // Take half (rounded up)
+            _dragAmount = Mathf.CeilToInt(slotData.stackSize / 2f); // Take half
 
-            // Create a Ghost Icon (Copy of the real icon)
+            // Create a Ghost Icon 
             _ghostIconObj = Instantiate(_itemToDrag.gameObject, _inventoryUI.mainCanvas.transform);
-            _ghostIconObj.GetComponentInChildren<Image>().raycastTarget = false; // Important!
+            _ghostIconObj.GetComponentInChildren<Image>().raycastTarget = false;
 
-            // Optional: Update Ghost Text to show half amount
+            // Update Ghost Text to show half amount
             TextMeshProUGUI ghostText = _ghostIconObj.GetComponentInChildren<TextMeshProUGUI>();
             if (ghostText) ghostText.text = _dragAmount.ToString();
         }
@@ -189,7 +190,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                         // Split Drag (Right Click) -> Local Transfer
                         if (incomingSlotUI.IsSplitDrag)
                         {
-                            // Note: You need to ensure TransferItem exists in InventoryBase or cast to InventorySystem
+                            // need to ensure TransferItem exists in InventoryBase or cast to InventorySystem
                             // Assuming you moved TransferItem to Base as discussed:
                             _myInventory.TransferItem(incomingSlotUI.SlotIndex, this._slotIndex, incomingSlotUI.DragAmount);
                         }
@@ -206,11 +207,11 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     // Call the Cross-Inventory Transfer logic
                     // Logic: Take from THEM, Give to ME
 
-                    // Note: If splitting across inventories, we ideally pass the DragAmount.
+                    // If splitting across inventories, we ideally pass the DragAmount.
                     // If TransferTo doesn't support amount yet, we default to full stack or you need to update InventoryBase.
                     // Ideally: incomingSlotUI.OwnerInventory.TransferTo(this.OwnerInventory, incomingSlotUI.SlotIndex, this._slotIndex, incomingSlotUI.DragAmount);
 
-                    // For now, using standard TransferTo:
+                    // For now
                     incomingSlotUI.OwnerInventory.TransferTo(this.OwnerInventory, incomingSlotUI.SlotIndex, this._slotIndex);
                 }
             }

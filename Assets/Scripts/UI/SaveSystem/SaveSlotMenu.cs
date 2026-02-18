@@ -84,7 +84,7 @@ public class SaveSlotMenu : MonoBehaviour
             GameObject slotObj = Instantiate(_saveSlotPrefab, _slotsContainer);
             SaveSlot slotScript = slotObj.GetComponent<SaveSlot>();
 
-            // Pass the ID (Key) and Data (Value) to the button
+            // Pass the ID and Data  to the button
             slotScript.Initialize(profile.Key, profile.Value);
 
             // Add click listener dynamically

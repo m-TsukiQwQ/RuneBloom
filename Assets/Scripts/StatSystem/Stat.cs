@@ -16,6 +16,7 @@ public class Stat
     public List<StatModifier> Modifiers() => _modifiers;
     public List<StatModifier> Multipliers() => _multipliers;
 
+
     public Stat()
     {
         _modifiers = new List<StatModifier>();
@@ -26,11 +27,11 @@ public class Stat
 
     public float GetValue()
     {
-        //if (_needToBeRecalculated)
-        //{
+        if (_needToBeRecalculated)
+        {
             _finalValue = GetFinalValue();
             _needToBeRecalculated = false;
-        //}
+        }
 
         return _finalValue;
     }

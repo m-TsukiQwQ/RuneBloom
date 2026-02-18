@@ -57,7 +57,6 @@ public class SaveManager : MonoBehaviour
 
     public void ChangeSelectedProfileId(string newProfileId)
     {
-        // Call this from Main Menu buttons: "Slot 1", "Slot 2", etc.
         _selectedProfileId = newProfileId;
 
         // Reload game data for this new profile

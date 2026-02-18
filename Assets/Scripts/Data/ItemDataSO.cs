@@ -20,7 +20,6 @@ public class ItemDataSO : ScriptableObject
     private void OnValidate()
     {
 #if UNITY_EDITOR
-        // Get the unique file path ID (GUID) from Unity
         string path = AssetDatabase.GetAssetPath(this);
         string guid = AssetDatabase.AssetPathToGUID(path);
 
@@ -28,13 +27,12 @@ public class ItemDataSO : ScriptableObject
         {
             itemID = guid;
 
-            // Mark as dirty so Unity knows to save this change eventually
             EditorUtility.SetDirty(this);
         }
 #endif
     }
 
-    // Right click the component header to manually reset if needed
+
     [ContextMenu("Regenerate ID")]
     public void RegenerateID()
     {

@@ -46,13 +46,13 @@ public class EntityAnimation : MonoBehaviour
 
         if (Mathf.Abs(playerIdle.x) > Mathf.Abs(playerIdle.y))
         {
-            // --- Horizontal is dominant ---
+            // Horizontal is dominant
             // If direction.x is positive, cast right. Otherwise, cast left.
             playerIdle.x = (playerIdle.x > 0) ? 1 : -1;
         }
         else
         {
-            // --- Vertical is dominant ---
+            // Vertical is dominant
             // If direction.y is positive, cast up. Otherwise, cast down.
             playerIdle.y = (playerIdle.y > 0) ? 1 : -1;
         }

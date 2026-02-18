@@ -11,7 +11,7 @@ public class SaveSlot : MonoBehaviour
     [Header("Data Fields")]
     [SerializeField] private TextMeshProUGUI _dayCountText;
     [SerializeField] private TextMeshProUGUI _worldNameText;
-    [SerializeField] private TextMeshProUGUI _lastPlayedText; // Optional: To show date
+    [SerializeField] private TextMeshProUGUI _lastPlayedText;
 
     private Button _button;
 

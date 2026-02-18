@@ -47,7 +47,7 @@ namespace WorldTime
                 _currentTime = new TimeSpan(data.worldTimeTicks);
                 Debug.Log($"[WorldTime] Loaded Time: {_currentTime}");
 
-                // 2. Important: Fire event immediately so UI updates instantly on load
+                // 2. Fire event immediately so UI updates instantly on load
                 WorldTimeChanged?.Invoke(this, _currentTime);
             }
             else

@@ -71,13 +71,13 @@ public class ObjectItemPickUp : MonoBehaviour
     {
         if (!_canPickup)
             return;
-        // 1. Try to find the InventorySystem on the player
+        //Try to find the InventorySystem on the player
         _inventory = collision.GetComponent<PlayerInventory>();
 
 
         if (_inventory != null)
         {
-            // 2. Call our AddItem function
+            // Call our AddItem function
             // It returns 'true' if successful, 'false' if full
             bool wasAdded = _inventory.TryAddItem(_itemData, _amount);
 

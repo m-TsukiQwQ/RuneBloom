@@ -90,13 +90,13 @@ public class EntityCombat : MonoBehaviour
 
         if (Mathf.Abs(_attackDirection.x) > Mathf.Abs(_attackDirection.y))
         {
-            // --- Horizontal is dominant ---
+            //Horizontal is dominant
             // If direction.x is positive, cast right. Otherwise, cast left.
             return (_attackDirection.x > 0) ? 3 : 1;
         }
         else
         {
-            // --- Vertical is dominant ---
+            // Vertical is dominant
             // If direction.y is positive, cast up. Otherwise, cast down.
             return (_attackDirection.y > 0) ? 2 : 0;
         }
